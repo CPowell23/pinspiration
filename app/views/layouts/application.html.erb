@@ -9,6 +9,10 @@
   </head>
 
   <body>
-    <%= yield %>
+    <section class="main">
+      <%= render partial: 'shared/errors' %>
+      <%= render partial: 'shared/messages' %>
+      <%= yield %>
+    </section>
   </body>
 </html>

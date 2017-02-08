@@ -1,0 +1,10 @@
+<% if @errors %>
+  <section class="errors">
+    <h3><%= pluralize(@errors.count, 'error') %> prevented this record from being saved.</h3>
+    <ul>
+      <% @errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+    </ul>
+  </section>
+<% end %>
