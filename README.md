@@ -24,7 +24,7 @@ Insert screenshots of the app...
 ### User Authorizations Summary
 ![alt text][authorizations]
 
-[authorizations]: https://github.com/CPowell23/pinspiration/blob/master/pinspiration_authorizations.png "Pinspirations Authorizations Summary"
+[authorizations]: https://github.com/CPowell23/pinspiration/blob/master/authorizations_graphic.png "Pinspirations Authorizations Summary"
 
 ### What to Expect When Consuming the API
   - All endpoints will return JSON data
