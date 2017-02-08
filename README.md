@@ -19,7 +19,7 @@ Insert screenshots of the app...
 ### Database Diagram
 ![alt text][database]
 
-[database]: linkTBD "Pinspirations Database Diagram"
+[database]: https://github.com/CPowell23/pinspiration/blob/master/database_graphic_v1.png "Pinspirations Database Diagram"
 
 ### User Authorizations Summary
 ![alt text][authorizations]
