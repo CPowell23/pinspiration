@@ -1,10 +1,9 @@
-<h1>Admin Log in</h1>
-<%= form_tag( url: admin_login_path ) do %>
-  <%= label_tag :email %>
-  <%= text_field_tag :email %>
-  <br />
-  <%= label_tag :password %>
-  <%= password_field_tag :password %>
-  <br />
-  <%= submit_tag "Log in" %>
-<% end %>
+<section class="login">
+  <i class="fa fa-pinterest" aria-hidden="true"></i>
+  <h1>Admin Log in</h1>
+  <%= form_tag( url: admin_login_path ) do %>
+    <%= text_field_tag :email, placeholder = "Email" %>
+    <%= password_field_tag :password, placeholder = "Password" %>
+    <%= submit_tag "Continue", {class: "btn-continue"} %>
+  <% end %>
+</section>
