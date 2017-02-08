@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170208003052) do
+ActiveRecord::Schema.define(version: 20170208004608) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -85,9 +85,7 @@ ActiveRecord::Schema.define(version: 20170208003052) do
   end
 
   create_table "registered_users", force: :cascade do |t|
-    t.text    "api_key"
     t.integer "status"
-    t.index ["api_key"], name: "index_registered_users_on_api_key", unique: true, using: :btree
   end
 
 end
