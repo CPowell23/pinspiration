@@ -15,5 +15,10 @@
   <body>
     <%= link_to 'Google SignIn', '/auth/google' %>
     <%= yield %>
+    <section class="main">
+      <%= render partial: 'shared/errors' %>
+      <%= render partial: 'shared/messages' %>
+      <%= yield %>
+    </section>
   </body>
 </html>

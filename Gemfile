@@ -17,15 +17,13 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.5'
 gem 'rspec-rails'
 # Use ActiveModel has_secure_password
-# gem 'bcrypt', '~> 3.1.7'
+gem 'bcrypt', '~> 3.1.7'
 gem "omniauth-google-oauth2"
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'capybara'
-  gem 'shoulda-matchers'
-  gem 'factory_girl'
   gem 'faker'
+  gem 'database_cleaner'
 end
 
 group :development do
@@ -35,6 +33,11 @@ end
 
 group :test do
   gem 'simplecov', :require => false
+  gem 'capybara'
+  gem "launchy"
+  gem 'shoulda-matchers', '~> 3.1'
+  gem 'rack_session_access'
+  gem 'factory_girl'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
