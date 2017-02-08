@@ -16,11 +16,11 @@ class Admin::SessionsController < Admin::BaseController
     end
   end
 
-  # def destroy
-  #   session[:admin_id] = nil
-  #   flash_message_successful_logout
-  #   redirect_to(admin_login_path)
-  # end
+  def destroy
+    session[:admin_id] = nil
+    flash_message_successful_logout
+    redirect_to(admin_login_path)
+  end
 
   private
 
