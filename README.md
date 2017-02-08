@@ -26,6 +26,13 @@ Insert screenshots of the app...
 
 [authorizations]: https://github.com/CPowell23/pinspiration/blob/master/authorizations_graphic.png "Pinspirations Authorizations Summary"
 
+**Authorization Notes:**
+ - Admin authorizations apply to all users’ content, including boards tagged as private.
+ - Admins are not able to delete users, but they are able to take them offline under necessary circumstances, rendering their user profile inactive and preventing anyone from accessing content created by the innactive user.
+ - Registered user authorizations apply only to content that is self-created or shared by other users. Registered users are able to read all public boards, pins, and comments, and they are also able to read private boards, pins, and comments that are shared with them by the owner.
+ - User account information is only available to the owner and admins. Passwords are encrypted and never viewed by admins.
+
+
 ### What to Expect When Consuming the API
   - All endpoints will return JSON data
   - All endpoints are exposed under an api and version (v1) namespace (e.g. /api/v1/boards.json)
