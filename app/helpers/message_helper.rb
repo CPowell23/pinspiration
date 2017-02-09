@@ -16,4 +16,8 @@ module MessageHelper
     flash[:success] = "Successfully logged in with new account"
   end
 
+  def flash_message_successful_pin_creation
+    flash[:success] = "Successfully created pin"
+  end
+
 end
