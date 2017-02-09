@@ -1,10 +1,6 @@
 class PinsController < ApplicationController
   include MessageHelper
 
-  def index
-    @user = find_user_by_username(params[:username])
-    @pins = @user.pins
-  end
 
   def show
     @pin = Pin.find(params[:id])
@@ -47,7 +43,7 @@ class PinsController < ApplicationController
     @pin.destroy
 
     flash_message_successful_pin_delete
-    redirect_to pins_index_path(current_user.username)
+    redirect_to registered_users_pins_path(current_user.username)
   end
 
   private
