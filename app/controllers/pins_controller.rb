@@ -11,7 +11,6 @@ class PinsController < ApplicationController
   end
 
   def new
-    @boards = current_user.boards
     @pin = Pin.new
   end
 
