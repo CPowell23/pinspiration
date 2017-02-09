@@ -7,4 +7,23 @@ class RegisteredUser < ApplicationRecord
 
   enum status: [:offline, :online]
 
+  def username
+    return pinspiration_credentials.first.username if pinspiration_credentials.count > 0
+    google_credentials.first.username
+  end
+
+  def name
+    return pinspiration_credentials.first.name if pinspiration_credentials.count > 0
+    google_credentials.first.name
+  end
+
+  def email
+    return pinspiration_credentials.first.email if pinspiration_credentials.count > 0
+    google_credentials.first.email
+  end
+
+  def phone_number
+    return pinspiration_credentials.first.phone_number if pinspiration_credentials.count > 0
+    google_credentials.first.phone_numer
+  end
 end
