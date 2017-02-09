@@ -1,0 +1,16 @@
+<%= form_for @pin, url: pins_path do |f| %>
+
+  <%= f.label :description %>
+  <%= f.text_field :description, placeholder: "Description" %>
+
+  <%= f.label :image_url %>
+  <%= f.text_field :image_url, placeholder: "http://www.image_url.com" %>
+
+  <%= f.label :article_url %>
+  <%= f.text_field :article_url, placeholder: "http://www.article_url.com" %>
+
+  <%= f.label :board %>
+  <%= f.collection_select :board_id, @boards, :id, :name, :prompt => 'Select Board' %>
+
+  <%= f.submit "Submit" %>
+<% end %>
