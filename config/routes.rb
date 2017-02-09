@@ -21,14 +21,14 @@ Rails.application.routes.draw do
 #    delete '/:name', to: 'boards#destroy'
 #    post '/:name/like', to: 'like#create'
 #  end
-  
+
 #  resources :pins, except: [:index] do
 #    post '/comments', to: 'comments#create'
 #    post '/comments/like', to: 'like#create'
 #    post '/like', to: 'like#create'
 #  end
-  get '/auth/google', as: :google_login
-  get '/auth/google/callback', to: 'sessions#create'
+  # get 'o/oauth2/auth', as: :google_login
+  get '/auth/google_oauth2/callback', to: 'sessions#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
