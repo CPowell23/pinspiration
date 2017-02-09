@@ -1,7 +1,16 @@
 class RegisteredUsers::BoardsController < ApplicationController
 
   def index
-    @boards = PinspirationCredential.find_by(username: params[:username]).registered_user.boards
+    @user = find_by_username(params[:username])
+    @boards = @user.boards
   end
 
+  def show
+    @board_presenter = BoardPresenter.new(params[:username], params[:name])
+  end
+
+  private
+    def find_by_username(username)
+      PinspirationCredential.find_by(username: username).registered_user
+    end
 end
