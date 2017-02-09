@@ -34,4 +34,7 @@ Rails.application.routes.draw do
 
   get '/:username', to: 'registered_users#show'
 
+  get '/:username', to: 'registered_users#show', as: 'registered_user'
+#  get '/:username/pins', to: 'pins#index'
+#
 end
