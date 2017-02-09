@@ -2,16 +2,16 @@ require 'rails_helper'
 
 describe "Guest login workflow" do
   context "An unregisted guest" do
-    xit "can visit the app home page" do
+    it "can visit the app home page" do
       visit root_path
 
       expect(current_path).to eq('/')
       expect(page).to have_content("Welcome to Pinspirations")
       expect(page).to have_button("Continue")
-      # expect(page).to have_button("Continue with Google")
+      expect(page).to have_link("Google SignIn")
     end
 
-    xit "can create a new registration for the app using pinspiration credentials" do
+    it "can create a new registration for the app using pinspiration credentials" do
       visit root_path
 
       fill_in "Name", with: "Jane Doe"
@@ -26,27 +26,27 @@ describe "Guest login workflow" do
 
     it "can create a new registration for the app using google credentials" do
       visit root_path
+      stub_omniauth
       click_on("Google SignIn")
-      stub_oauth
 
       expect(page.status_code).to eq(200)
+      expect(current_path).to eq(root_path)
     end
 
-    xit "cannot create a new registration for the app with invalid credentials" do
+    xit "cannot create a new registration for the app with invalid pinspiration credentials" do
       visit root_path
 
-       fill_in "Name", with: ""
       fill_in "Username", with: "janey37"
       fill_in "Email", with: "jane@janemail.com"
-      fill_in "Password", with: 'password01'
       fill_in "Phone number", with: "123-456-7789"
       click_button("Continue")
+      save_and_open_page
 
       expect(current_path).to eq(root_path)
-      expect(page).to have_content("Missing needed credentials or passwords do not match!")
+      expect(page.status_code).to eq(400)
     end
 
-    def stub_oauth
+    def stub_omniauth
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
           {           
