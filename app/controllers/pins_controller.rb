@@ -4,6 +4,10 @@ class PinsController < ApplicationController
     @pins = @user.pins
   end
 
+  def show
+    @pin = Pin.find(params[:id])
+  end
+
   private
 
     def find_user_by_username(username)
