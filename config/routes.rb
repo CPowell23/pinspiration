@@ -32,5 +32,7 @@ Rails.application.routes.draw do
 
   get '/:username', to: 'registered_users#show'
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
 end
