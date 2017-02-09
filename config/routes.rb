@@ -13,14 +13,15 @@ Rails.application.routes.draw do
 #    resources :registered_users, only: [:update]
   end
 
-#  namespace :registered_users, path: ":username" do
+namespace :registered_users, path: ":username" do
+  resources :boards, only: [:index]  
 #    resources :boards, only: [:index, :new, :create]
 #    get '/:name', to: 'boards#show'
 #    get '/:name/edit', to: 'boards#edit'
 #    patch '/:name', to: 'boards#update'
 #    delete '/:name', to: 'boards#destroy'
 #    post '/:name/like', to: 'like#create'
-#  end
+  end
   
 #  resources :pins, except: [:index] do
 #    post '/comments', to: 'comments#create'
