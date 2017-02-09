@@ -14,29 +14,41 @@ describe "Guest login workflow" do
     it "can create a new registration for the app using pinspiration credentials" do
       visit root_path
 
+      fill_in "Name", with: "Jane Doe"
+      fill_in "Username", with: "janey37"
       fill_in "Email", with: "jane@janemail.com"
       fill_in "Password", with: 'password01'
+      fill_in "Phone number", with: "123-456-7789"
       click_button("Continue")
+      
+      expect(current_path).to eq(root_path)
+    end
 
-      expect(current_path).to eq(dashboard_path)
-      expect(page).to have_content("janedoe successfully created!")
+    xit "can create a new registration for the app using google credentials" do
+      visit root_path
+      click_on("Google SignIn")
+
+      fill_in "Name", with: "Jane Doe"
+      fill_in "Username", with: "janey37"
+      fill_in "Email", with: "jane@janemail.com"
+      fill_in "Password", with: 'password01'
+      fill_in "Phone number", with: "123-456-7789"
+      click_button("Continue")
     end
 
     xit "cannot create a new registration for the app with invalid credentials" do
       visit root_path
 
-      fill_in "Email", with: ""
+       fill_in "Name", with: ""
+      fill_in "Username", with: "janey37"
+      fill_in "Email", with: "jane@janemail.com"
       fill_in "Password", with: 'password01'
+      fill_in "Phone number", with: "123-456-7789"
       click_button("Continue")
 
       expect(current_path).to eq(root_path)
       expect(page).to have_content("Missing needed credentials or passwords do not match!")
     end
 
-    xit "can login to the app with an existing account" do
-    end
-
-    xit "cannot login to the app with invalid credentials" do
-    end
   end
 end

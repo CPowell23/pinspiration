@@ -1,7 +1,7 @@
   <h1><%= link_to "Log in", login_path %><h1>
 
   <h1>Welcome to Pinspirations, the world's catalog of ideas</h1>
-  <%= form_for(:pinspiration_credential, :url => {:controller => 'sessions', :action => 'create'}) do |f| %>
+  <%= form_for(PinspirationCredential.new, :url => {:controller => 'sessions', :action => 'create'}) do |f| %>
     <%= f.label :name %>
     <%= f.text_field :name %>
 
@@ -19,3 +19,5 @@
 
     <%= f.submit "Continue" %>
   <% end %>
+  <br>
+  <%= link_to 'Google SignIn', '/auth/google' %>
