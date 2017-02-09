@@ -1,12 +1,12 @@
 class RegisteredUsers::BoardsController < ApplicationController
 
   def index
-    @boards = PinspirationCredential.find_by(username: params[:username]).registered_user.boards
+    @user = find_by_username(params[:username])
+    @boards = @user.boards
   end
 
   def show
-    @username = params[:username]
-    @board = find_board
+    @board_presenter = BoardPresenter.new(params[:username], params[:name])
   end
 
   def edit
@@ -22,4 +22,12 @@ class RegisteredUsers::BoardsController < ApplicationController
     .find_by(name: params[:name])
   end
 
+  def find_by_username(username)
+    if GoogleCredential.find_by(username: username)
+      credentials = GoogleCredential.find_by(username)
+    else
+      credentials = PinspirationCredential.find_by(username: username)
+    end
+    credentials.registered_user
+  end
 end
