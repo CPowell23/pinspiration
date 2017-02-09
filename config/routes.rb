@@ -1,4 +1,6 @@
 Rails.application.routes.draw do
+  root 'home#index'
+
   namespace :admin do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
@@ -26,8 +28,8 @@ Rails.application.routes.draw do
 #    post '/like', to: 'like#create'
 #  end
 
-#  post '/login', to: 'sessons#create'
-#  delete '/logout', to: 'sessions#destroy'
+ post '/login', to: 'sessions#create'
+ delete '/logout', to: 'sessions#destroy'
 
 #  get '/:username', to: 'registered_users#show'
 #  get '/:username/pins', to: 'pins#index'
