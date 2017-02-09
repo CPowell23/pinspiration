@@ -2,15 +2,18 @@ require "rails_helper"
 
 describe "A User" do
   before do
-    user = create(:user)
-    stub_log_in_user(user)
-    visit user_path
+    @user = create(:registered_user)
+    stub_log_in_registered_user(@user)
+    @username = @user.pinspiration_credentials.first.username
+    @board = create(:board, registered_user: @user)
   end
 
-  xit "can edit a board from the board's show page" do
-    visit user_board_path(user, board)
+  it "can edit a board from the board's show page" do
+    visit registered_users_path(@username, @board.name)
 
-    click('Edit')
+    click_on('Edit')
+
+    expect(current_path).to eq(registered_users_edit_board_path(username, @board.name))
   end
 
   xit "can edit a board from the board index page" do

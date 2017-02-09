@@ -12,11 +12,11 @@ describe "A User" do
   end
 
   xit "can enter board information" do
-    
+
+    expect(current_path).to eq(registered_user_new_board_path(user, board))
   end
 
   xit "is redirected to the new board's show page" do
-    expect(current_path).to eq(user_board_path(user, board))
   end
 
   xit "and the board belongs to the user" do
