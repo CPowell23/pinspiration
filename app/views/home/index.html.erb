@@ -1,0 +1,13 @@
+  <h1><%= link_to "Log in", login_path %><h1>
+
+  <h1>Welcome to Pinspirations, the world's catalog of ideas</h1>
+  <%= form_for(:registered_user, :url => {:controller => 'sessions', :action => 'create'}) do |f| %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.submit "Continue" %>
+  <% end %>
