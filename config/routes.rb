@@ -27,8 +27,10 @@ Rails.application.routes.draw do
 #    post '/comments/like', to: 'like#create'
 #    post '/like', to: 'like#create'
 #  end
- post '/login', to: 'sessions#create'
- delete '/logout', to: 'sessions#destroy'
+  get '/auth/google', as: :google_login
+  get '/auth/reddit/callback', to: 'sessions#create'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
 #  get '/:username', to: 'registered_users#show'
 #  get '/:username/pins', to: 'pins#index'

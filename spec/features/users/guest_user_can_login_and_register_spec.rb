@@ -24,16 +24,11 @@ describe "Guest login workflow" do
       expect(current_path).to eq(root_path)
     end
 
-    xit "can create a new registration for the app using google credentials" do
+    it "can create a new registration for the app using google credentials" do
       visit root_path
       click_on("Google SignIn")
 
-      fill_in "Name", with: "Jane Doe"
-      fill_in "Username", with: "janey37"
-      fill_in "Email", with: "jane@janemail.com"
-      fill_in "Password", with: 'password01'
-      fill_in "Phone number", with: "123-456-7789"
-      click_button("Continue")
+      
     end
 
     xit "cannot create a new registration for the app with invalid credentials" do
@@ -50,5 +45,20 @@ describe "Guest login workflow" do
       expect(page).to have_content("Missing needed credentials or passwords do not match!")
     end
 
+    def stub_oauth
+      OmniAuth.config.test_mode = true
+      OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new(
+          {           
+            provider: "google",
+            info: {
+              name: "Severus Snape", 
+              email: "profsnape@hogwarts.edu"
+              locale: "en", 
+              gender: "male", 
+              given_name: "Severus", 
+              id: "107777756181491428139"
+            }
+        }
   end
+
 end

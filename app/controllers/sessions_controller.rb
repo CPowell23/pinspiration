@@ -1,7 +1,11 @@
 class SessionsController < ApplicationController
   def create
     @registered_user = RegisteredUser.create(status: 1)
-    @credential = @registered_user.pinspiration_credentials.create(credential_params)
+    if params.include?("pinspiration")
+      @credential = @registered_user.pinspiration_credentials.create(credential_params)
+    elsif params.include?("google")
+      @credential = @registered_user.google_credentials.create(google_credential_params)
+    end
     
     if @credential.save
       session[:user_id] = @credential.registered_user.id
@@ -18,8 +22,17 @@ class SessionsController < ApplicationController
     # session[:user_id] = user.id
   end
 
+  def destroy
+    session[:user_id] = nil
+    redirect_to root_path
+  end
+
   private
     def credential_params
       params.require(:pinspiration_credential).permit(:name, :username, :email, :password, :phone_number)
+    end
+
+    def google_credential_params
+      params.require(:google_credential).permit(:name, :username, :email, :password)
     end
 end
