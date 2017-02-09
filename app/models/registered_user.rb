@@ -14,4 +14,7 @@ class RegisteredUser < ApplicationRecord
     google_credentials.first.username
   end
 
+  def registered_user_params
+    params.require(:user).permit(:email, :password)
+  end
 end
