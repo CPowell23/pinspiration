@@ -9,12 +9,17 @@ class GoogleCredential < ApplicationRecord
   belongs_to :registered_user
 
   def self.from_omniauth(auth_info)
-    where(google_uid: auth_info.uid).find_or_create do |credential|
-      credential.name = auth_info.info.name
-      credential.username = auth_info.info.name.parameterize
-      # credential.token = auth_info.credentials.token
-      credential.save
-    end
+    credential = GoogleCredential.find_by(google_uid: auth_info.info.google_uid)
+      if credential
+        credential
+        # session[:registered_user_id] = user.registered_user.id
+      else
+        registered_user = RegisteredUser.create(status: 1)
+        credential = registered_user.google_credentials.create(google_uid: auth_info.info.google_uid, 
+                                                  name: auth_info.info.name, 
+                                                  username: auth_info.info.name.parameterize)
+        credential
+      end
   end
 
 end
