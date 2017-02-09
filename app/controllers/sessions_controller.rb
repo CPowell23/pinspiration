@@ -14,12 +14,6 @@ class SessionsController < ApplicationController
       redirect_to root_path
     end
 
-    # user          = RegisteredUser.find_or_create_by(email: )
-    # user.username = auth["login"]
-    # user.uid      = auth["id"]
-    # user.token    = token
-    # user.save
-    # session[:user_id] = user.id
   end
 
   def destroy
@@ -33,6 +27,6 @@ class SessionsController < ApplicationController
     end
 
     def google_credential_params
-      params.require(:google_credential).permit(:name, :username, :email, :password)
+      params.require(:google_credential).permit(:name, :google_id, )
     end
 end

@@ -2,7 +2,7 @@ require 'rails_helper'
 
 describe "Guest login workflow" do
   context "An unregisted guest" do
-    it "can visit the app home page" do
+    xit "can visit the app home page" do
       visit root_path
 
       expect(current_path).to eq('/')
@@ -11,7 +11,7 @@ describe "Guest login workflow" do
       # expect(page).to have_button("Continue with Google")
     end
 
-    it "can create a new registration for the app using pinspiration credentials" do
+    xit "can create a new registration for the app using pinspiration credentials" do
       visit root_path
 
       fill_in "Name", with: "Jane Doe"
@@ -27,8 +27,9 @@ describe "Guest login workflow" do
     it "can create a new registration for the app using google credentials" do
       visit root_path
       click_on("Google SignIn")
+      stub_oauth
 
-      
+      expect(page.status_code).to eq(200)
     end
 
     xit "cannot create a new registration for the app with invalid credentials" do
@@ -50,15 +51,18 @@ describe "Guest login workflow" do
       OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new(
           {           
             provider: "google",
+            uid: "107777756181491428139",
             info: {
               name: "Severus Snape", 
-              email: "profsnape@hogwarts.edu"
-              locale: "en", 
+              email: "profsnape@hogwarts.edu",
+              locale: "wizard world", 
               gender: "male", 
               given_name: "Severus", 
-              id: "107777756181491428139"
+              token: "ya29.GlvtA2V-XVLXzt__yZh3ZO1SJh4wDauL6zeMkQcgsqeO-f3Xrpe-egfjfVNDPuJUtZ0D8czN8Jq8n33OdffqmK55SHvwrNLjikj-FcQOUHCAcUglTjeKtfDsjMlj"
             }
-        }
-  end
+          }
+        )
+    end
 
+  end
 end
