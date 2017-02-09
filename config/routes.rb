@@ -27,6 +27,10 @@ Rails.application.routes.draw do
 #    post '/comments/like', to: 'like#create'
 #    post '/like', to: 'like#create'
 #  end
+<<<<<<< bd3059bb3e06057bab02304fc5326610774bbb31
+=======
+
+>>>>>>> update sessions controller to account for registeredUser creation
  post '/login', to: 'sessions#create'
  delete '/logout', to: 'sessions#destroy'
 
