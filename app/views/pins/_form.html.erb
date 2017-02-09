@@ -10,7 +10,7 @@
   <%= f.text_field :article_url, placeholder: "http://www.article_url.com" %>
 
   <%= f.label :board %>
-  <%= f.collection_select :board_id, current_user.boards, :id, :name, :prompt => 'Select Board' %>
+  <%= f.collection_select :board_id, @boards, :id, :name, :prompt => 'Select Board' %>
 
   <%= f.submit "Submit" %>
 <% end %>
