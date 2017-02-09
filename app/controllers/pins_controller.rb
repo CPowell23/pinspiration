@@ -42,6 +42,14 @@ class PinsController < ApplicationController
     end
   end
 
+  def destroy
+    @pin = Pin.find(params[:id])
+    @pin.destroy
+
+    flash_message_successful_pin_delete
+    redirect_to pins_index_path(current_user.username)
+  end
+
   private
 
     def find_user_by_username(username)
