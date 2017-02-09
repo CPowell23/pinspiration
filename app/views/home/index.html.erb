@@ -1,0 +1,23 @@
+  <h1><%= link_to "Log in", login_path %><h1>
+
+  <h1>Welcome to Pinspirations, the world's catalog of ideas</h1>
+  <%= form_for(PinspirationCredential.new, :url => {:controller => 'sessions', :action => 'create'}) do |f| %>
+    <%= f.label :name %>
+    <%= f.text_field :name %>
+
+    <%= f.label :username %>
+    <%= f.text_field :username %>
+
+    <%= f.label :email %>
+    <%= f.text_field :email %>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %>
+
+    <%= f.label :phone_number %>
+    <%= f.text_field :phone_number %>
+
+    <%= f.submit "Continue" %>
+  <% end %>
+  <br>
+  <%= link_to 'Google SignIn', '/auth/google' %>

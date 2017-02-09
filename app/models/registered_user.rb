@@ -6,4 +6,5 @@ class RegisteredUser < ApplicationRecord
   has_many :boards
 
   enum status: [:offline, :online]
+
 end
