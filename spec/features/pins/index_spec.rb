@@ -20,7 +20,7 @@ describe "Pins Index" do
   end
 
   it "displays a user's pins" do
-    visit pins_index_path(@user_1_username)
+    visit registered_users_pins_path(@user_1_username)
 
     expect(page).to have_css(".pin", count: 4)
     @user_1_pins.each do |pin|

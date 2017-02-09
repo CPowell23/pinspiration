@@ -1,16 +1,13 @@
-class RegisteredUsers::BoardsController < ApplicationController
+class RegisteredUsers::PinsController < ApplicationController
 
   def index
-    @user = find_by_username(params[:username])
-    @boards = @user.boards
-  end
-
-  def show
-    @board_presenter = BoardPresenter.new(params[:username], params[:name])
+    @user = find_user_by_username(params[:username])
+    @pins = @user.pins
   end
 
   private
-    def find_by_username(username)
+
+    def find_user_by_username(username)
       if GoogleCredential.find_by(username: username)
         credentials = GoogleCredential.find_by(username)
       else
