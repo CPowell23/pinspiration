@@ -48,9 +48,9 @@ describe "Guest login workflow" do
 
     def stub_oauth
       OmniAuth.config.test_mode = true
-      OmniAuth.config.mock_auth[:google] = OmniAuth::AuthHash.new(
+      OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
           {           
-            provider: "google",
+            provider: "google_oauth2",
             uid: "107777756181491428139",
             info: {
               name: "Severus Snape", 
@@ -58,7 +58,7 @@ describe "Guest login workflow" do
               locale: "wizard world", 
               gender: "male", 
               given_name: "Severus", 
-              token: "ya29.GlvtA2V-XVLXzt__yZh3ZO1SJh4wDauL6zeMkQcgsqeO-f3Xrpe-egfjfVNDPuJUtZ0D8czN8Jq8n33OdffqmK55SHvwrNLjikj-FcQOUHCAcUglTjeKtfDsjMlj"
+              token: "ya29.GlvtA-mnI6g3bwmjaGpZaYyKo5GhMkm8yNaGjL1NmjO5LgPv1dprnLdxMIFnBZTFqyMivfbLoyz3ipcdShXK5n68GqIIL5feWayPJFs11zcQrWCgaJDgVMqfPdu-"
             }
           }
         )

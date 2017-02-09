@@ -28,7 +28,7 @@ Rails.application.routes.draw do
 #    post '/like', to: 'like#create'
 #  end
   # get 'o/oauth2/auth', as: :google_login
-  get '/auth/google_oauth2/callback', to: 'sessions#create'
+  get '/auth/google_oauth2/callback', to: 'google_sessions#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 

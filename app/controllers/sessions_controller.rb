@@ -4,6 +4,7 @@ class SessionsController < ApplicationController
     if params.include?("pinspiration")
       @credential = @registered_user.pinspiration_credentials.create(credential_params)
     elsif params.include?("code")
+      byebug
       @credential = @registered_user.google_credentials.create(google_credential_params)
     end
 
