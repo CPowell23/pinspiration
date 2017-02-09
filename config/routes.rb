@@ -15,8 +15,8 @@ Rails.application.routes.draw do
 
 namespace :registered_users, path: ":username" do
   resources :boards, only: [:index]  
+  get "/:name", to: "boards#show", as: "board"
 #    resources :boards, only: [:index, :new, :create]
-#    get '/:name', to: 'boards#show'
 #    get '/:name/edit', to: 'boards#edit'
 #    patch '/:name', to: 'boards#update'
 #    delete '/:name', to: 'boards#destroy'
