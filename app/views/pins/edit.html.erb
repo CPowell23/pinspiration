@@ -1,3 +1,6 @@
 <h1>Edit Your Pin</h1>
 
 <%= render partial: 'form' %>
+
+<%= link_to "Cancel", pin_path(@pin) %>
+<%= link_to "Delete", pin_path(@pin), method: :delete %>

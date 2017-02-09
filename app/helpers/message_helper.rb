@@ -28,4 +28,8 @@ module MessageHelper
     flash[:danger] = "Failed to edit pin. Please fix errors and try again."
   end
 
+  def flash_message_successful_pin_delete
+    flash[:success] = "Successfully deleted pin"
+  end
+
 end
