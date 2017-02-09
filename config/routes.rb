@@ -23,7 +23,7 @@ Rails.application.routes.draw do
   end
 
   resources :pins, except: [:index] do
-   resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
+    resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
   #  post '/comments/like', to: 'like#create'
   #  post '/like', to: 'like#create'
   end
