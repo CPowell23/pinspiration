@@ -26,6 +26,23 @@ class PinsController < ApplicationController
     end
   end
 
+  def edit
+    @boards = current_user.boards
+    @pin = Pin.find(params[:id])
+  end
+
+  def update
+    @pin = Pin.find(params[:id])
+    if @pin.update(pin_params)
+      flash_message_successful_pin_edit
+      redirect_to pin_path(@pin)
+    else
+      flash_message_failed_pin_edit
+      @errors = @pin.errors
+      render :edit
+    end
+  end
+
   private
 
     def find_user_by_username(username)

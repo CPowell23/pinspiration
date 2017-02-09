@@ -20,4 +20,12 @@ module MessageHelper
     flash[:success] = "Successfully created pin"
   end
 
+  def flash_message_successful_pin_edit
+    flash[:success] = "Successfully edited pin"
+  end
+
+  def flash_message_failed_pin_edit
+    flash[:danger] = "Failed to edit pin. Please fix errors and try again."
+  end
+
 end

@@ -1,13 +1,13 @@
 require "rails_helper"
 
-describe "Logged in User" do
+describe "Pin Create" do
   before do
     user = create(:registered_user)
     stub_log_in_user(user)
     create_list(:board, 2, registered_user: user)
   end
 
-  it "can create pins" do
+  it "logged in user can create pins" do
     visit new_pin_path
     within "form" do
       fill_in "pin[description]", with: "This is the description."
