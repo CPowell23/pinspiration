@@ -27,7 +27,6 @@ Rails.application.routes.draw do
 #    post '/comments/like', to: 'like#create'
 #    post '/like', to: 'like#create'
 #  end
-
  post '/login', to: 'sessions#create'
  delete '/logout', to: 'sessions#destroy'
 
