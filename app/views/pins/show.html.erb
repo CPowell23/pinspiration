@@ -1,4 +1,12 @@
+<% if current_user && current_user != @pin.registered_user %>
+  <% if current_user.already_liked?(@pin) %>
+    <%= link_to "Unlike", pin_unlike_path(@pin, Like.this_user(@pin, current_user)), method: :delete %>
+  <% else %>
+    <%= link_to "Like", pin_like_path(@pin), method: :post %>
+  <% end %>
+<% end %>
 <%= link_to "Edit", edit_pin_path(@pin) %>
+
 <section class="pin">
   <%= image_tag(@pin.image_url) %>
   <h4> <%= @pin.description %> </h4>
