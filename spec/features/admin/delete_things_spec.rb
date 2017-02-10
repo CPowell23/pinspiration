@@ -12,11 +12,32 @@ require "rails_helper"
 
     context "can delete boards" do
       xit "from the board index page" do
+        visit registered_users_boards_path(@username)
 
+        within ".board:nth-of-type(1)" do
+          expect(page).to have_selector(:link_or_button, "Delete")
+        end
+        within ".board:nth-of-type(2)" do
+          expect(page).to have_selector(:link_or_button, "Delete")
+        end
+
+        within ".board:nth-of-type(1)" do
+          click_on "Delete"
+        end
+
+        expect(Board.count).to eql(1)
+        expect(page).to have_content("Successfully deleted board")
       end
 
       xit "from the board show page" do
+        visit registered_users_board_path(@username, @board_1.name)
 
+        within ".board" do
+          click_on "Delete"
+        end
+
+        expect(Board.count).to eql(1)
+        expect(page).to have_content("Successfully deleted board")
       end
     end
 
@@ -66,9 +87,5 @@ require "rails_helper"
       end
 
       expect(Comment.count).to eql(0)
-    end
-
-    context "canNOT delete users" do
-
     end
   end

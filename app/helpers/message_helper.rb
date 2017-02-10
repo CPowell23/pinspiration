@@ -40,4 +40,7 @@ module MessageHelper
     flash[:success] = "Your comment was deleted"
   end
 
+  def flash_message_successful_board_delete
+    flash[:success] = "Successfully deleted board"
+  end
 end
