@@ -23,8 +23,9 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
   #  post '/comments', to: 'comments#create'
   #  post '/comments/like', to: 'like#create'
-  #  post '/like', to: 'like#create'
-  end
+    post '/like', to: 'like#create', as: 'like'
+    delete '/like/:id', to: 'like#destroy', as: 'unlike'
+ end
 
   namespace :registered_users, path: ":username" do
     resources :boards, only: [:index]

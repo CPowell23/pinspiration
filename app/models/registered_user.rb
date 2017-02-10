@@ -6,6 +6,7 @@ class RegisteredUser < ApplicationRecord
   has_many :boards
   has_many :pins, through: :boards
   has_many :comments
+  has_many :likes
 
   enum status: [:offline, :online]
 
@@ -31,5 +32,14 @@ class RegisteredUser < ApplicationRecord
   def phone_number
     return pinspiration_credentials.first.phone_number if pinspiration_credentials.count > 0
     google_credentials.first.phone_numer
+  end
+
+  def already_liked?(target)
+    return false if likes.count == 0
+    targets = likes.pluck(:target_id, :target_type)
+    liked = targets.map do |id, type|
+      target.id == id && target.class.to_s == type
+    end
+    liked.include?(true)
   end
 end
