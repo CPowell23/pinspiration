@@ -3,7 +3,7 @@ class Pins::CommentsController < ApplicationController
 
   def new
     @pin = Pin.find(params[:pin_id])
-    @previous_comments = @pin.comments
+    @previous_comments = @pin.comments.sort_by_most_recent
     @comment = Comment.new
   end
 
@@ -16,6 +16,14 @@ class Pins::CommentsController < ApplicationController
       @errors = @comment.errors
       render :new
     end
+  end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+
+    flash_message_successful_comment_delete
+    redirect_to new_pin_comment_path(@comment.pin)
   end
 
   private

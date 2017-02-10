@@ -9,6 +9,10 @@
   <section class="comment">
     <h4> <%= previous_comment.registered_user.username %> </h4>
     <p> <%= previous_comment.content %> </p>
+
+    <% if previous_comment.registered_user == current_user %>
+      <%= link_to "Delete", pin_comment_path(@pin, previous_comment), method: :delete %>
+    <% end %>
   </section>
 <% end %>
 

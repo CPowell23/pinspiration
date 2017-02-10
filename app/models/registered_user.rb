@@ -5,6 +5,7 @@ class RegisteredUser < ApplicationRecord
   has_many :google_credentials
   has_many :boards
   has_many :pins, through: :boards
+  has_many :comments
 
   enum status: [:offline, :online]
 

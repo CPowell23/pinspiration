@@ -36,4 +36,8 @@ module MessageHelper
     flash[:success] = "Thank you for your comment!"
   end
 
+  def flash_message_successful_comment_delete
+    flash[:success] = "Your comment was deleted"
+  end
+
 end
