@@ -1,0 +1,7 @@
+<%= @board_presenter.board.name %>
+<%= @board_presenter.user.name %>
+
+<% @board_presenter.pins.each do |pin| %>
+  <%= pin.description %>
+  <%= image_tag("#{pin.image_url}") %>
+<% end %>
