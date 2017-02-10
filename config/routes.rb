@@ -6,10 +6,10 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
     get '/dashboard', to: "dashboard#index"
-#    resources :pins, only: [:destroy]
-#    resources :boards, only: [:destroy]
-#    resources :comments, only: [:destroy]
-#    resources :registered_users, only: [:update]
+    resources :pins, only: [:destroy]
+    resources :boards, only: [:destroy]
+    resources :comments, only: [:destroy]
+    # resources :registered_users, only: [:update]
   end
 
  # namespace :registered_users, path: ":username" do
