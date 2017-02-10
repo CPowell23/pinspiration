@@ -1,0 +1,21 @@
+<%= link_to "Edit", edit_pin_path(@pin) %>
+<section class="pin">
+  <%= image_tag(@pin.image_url) %>
+  <h4> <%= @pin.description %> </h4>
+</section>
+<%= link_to "Hide Comments", pin_path(@pin) %>
+
+<% @previous_comments.each do |previous_comment| %>
+  <section class="comment">
+    <h4> <%= previous_comment.registered_user.username %> </h4>
+    <p> <%= previous_comment.content %> </p>
+  </section>
+<% end %>
+
+<%= form_for [@pin, @comment] do |f| %>
+
+  <h4> <%= current_user.username %> </h4>
+  <%= f.text_field :content, placeholder: "Add a comment..." %>
+
+  <%= f.submit "Comment" %>
+<% end %>

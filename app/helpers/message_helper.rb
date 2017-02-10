@@ -32,4 +32,8 @@ module MessageHelper
     flash[:success] = "Successfully deleted pin"
   end
 
+  def flash_message_successful_comment_creation
+    flash[:success] = "Thank you for your comment!"
+  end
+
 end
