@@ -12,6 +12,13 @@ Rails.application.routes.draw do
 #    resources :registered_users, only: [:update]
   end
 
+
+  get '/auth/google_oauth2', as: :google_login
+  get '/o/oauth2/auth', as: :google_login_test
+  get '/auth/google_oauth2/callback', to: 'google_sessions#create'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
+
   resources :pins, except: [:index] do
     resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
   #  post '/comments/like', to: 'like#create'
@@ -29,13 +36,7 @@ Rails.application.routes.draw do
 #    post '/:name/like', to: 'like#create'
   end
 
-
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
-
   get '/:username', to: 'registered_users#show'
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
 
 end

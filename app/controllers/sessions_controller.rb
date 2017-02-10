@@ -4,17 +4,23 @@ class SessionsController < ApplicationController
     @credential = @registered_user.pinspiration_credentials.create(credential_params)
     
     if @credential.save
-      session[:user_id] = @credential.registered_user.id
-      redirect_to '#'
+      session[:registered_user_id] = @credential.registered_user.id
+      redirect_to root_path
     else
+      @registered_user.destroy
+      flash[:failure] = "User not saved. Please input information into each field and try again."
       redirect_to root_path
     end
 
+  end
+
+  def destroy
+    session[:registered_user_id] = nil
+    redirect_to root_path
   end
 
   private
     def credential_params
       params.require(:pinspiration_credential).permit(:name, :username, :email, :password, :phone_number)
     end
-
 end
