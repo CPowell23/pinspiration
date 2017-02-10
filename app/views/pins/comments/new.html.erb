@@ -12,14 +12,18 @@
 
     <% if previous_comment.registered_user == current_user %>
       <%= link_to "Delete", pin_comment_path(@pin, previous_comment), method: :delete %>
+    <% elsif current_admin %>
+      <%= link_to "Delete", admin_comment_path(previous_comment), method: :delete %>
     <% end %>
   </section>
 <% end %>
 
-<%= form_for [@pin, @comment] do |f| %>
+<% if current_user %>
+  <%= form_for [@pin, @comment] do |f| %>
 
-  <h4> <%= current_user.username %> </h4>
-  <%= f.text_field :content, placeholder: "Add a comment..." %>
+    <h4> <%= current_user.username %> </h4>
+    <%= f.text_field :content, placeholder: "Add a comment..." %>
 
-  <%= f.submit "Comment" %>
+    <%= f.submit "Comment" %>
+  <% end %>
 <% end %>

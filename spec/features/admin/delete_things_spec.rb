@@ -56,8 +56,16 @@ require "rails_helper"
       end
     end
 
-    context "can delete comments" do
-      
+    it "can delete comments" do
+      pin = create(:pin, board: @board_1)
+      comment = create(:comment, pin: pin)
+
+      visit new_pin_comment_path(pin)
+      within ".comment" do
+        click_on "Delete"
+      end
+
+      expect(Comment.count).to eql(0)
     end
 
     context "canNOT delete users" do
