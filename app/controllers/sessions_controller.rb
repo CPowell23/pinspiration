@@ -5,8 +5,9 @@ class SessionsController < ApplicationController
     
     if @credential.save
       session[:registered_user_id] = @credential.registered_user.id
-      redirect_to '#'
+      redirect_to root_path
     else
+      @registered_user.destroy
       flash[:failure] = "User not saved. Please input information into each field and try again."
       redirect_to root_path
     end
