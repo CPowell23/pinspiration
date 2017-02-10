@@ -30,6 +30,7 @@ describe "Guest login workflow" do
       click_on("Google SignIn")
 
       expect(page.status_code).to eq(200)
+      expect(page).to have_content("Thank you for registering through google. Enjoy Pinspiration!")
       expect(current_path).to eq(root_path)
     end
 
@@ -42,7 +43,7 @@ describe "Guest login workflow" do
       click_button("Continue")
 
       expect(current_path).to eq(root_path)
-      expect(page).to have_content("User not saved. Please input information into each field and try again..")
+      expect(page).to have_content("User not saved. Please input information into each field and try again.")
     end
 
     def stub_omniauth
