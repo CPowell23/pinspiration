@@ -10,7 +10,15 @@ class RegisteredUsers::BoardsController < ApplicationController
   end
 
   def edit
-    @board = find_board
+    @board_presenter = BoardPresenter.new(params[:username], params[:name])
+    @categories = Category.all
+  end
+
+  def update
+    @board_presenter = BoardPresenter.new(params[:username], params[:name])
+    category = Category.find(params[:board][:category])
+    @board_presenter.board.update_attributes(board_params[:board])
+    redirect_to registered_users_board_path(params[:username], @board_presenter.board.name)
   end
 
   private
@@ -29,5 +37,9 @@ class RegisteredUsers::BoardsController < ApplicationController
       credentials = PinspirationCredential.find_by(username: username)
     end
     credentials.registered_user
+  end
+
+  def board_params
+    params.permit(board: [:name, :description, :private])
   end
 end

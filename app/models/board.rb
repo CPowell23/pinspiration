@@ -9,4 +9,9 @@ class Board < ApplicationRecord
   belongs_to :registered_user
   has_many :pins
   has_many :likes, as: :target
+
+  def privacy
+    return 'public' if private == false
+    return 'private' if private == true
+  end
 end
