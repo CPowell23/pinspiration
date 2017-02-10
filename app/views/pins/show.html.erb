@@ -6,3 +6,4 @@
   <%= image_tag(@pin.image_url) %>
   <h4> <%= @pin.description %> </h4>
 </section>
+<%= link_to "Show Comments", new_pin_comment_path(@pin) %>

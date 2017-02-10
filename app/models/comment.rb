@@ -6,4 +6,6 @@ class Comment < ApplicationRecord
   belongs_to :registered_user
   belongs_to :pin
   has_many :likes, as: :target
+
+  scope :sort_by_most_recent, -> { order(created_at: :desc) }
 end

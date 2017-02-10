@@ -21,16 +21,16 @@ Rails.application.routes.draw do
  # #   post '/:name/like', to: 'like#create'
  # end
 
- resources :pins, except: [:index] do
-  #  post '/comments', to: 'comments#create'
+  resources :pins, except: [:index] do
+   resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
   #  post '/comments/like', to: 'like#create'
   #  post '/like', to: 'like#create'
- end
+  end
 
- post '/login', to: 'sessions#create'
- delete '/logout', to: 'sessions#destroy'
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
- get '/:username', to: 'registered_users#show'
- get '/:username/pins', to: 'pins#index', as: 'pins_index'
+  get '/:username', to: 'registered_users#show'
+  get '/:username/pins', to: 'pins#index', as: 'pins_index'
 
 end
