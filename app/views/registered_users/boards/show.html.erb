@@ -1,4 +1,6 @@
+<% if current_user == @board_presenter.user %>
 <%= link_to 'Edit', registered_users_edit_board_path(@board_presenter.user.username, @board_presenter.board.name)%>
+<% end %>
 <%= @board_presenter.board.name %>
 <%= @board_presenter.board.description %>
 <%= @board_presenter.board.privacy %>
