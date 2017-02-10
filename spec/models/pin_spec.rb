@@ -12,5 +12,6 @@ describe Pin do
     it { is_expected.to belong_to(:board) }
     it { is_expected.to have_many(:likes) }
     it { is_expected.to have_many(:comments) }
+    it { is_expected.to have_one(:registered_user) }
   end
 end

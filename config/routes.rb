@@ -6,7 +6,6 @@ Rails.application.routes.draw do
     post "/login", to: "sessions#create"
     delete "/logout", to: "sessions#destroy"
     get '/dashboard', to: "dashboard#index"
-#    get '/logout', to: 'sessions#destroy'
 #    resources :pins, only: [:destroy]
 #    resources :boards, only: [:destroy]
 #    resources :comments, only: [:destroy]
@@ -22,17 +21,19 @@ Rails.application.routes.draw do
 #    post '/:name/like', to: 'like#create'
 #  end
 
-#  resources :pins, except: [:index] do
-#    post '/comments', to: 'comments#create'
-#    post '/comments/like', to: 'like#create'
-#    post '/like', to: 'like#create'
-#  end
+
   get '/o/oauth2/auth', as: :google_login
   get '/auth/google_oauth2/callback', to: 'google_sessions#create'
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-#  get '/:username', to: 'registered_users#show'
-#  get '/:username/pins', to: 'pins#index'
-#
+ resources :pins, except: [:index] do
+  #  post '/comments', to: 'comments#create'
+  #  post '/comments/like', to: 'like#create'
+  #  post '/like', to: 'like#create'
+ end
+
+ get '/:username', to: 'registered_users#show'
+ get '/:username/pins', to: 'pins#index', as: 'pins_index'
+
 end
