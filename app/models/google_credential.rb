@@ -12,7 +12,6 @@ class GoogleCredential < ApplicationRecord
     credential = GoogleCredential.find_by(google_uid: auth_info.info.google_uid)
       if credential
         credential
-        # session[:registered_user_id] = user.registered_user.id
       else
         registered_user = RegisteredUser.create(status: 1)
         credential = registered_user.google_credentials.create(google_uid: auth_info.info.google_uid, 
