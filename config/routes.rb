@@ -3,7 +3,6 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
-
   namespace :admin do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
@@ -25,7 +24,7 @@ Rails.application.routes.draw do
     resources :boards, only: [:index]
     resources :pins, only: [:index]
     get "/:name", to: "boards#show", as: "board"
-#    resources :boards, only: [:index, :new, :create]
+   resources :boards, only: [:new]
     get '/:name/edit', to: 'boards#edit', as: "edit_board"
     patch '/:name', to: 'boards#update'
 #    delete '/:name', to: 'boards#destroy'
