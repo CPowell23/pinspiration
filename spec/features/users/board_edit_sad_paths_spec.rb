@@ -6,7 +6,7 @@ describe "Board Edit Errors" do
     stub_log_in_user(@user)
     @username = @user.pinspiration_credentials.first.username
     category = create(:category)
-    @board = create(:board, registered_user: @user, category_id: category.id)
+    @board = create(:board, registered_user: @user)
   end
 
   it "is unable to edit other user's boards by button" do

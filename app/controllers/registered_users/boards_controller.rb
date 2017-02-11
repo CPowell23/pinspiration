@@ -14,6 +14,8 @@ class RegisteredUsers::BoardsController < ApplicationController
     @user = find_by_username(params[:username])
     @board = @user.boards.new()
     @categories = Category.all
+    # byebug
+    # problem here is that @user is not getting sent to the view
   end
 
   def create
@@ -29,6 +31,7 @@ class RegisteredUsers::BoardsController < ApplicationController
 
   def edit
     @user = find_by_username(params[:username])
+    # current_user is not the same as @user WHY????
     if current_user == @user
       @board = @user.boards.find_by(name: params[:name])
       @categories = Category.all
@@ -38,7 +41,8 @@ class RegisteredUsers::BoardsController < ApplicationController
   end
 
   def update
-    @board = find_board
+    user = find_by_username(params[:username])
+    @board = user.boards.find_by(name: params[:name])
     @categories = Category.all
     if @board.update_attributes(board_params)
       @board.save
