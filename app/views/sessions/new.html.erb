@@ -1,22 +1,21 @@
-<h1><%= link_to "Log in", login_path %><h1>
-<h1>Welcome to Pinspirations, the world's catalog of ideas</h1>
+<section class="login">
     <%= form_for(PinspirationCredential.new, :url => {:controller => 'sessions', :action => 'create'}) do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+      <i class="fa fa-pinterest" aria-hidden="true"></i>
+      <h1>Welcome to Pinspirations, the world's catalog of ideas</h1>
 
-      <%= f.label :username %>
-      <%= f.text_field :username %>
+      <%= f.text_field :name, placeholder: "Name" %>
 
-      <%= f.label :email %>
-      <%= f.text_field :email %>
+      <%= f.text_field :username, placeholder: "Username" %>
 
-      <%= f.label :password %>
-      <%= f.password_field :password %>
+      <%= f.text_field :email, placeholder: "Email" %>
 
-      <%= f.label :phone_number %>
-      <%= f.text_field :phone_number %>
+      <%= f.password_field :password, placeholder: "Password" %>
 
-      <%= f.submit "Continue" %>
+      <%= f.text_field :phone_number, placeholder: "phone number 000-000-0000" %>
+
+      <%= f.submit "Continue", {class: "btn-continue"} %>
     <% end %>
-    <br>
+</section>
 <%= link_to 'Google SignIn', google_login_path %>
+<br>
+<%= link_to "Log in", login_path %>
