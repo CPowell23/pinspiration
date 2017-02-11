@@ -15,11 +15,13 @@ Rails.application.routes.draw do
   get '/auth/google_oauth2', as: :google_login
   get '/o/oauth2/auth', as: :google_login_test
   get '/auth/google_oauth2/callback', to: 'google_sessions#create'
+  get '/login', to: "sessions#new"
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
   resources :pins, except: [:index] do
     resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
+  #  post '/comments', to: 'comments#create'
   #  post '/comments/like', to: 'like#create'
   #  post '/like', to: 'like#create'
   end
@@ -37,5 +39,5 @@ Rails.application.routes.draw do
 
   get '/:username', to: 'registered_users#show'
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
-
+ 
 end
