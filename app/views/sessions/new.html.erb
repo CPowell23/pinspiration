@@ -14,8 +14,9 @@
       <%= f.text_field :phone_number, placeholder: "phone number 000-000-0000" %>
 
       <%= f.submit "Continue", {class: "btn-continue"} %>
+      
+      <%= link_to 'Google SignIn', google_login_path, {class: "btn-continue"} %>
+      <%= link_to "Log in", login_path, {class: "btn-continue"} %>
     <% end %>
 </section>
-<%= link_to 'Google SignIn', google_login_path %>
-<br>
-<%= link_to "Log in", login_path %>
+
