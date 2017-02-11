@@ -9,7 +9,7 @@ describe "Board Create" do
   end
 
   it "a user can create a new board from the board show page with valid attributes" do
-    visit registered_users_path(@username)
+    visit registered_users_boards_path(@username)
 
     click_on('New Board')
 

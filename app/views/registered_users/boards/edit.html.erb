@@ -2,4 +2,4 @@
 
 <%= render partial: 'form' %>
 
-<%= link_to 'Cancel', registered_users_board_path(@board_presenter.user, @board_presenter.board) %>
+<%= link_to 'Cancel', registered_users_board_path(@board.registered_user.username, @board.name) %>

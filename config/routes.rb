@@ -1,7 +1,5 @@
 Rails.application.routes.draw do
   root 'home#index'
-  post '/login', to: 'sessions#create'
-  delete '/logout', to: 'sessions#destroy'
 
   namespace :admin do
     get "/login", to: "sessions#new"
@@ -21,15 +19,17 @@ Rails.application.routes.draw do
   end
 
   namespace :registered_users, path: ":username" do
-    resources :boards, only: [:index]
+    resources :boards, only: [:index, :new, :create]
     resources :pins, only: [:index]
     get "/:name", to: "boards#show", as: "board"
-   resources :boards, only: [:new]
     get '/:name/edit', to: 'boards#edit', as: "edit_board"
     patch '/:name', to: 'boards#update'
 #    delete '/:name', to: 'boards#destroy'
 #    post '/:name/like', to: 'like#create'
   end
+
+  post '/login', to: 'sessions#create'
+  delete '/logout', to: 'sessions#destroy'
 
   get '/:username', to: 'registered_users#show'
 end

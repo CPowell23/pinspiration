@@ -11,7 +11,7 @@ describe "Board Edit Errors" do
 
   it "is unable to edit other user's boards by button" do
     user_2 = create(:registered_user)
-    board_2 = create(:board)
+    board_2 = create(:board, name: "Authentic")
 
     visit registered_users_board_path(user_2.pinspiration_credentials.first.username, board_2.name)
 
@@ -20,14 +20,14 @@ describe "Board Edit Errors" do
 
   it "is unable to edit other user's boards by url" do
     user_2 = create(:registered_user)
-    board_2 = create(:board)
+    board_2 = create(:board, name: "Authentic")
 
     visit registered_users_edit_board_path(user_2.pinspiration_credentials.first.username, board_2.name)
 
     expect(page).to have_content('404')
   end
 
-  xit "is unable to save board without name" do
+  it "is unable to save board without name" do
     visit registered_users_edit_board_path(@username, @board.name)
 
     within "form" do
@@ -38,8 +38,8 @@ describe "Board Edit Errors" do
       click_on "Submit"
     end
 
-    expect(current_path).to eq(registered_users_edit_board_path(@username, @board.name))
-    expect(page).to have_content("error, board cannot be saved without name")
+    expect(page).to have_content('Edit Your Board')
+    expect(page).to have_content("Name can't be blank")
   end
 
   xit "is unable to save board without description" do
@@ -53,21 +53,7 @@ describe "Board Edit Errors" do
       click_on "Submit"
     end
 
-    expect(current_path).to eq(registered_users_edit_board_path(@username, @board.name))
-    expect(page).to have_content("error, board cannot be saved without description")
-  end
-
-  xit "is unable to save board without category" do
-    visit registered_users_edit_board_path(@username, @board.name)
-
-    within "form" do
-      fill_in "board[name]", with: "Bespoke"
-      fill_in "board[description]", with: "100% authentic"
-      find("option[value='private']").select_option
-      click_on "Submit"
-    end
-
-    expect(current_path).to eq(registered_users_edit_board_path(@username, @board.name))
-    expect(page).to have_content("board cannot be saved without category")
+    expect(page).to have_content('Edit Your Board')
+    expect(page).to have_content("Description can't be blank")
   end
 end

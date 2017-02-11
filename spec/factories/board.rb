@@ -1,9 +1,9 @@
-FactoryGirl.define do 
+FactoryGirl.define do
   factory :board do
-    name Faker::Hipster.word
-    description Faker::Hipster.sentence 
+    name { Faker::Hipster.word }
+    description Faker::Hipster.sentence
     private false
     category
-    registered_user 
+    registered_user
   end
 end

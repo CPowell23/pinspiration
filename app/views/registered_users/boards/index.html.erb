@@ -1,3 +1,5 @@
+<%= link_to 'New Board', new_registered_users_board_path(@user.username) %>
+
 <% @boards.each do |board| %>
   <p><%= board.name %></p>
   <%= link_to 'Edit', registered_users_edit_board_path(@user.username, board.name) %>
