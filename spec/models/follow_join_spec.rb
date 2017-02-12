@@ -9,7 +9,7 @@ describe Follower do
   end
 
   context "associations" do
-    it { is_expected.to belong_to(:user_being_followed) }
-    it { is_expected.to belong_to(:user_doing_the_following) }
+    it { is_expected.to belong_to(:follower) }
+    it { is_expected.to belong_to(:following) }
   end
 end

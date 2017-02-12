@@ -27,6 +27,10 @@ Rails.application.routes.draw do
   end
 
   namespace :registered_users, path: ":username" do
+    get "/following", to: "following#index"
+    post "/following/:username_of_user_being_followed", to: "following#create", as: "following_create"
+    delete "/following/:username_of_user_being_followed", to: "following#destroy", as: "following_destroy"
+    get "/followers", to: "followers#index"
     resources :boards, only: [:index]
     resources :pins, only: [:index]
     get "/:name", to: "boards#show", as: "board"

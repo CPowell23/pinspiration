@@ -6,8 +6,12 @@ class RegisteredUser < ApplicationRecord
   has_many :boards
   has_many :pins, through: :boards
   has_many :comments
-  has_many :users_following_them, class_name: "Follower", foreign_key: :follower_id
-  has_many :users_they_are_following, class_name: "Follower", foreign_key: :registered_user_id
+
+  has_many :follower_joins, class_name: "FollowJoin", foreign_key: :registered_user_id
+  has_many :followers, class_name: "RegisteredUser", through: :follower_joins
+
+  has_many :following_joins, class_name: "FollowJoin", foreign_key: :follower_id
+  has_many :followings, class_name: "RegisteredUser", through: :following_joins
 
   enum status: [:offline, :online]
 
