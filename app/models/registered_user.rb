@@ -1,11 +1,13 @@
 class RegisteredUser < ApplicationRecord
   validates :status, presence: true
-  
+
   has_many :pinspiration_credentials
   has_many :google_credentials
   has_many :boards
   has_many :pins, through: :boards
   has_many :comments
+  has_many :users_following_them, class_name: "Follower", foreign_key: :follower_id
+  has_many :users_they_are_following, class_name: "Follower", foreign_key: :registered_user_id
 
   enum status: [:offline, :online]
 
