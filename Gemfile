@@ -19,12 +19,14 @@ gem 'rspec-rails'
 # Use ActiveModel has_secure_password
 gem 'bcrypt', '~> 3.1.7'
 gem "omniauth-google-oauth2"
+gem 'figaro'
 
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'faker'
   gem 'database_cleaner'
   gem 'pry'
+  gem 'launchy'
 end
 
 group :development do

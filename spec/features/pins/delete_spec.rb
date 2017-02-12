@@ -14,7 +14,7 @@ describe "Pin Delete" do
     click_on "Edit"
     click_on "Delete"
 
-    expect(current_path).to eql(pins_index_path(@user.username))
+    expect(current_path).to eql(registered_users_pins_path(@user.username))
     expect(Pin.count).to eql(0)
     expect(Comment.count).to eql(0)
   end

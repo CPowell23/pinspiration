@@ -10,5 +10,6 @@ describe RegisteredUser do
     it { is_expected.to have_many(:google_credentials) }
     it { is_expected.to have_many(:boards) }
     it { is_expected.to have_many(:pins) }
+    it { is_expected.to have_many(:comments) }
   end
 end

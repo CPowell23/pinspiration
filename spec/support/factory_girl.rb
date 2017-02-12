@@ -4,6 +4,7 @@ RSpec.configure do |config|
   config.before(:suite) do
     DatabaseCleaner.strategy = :transaction
     DatabaseCleaner.clean_with(:truncation)
+    FactoryGirl.find_definitions
   end
 
   config.before(:each) do |example|
@@ -11,15 +12,4 @@ RSpec.configure do |config|
     DatabaseCleaner.clean_with(:truncation)
   end
 
-  config.include FactoryGirl::Syntax::Methods
-
-  config.before(:suite) do
-    DatabaseCleaner.strategy = :transaction
-    DatabaseCleaner.clean_with(:truncation)
-   end
-
-  config.before(:each) do |example|
-   DatabaseCleaner.strategy = :transaction
-   DatabaseCleaner.clean_with(:truncation)
-  end
 end
