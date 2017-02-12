@@ -1,0 +1,16 @@
+<h1>Enter the confirmation pin that was sent to you via SMS</h1>
+
+<div>
+  <%= form_for(:password_reset, url: password_resets_path) do |f| %></br>
+    <%= f.label :pin %>
+    <%= f.text_field :pin %></br>
+
+    <%= f.label :password %>
+    <%= f.password_field :password %></br>
+
+    <%= f.label :password_confirmation %>
+    <%= f.password_field :password_confirmation %></br>
+
+    <%= f.submit "Submit" %>
+  <% end %>
+</div>
