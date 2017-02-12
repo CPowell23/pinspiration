@@ -13,8 +13,8 @@ describe "Comment Delete" do
       @pin = create(:pin, board: board)
 
       # user 1 & user 3 comment on user 2's pin
-      @comment_from_user_1 = create(:comment, pin: @pin, registered_user: @user_1, content: "User 1's comment.")
       @comment_from_user_3 = create(:comment, pin: @pin, registered_user: @user_3, content: "User 3's comment.")
+      @comment_from_user_1 = create(:comment, pin: @pin, registered_user: @user_1, content: "User 1's comment.")
 
       stub_log_in_user(@user_1)
       visit pin_path(@pin)
