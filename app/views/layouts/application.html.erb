@@ -2,7 +2,11 @@
 <html>
   <head>
     <title>Pinspiration</title>
+
     <%= csrf_meta_tags %>
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="757656209931-n8t7v63pfl907i02rt96brrfi4nil4ak.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <script src="https://use.fontawesome.com/b46d447c0d.js"></script>
 
     <%= stylesheet_link_tag    'application', media: 'all' %>

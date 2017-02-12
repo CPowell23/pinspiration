@@ -11,7 +11,7 @@ require "rails_helper"
     end
 
     context "can delete boards" do
-      xit "from the board index page" do
+      it "from the board index page" do
         visit registered_users_boards_path(@username)
 
         within ".board:nth-of-type(1)" do
@@ -29,7 +29,7 @@ require "rails_helper"
         expect(page).to have_content("Successfully deleted board")
       end
 
-      xit "from the board show page" do
+      it "from the board show page" do
         visit registered_users_board_path(@username, @board_1.name)
 
         within ".board" do
@@ -48,7 +48,7 @@ require "rails_helper"
       end
 
       it "from the pin index page" do
-        visit pins_index_path(@username)
+        visit registered_users_pins_path(@username)
 
         within ".pin:nth-of-type(1)" do
           expect(page).to have_selector(:link_or_button, "Delete")
