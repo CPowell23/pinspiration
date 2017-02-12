@@ -23,6 +23,6 @@ class SessionsController < ApplicationController
 
   private
     def credential_params
-      params.require(:pinspiration_credential).permit(:name, :username, :email, :password, :phone_number)
+      params.require(:pinspiration_credential).permit(:name, :username, :email, :password, :phone_number, :image_url)
     end
 end
