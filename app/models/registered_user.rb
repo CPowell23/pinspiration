@@ -40,6 +40,11 @@ class RegisteredUser < ApplicationRecord
     google_credentials.first.phone_numer
   end
 
+  def image_url
+    return pinspiration_credentials.first.image_url if pinspiration_credentials.count > 0
+    google_credentials.first.image_url
+  end
+
   def already_liked?(target)
     return false if likes.count == 0
     targets = likes.pluck(:target_id, :target_type)

@@ -8,6 +8,12 @@
 
 <h1> <%= @user.name %> </h1>
 
+<% if @user.image_url.present? %>
+  <%= image_tag(@user.image_url) %>
+<% else %>
+  <i class="fa fa-user" aria-hidden="true"></i>
+<% end %>
+
 <p>
   X <%= link_to "Followers", registered_users_followers_path(@user.username) %>
 </p>
