@@ -32,6 +32,18 @@ module MessageHelper
     flash[:success] = "Successfully deleted pin"
   end
 
+  def flash_message_failed_board_edit
+    flash[:danger] = "Failed to edit board. Please fix errors and try again."
+  end
+
+  def flash_message_failed_board_create
+    flash[:danger] = "Failed to create board. Please fix errors and try again."
+  end
+
+  def flash_message_successful_board_edit
+    flash[:success] = "Successfully updated board"
+  end
+
   def flash_message_successful_comment_creation
     flash[:success] = "Thank you for your comment!"
   end
@@ -47,7 +59,7 @@ module MessageHelper
   def flash_message_successful_following_creation
     flash[:success] = "You are now following this user"
   end
-  
+
   def flash_message_successful_following_delete
     flash[:success] = "You are no longer following this user"
   end

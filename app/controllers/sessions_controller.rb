@@ -5,7 +5,7 @@ class SessionsController < ApplicationController
   def create
     @registered_user = RegisteredUser.create(status: 1)
     @credential = @registered_user.pinspiration_credentials.create(credential_params)
-    
+
     if @credential.save
       session[:registered_user_id] = @credential.registered_user.id
       redirect_to root_path
