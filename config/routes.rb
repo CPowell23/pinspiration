@@ -18,8 +18,8 @@ Rails.application.routes.draw do
   #  post '/comments/like', to: 'like#create'
     post '/comments/:comment_id/like', to: 'pins/comments_like#create', as: 'comment_like'
     delete '/comments/:comment_id/like/:id', to: 'pins/comments_like#destroy', as: 'comment_unlike'
-    post '/like', to: 'like#create', as: 'like'
-    delete '/like/:id', to: 'like#destroy', as: 'unlike'
+    post '/like', to: 'pins/like#create', as: 'like'
+    delete '/like/:id', to: 'pins/like#destroy', as: 'unlike'
  end
 
   get '/auth/google_oauth2', as: :google_login
