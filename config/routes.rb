@@ -16,8 +16,11 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
   #  post '/comments', to: 'comments#create'
   #  post '/comments/like', to: 'like#create'
-  #  post '/like', to: 'like#create'
-  end
+    post '/comments/:comment_id/like', to: 'pins/comments_like#create', as: 'comment_like'
+    delete '/comments/:comment_id/like/:id', to: 'pins/comments_like#destroy', as: 'comment_unlike'
+    post '/like', to: 'like#create', as: 'like'
+    delete '/like/:id', to: 'like#destroy', as: 'unlike'
+ end
 
   get '/auth/google_oauth2', as: :google_login
   get '/o/oauth2/auth', as: :google_login_test
@@ -36,6 +39,9 @@ Rails.application.routes.draw do
     get "/:name", to: "boards#show", as: "board"
     get '/:name/edit', to: 'boards#edit', as: "edit_board"
     patch '/:name', to: 'boards#update'
+#    delete '/:name', to: 'boards#destroy'
+    post '/:name/like', to: 'like#create', as: "board_like"
+    delete '/:name/like/:id', to: 'like#destroy', as: 'board_unlike'
   end
 
   get '/:username', to: 'registered_users#show', as: "registered_user"
