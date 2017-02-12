@@ -15,5 +15,6 @@ describe RegisteredUser do
     it { is_expected.to have_many(:followers) }
     it { is_expected.to have_many(:following_joins) }
     it { is_expected.to have_many(:followings) }
+    it { is_expected.to have_many(:likes) }
   end
 end

@@ -13,7 +13,7 @@ describe "Board Edit Errors" do
     user_2 = create(:registered_user)
     board_2 = create(:board, name: "Authentic")
 
-    visit registered_users_board_path(user_2.pinspiration_credentials.first.username, board_2.name)
+    visit registered_users_board_path(board_2.registered_user.username, board_2.name)
 
     expect(page).not_to have_content('Edit')
   end

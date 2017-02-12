@@ -11,6 +11,14 @@
 <%= @board_presenter.user.name %>
 </section>
 
+<% if current_user && current_user != @board_presenter.user %>
+  <% if current_user.already_liked?(@board_presenter.board) %>
+    <%= link_to "Unlike", registered_users_board_unlike_path(@board_presenter.user.username, @board_presenter.board.name, Like.this_user(@board_presenter.board, current_user)), method: :delete %>
+  <% else %>
+    <%= link_to "Like", registered_users_board_like_path(@board_presenter.user.username, @board_presenter.board.name), method: :post %>
+  <% end %>
+<% end %>
+
 <% @board_presenter.pins.each do |pin| %>
   <%= pin.description %>
   <%= image_tag("#{pin.image_url}") %>
