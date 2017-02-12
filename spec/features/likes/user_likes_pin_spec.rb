@@ -7,6 +7,8 @@ describe 'User likes a pin' do
     @user_pin = create(:pin, board: @user_board)
     @board = create(:board)
     @pin = create(:pin, board: @board)
+    @pin_with_likes = create(:pin)
+    create(:pin_like, target: @pin_with_likes, registered_user: @user)
     stub_log_in_user(@user)
   end
 
@@ -23,5 +25,11 @@ describe 'User likes a pin' do
     visit pin_path(@user_pin)
 
     expect(page).to_not have_content("Like")
+  end
+  
+  it 'cannot if they have already liked it' do
+    visit pin_path(@pin_with_likes) 
+
+    expect(page).to have_content("Unlike")
   end
 end

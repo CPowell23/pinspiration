@@ -1,4 +1,4 @@
-class LikeController < ApplicationController
+class Pins::LikeController < ApplicationController
 
   def create
     pin = Pin.find(params[:pin_id])
