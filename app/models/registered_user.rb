@@ -8,18 +8,6 @@ class RegisteredUser < ApplicationRecord
   has_many :comments
   has_many :likes
 
-  has_many :follower_joins, class_name: "FollowJoin", foreign_key: :registered_user_id
-  has_many :followers, class_name: "RegisteredUser", through: :follower_joins
-
-  has_many :following_joins, class_name: "FollowJoin", foreign_key: :follower_id
-  has_many :followings, class_name: "RegisteredUser", through: :following_joins
-
-  has_many :follower_joins, class_name: "FollowJoin", foreign_key: :registered_user_id
-  has_many :followers, class_name: "RegisteredUser", through: :follower_joins
-
-  has_many :following_joins, class_name: "FollowJoin", foreign_key: :follower_id
-  has_many :followings, class_name: "RegisteredUser", through: :following_joins
-
   enum status: [:offline, :online]
 
   def username
@@ -45,7 +33,7 @@ class RegisteredUser < ApplicationRecord
     return pinspiration_credentials.first.phone_number if pinspiration_credentials.count > 0
     google_credentials.first.phone_numer
   end
-  
+
   def already_liked?(target)
     return false if likes.count == 0
     targets = likes.pluck(:target_id, :target_type)

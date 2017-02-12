@@ -8,4 +8,5 @@ FactoryGirl.define do
     registered_user
     association :target, factory: :board
   end
+
 end
