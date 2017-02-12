@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     # resources :registered_users, only: [:update]
   end
 
+  get '/password-reset', to: 'password_reset#index', as: 'password-reset'
   get '/auth/google_oauth2', as: :google_login
   get '/o/oauth2/auth', as: :google_login_test
   get '/auth/google_oauth2/callback', to: 'google_sessions#create'
@@ -39,5 +40,5 @@ Rails.application.routes.draw do
 
   get '/:username', to: 'registered_users#show'
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
- 
+
 end
