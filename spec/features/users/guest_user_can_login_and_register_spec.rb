@@ -3,16 +3,16 @@ require 'rails_helper'
 describe "Guest login workflow" do
   context "An unregisted guest" do
    scenario "can visit the app home page" do
-      visit root_path
+      visit login_path
 
-      expect(current_path).to eq('/')
+      expect(current_path).to eq('/login')
       expect(page).to have_content("Welcome to Pinspirations")
       expect(page).to have_button("Continue")
       expect(page).to have_link("Google SignIn")
     end
 
    scenario "can create a new registration for the app using pinspiration credentials" do
-      visit root_path
+      visit login_path
 
       fill_in "Name", with: "Jane Doe"
       fill_in "Username", with: "janey37"
@@ -24,8 +24,8 @@ describe "Guest login workflow" do
       expect(current_path).to eq(root_path)
     end
 
-   scenario "can create a new registration for the app using google credentials" do
-      visit root_path
+    scenario "can create a new registration for the app using google credentials" do
+      visit login_path
       stub_omniauth
       click_on("Google SignIn")
 
@@ -35,14 +35,14 @@ describe "Guest login workflow" do
     end
 
     scenario "cannot create a new registration for the app with invalid pinspiration credentials" do
-      visit root_path
+      visit login_path
 
       fill_in "Username", with: "janey37"
       fill_in "Email", with: "jane@janemail.com"
       fill_in "Phone number", with: "123-456-7789"
       click_button("Continue")
 
-      expect(current_path).to eq(root_path)
+      expect(current_path).to eq(login_path)
       expect(page).to have_content("User not saved. Please input information into each field and try again.")
     end
 
