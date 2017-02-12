@@ -14,8 +14,9 @@ class GoogleCredential < ApplicationRecord
         credential
       else
         registered_user = RegisteredUser.create(status: 1)
-        credential = registered_user.google_credentials.create(google_uid: auth_info.info.google_uid, 
-                                                  name: auth_info.info.name, 
+        credential = registered_user.google_credentials.create(google_uid: auth_info.info.google_uid,
+                                                  name: auth_info.info.name,
+                                                  image_url: "",
                                                   username: auth_info.info.name.parameterize)
         credential
       end
