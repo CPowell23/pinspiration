@@ -3,6 +3,9 @@
     <% if current_admin %>
       <%= link_to "Delete", admin_board_path(board), method: :delete %>
     <% end %>
+    <% if current_user == @user %>
+      <%= link_to "Edit", registered_users_edit_board_path(@user.username, board.name) %>
+    <% end %>
     <%= board.name %>
   </section>
 <% end %>
