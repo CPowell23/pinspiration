@@ -7,4 +7,8 @@ class Like < ApplicationRecord
 
   belongs_to :registered_user
   belongs_to :target, polymorphic: true
+
+  def self.this_user(target, registered_user)
+    Like.where(target: target, registered_user: registered_user).first
+  end
 end
