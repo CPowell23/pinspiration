@@ -34,6 +34,12 @@ class RegisteredUser < ApplicationRecord
   end
 
   def send_password_reset_sms(phone_number)
-    TwilioService.new(phone_number).send_sms
+    reset_pin = generate_password_reset_pin
+    TwilioService.new(phone_number,reset_pin).send_sms
   end
+
+  def generate_password_reset_pin
+    rand.to_s[2..5]
+  end
+
 end
