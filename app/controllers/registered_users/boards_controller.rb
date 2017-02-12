@@ -1,8 +1,10 @@
 class RegisteredUsers::BoardsController < ApplicationController
   include MessageHelper
 
+  before_action :get_categories, only: [:new, :edit, :update]
+  before_action :get_user, only: [:index, :new, :edit, :update]
+
   def index
-    @user = find_by_username(params[:username])
     @boards = @user.boards
   end
 
@@ -11,20 +13,13 @@ class RegisteredUsers::BoardsController < ApplicationController
   end
 
   def new
-    @user = find_by_username(params[:username])
     @board = @user.boards.new()
-    @categories = Category.all
   end
 
   def create
     board = current_user.boards.new(board_params)
-    if params[:board][:category] != ''
-      board.category = Category.find(params[:board][:category].to_i)
-    end
-    if board_params[:private] == nil
-      board[:private] = false
-    end
-    if board_params[:private] == 'public'
+    board.category = Category.find(params[:board][:category].to_i) if params[:board][:category] != ''
+    if board_params[:private] == nil || board_params[:private] == 'public'
       board[:private] = false
     end
     if board.save
@@ -37,19 +32,15 @@ class RegisteredUsers::BoardsController < ApplicationController
   end
 
   def edit
-    @user = find_by_username(params[:username])
     if current_user == @user
       @board = @user.boards.find_by(name: params[:name])
-      @categories = Category.all
     else
       render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
   end
 
   def update
-    user = find_by_username(params[:username])
-    @board = user.boards.find_by(name: params[:name])
-    @categories = Category.all
+    @board = @user.boards.find_by(name: params[:name])
     if board_params[:private] == nil
       @board[:private] = false
     end
@@ -64,25 +55,41 @@ class RegisteredUsers::BoardsController < ApplicationController
     end
   end
 
+  def destroy
+    @board = Board.find_by(name: params[:name])
+    @board.destroy
+
+    flash_message_successful_board_delete
+    redirect_to registered_users_boards_path(@board.registered_user.username)
+  end
+
   private
 
-  def find_board
-    PinspirationCredential
-    .find_by(username: params[:username])
-    .registered_user.boards
-    .find_by(name: params[:name])
-  end
-
-  def find_by_username(username)
-    if GoogleCredential.find_by(username: username)
-      credentials = GoogleCredential.find_by(username)
-    else
-      credentials = PinspirationCredential.find_by(username: username)
+    def get_user
+      @user = find_by_username(params[:username])
     end
-    credentials.registered_user
-  end
 
-  def board_params
-    params.require(:board).permit(:name, :description, :private)
-  end
+    def get_categories
+      @categories = Category.all
+    end
+
+    def find_board
+      PinspirationCredential
+      .find_by(username: params[:username])
+      .registered_user.boards
+      .find_by(name: params[:name])
+    end
+
+    def find_by_username(username)
+      if GoogleCredential.find_by(username: username)
+        credentials = GoogleCredential.find_by(username)
+      else
+        credentials = PinspirationCredential.find_by(username: username)
+      end
+      credentials.registered_user
+    end
+
+    def board_params
+      params.require(:board).permit(:name, :description, :private)
+    end
 end

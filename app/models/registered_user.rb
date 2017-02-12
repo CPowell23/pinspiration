@@ -53,5 +53,4 @@ class RegisteredUser < ApplicationRecord
     end
     liked.include?(true)
   end
-
 end

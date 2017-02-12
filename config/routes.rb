@@ -39,7 +39,7 @@ Rails.application.routes.draw do
     get "/:name", to: "boards#show", as: "board"
     get '/:name/edit', to: 'boards#edit', as: "edit_board"
     patch '/:name', to: 'boards#update'
-#    delete '/:name', to: 'boards#destroy'
+    delete '/:name', to: 'boards#destroy', as: "delete_board"
     post '/:name/like', to: 'like#create', as: "board_like"
     delete '/:name/like/:id', to: 'like#destroy', as: 'board_unlike'
   end
