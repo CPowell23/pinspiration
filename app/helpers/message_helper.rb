@@ -43,4 +43,12 @@ module MessageHelper
   def flash_message_successful_board_edit
     flash[:success] = "Successfully updated board"
   end
+  
+  def flash_message_successful_comment_creation
+    flash[:success] = "Thank you for your comment!"
+  end
+
+  def flash_message_successful_comment_delete
+    flash[:success] = "Your comment was deleted"
+  end
 end

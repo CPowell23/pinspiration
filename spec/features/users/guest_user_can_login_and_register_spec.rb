@@ -27,7 +27,6 @@ describe "Guest login workflow" do
     xit "can create a new registration for the app using google credentials" do
       visit root_path
       click_on("Google SignIn")
-      
     end
 
     xit "cannot create a new registration for the app with invalid credentials" do
@@ -43,6 +42,5 @@ describe "Guest login workflow" do
       expect(current_path).to eq(root_path)
       expect(page).to have_content("Missing needed credentials or passwords do not match!")
     end
-
   end
 end

@@ -20,7 +20,7 @@ describe 'User can see' do
 
   it 'one of their boards' do
     visit registered_users_board_path(@username, @board1.name)
-  
+
     @board1.pins.each do |pin|
       expect(page).to have_content(pin.description)
       expect(page).to have_css("img[src*='#{pin.image_url}']")
