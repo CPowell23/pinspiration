@@ -13,6 +13,8 @@ describe "Registed user who is not yet logged in" do
       expect(page).to have_content("Let’s find your Pinterest account")
       fill_in :search, with: "janedoe97"
       click_button("Search")
+
+      expect(current_path).to eq(password_confirmation_path)
       # expect(page).to have_content("Account Profile")
       # expect(page).to have_content(@user.name)
       #

@@ -13,6 +13,7 @@ Rails.application.routes.draw do
   end
 
   get '/password-reset', to: 'password_reset#index', as: 'password-reset'
+  get '/password-confirmation', to: 'password_reset#show', as: 'password-confirmation'
   get '/auth/google_oauth2', as: :google_login
   get '/o/oauth2/auth', as: :google_login_test
   get '/auth/google_oauth2/callback', to: 'google_sessions#create'

@@ -1,6 +1,6 @@
 class RegisteredUser < ApplicationRecord
   validates :status, presence: true
-  
+
   has_many :pinspiration_credentials
   has_many :google_credentials
   has_many :boards
@@ -30,6 +30,10 @@ class RegisteredUser < ApplicationRecord
 
   def phone_number
     return pinspiration_credentials.first.phone_number if pinspiration_credentials.count > 0
-    google_credentials.first.phone_numer
+    google_credentials.first.phone_number
+  end
+
+  def send_password_reset_sms(phone_number)
+    TwilioService.new(phone_number).send_sms
   end
 end

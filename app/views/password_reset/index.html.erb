@@ -1,7 +1,7 @@
 <h1>Let’s find your Pinterest account</h1></br>
 <p>What is your username?</p>
 
-<%= form_tag(password_reset_path, :method => "get", id: "search-form") do %>
+<%= form_tag(password_confirmation_path, :method => "get", id: "search-form") do %>
     <%= text_field_tag :search, params[:search], placeholder: "Search username" %>
     <%= submit_tag "Search", :name => nil %>
 <% end %>
