@@ -38,4 +38,9 @@ class RegisteredUser < ApplicationRecord
     return pinspiration_credentials.first.phone_number if pinspiration_credentials.count > 0
     google_credentials.first.phone_numer
   end
+
+  def image_url
+    return pinspiration_credentials.first.image_url if pinspiration_credentials.count > 0
+    google_credentials.first.image_url
+  end
 end

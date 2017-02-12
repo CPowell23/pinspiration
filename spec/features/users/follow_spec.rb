@@ -35,7 +35,6 @@ describe "Logged in User" do
 
     visit registered_user_path(@user_2.username)
     click_on "Following"
-    save_and_open_page
 
     expect(page).to have_css(".follower", count: 2)
     expect(page).to have_content(@user_1.name)
