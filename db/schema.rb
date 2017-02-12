@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170210014458) do
+ActiveRecord::Schema.define(version: 20170212211545) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -63,6 +63,7 @@ ActiveRecord::Schema.define(version: 20170210014458) do
     t.integer  "registered_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
     t.index ["google_uid"], name: "index_google_credentials_on_google_uid", unique: true, using: :btree
     t.index ["registered_user_id"], name: "index_google_credentials_on_registered_user_id", using: :btree
   end
