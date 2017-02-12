@@ -41,6 +41,15 @@ describe "Logged in User" do
     expect(page).to have_content(user_3.name)
   end
 
+  it "can see the details of one user they are following" do
+    visit registered_user_path(@user_1.username)
+    click_on "Follow"
+    visit registered_users_following_path(@user_2.username)
+    click_on "#{@user_1.name}"
+
+    expect(current_path).to eql(registered_user_path(@user_1.username))
+  end
+
   it "can see all of their followers" do
     visit registered_user_path(@user_1.username)
     click_on "Follow"
@@ -58,6 +67,17 @@ describe "Logged in User" do
     expect(page).to have_css(".follower", count: 2)
     expect(page).to have_content(@user_1.name)
     expect(page).to have_content(user_3.name)
+  end
+
+  it "can see the details of one user that is following them" do
+    visit registered_user_path(@user_1.username)
+    click_on "Follow"
+    stub_logout_user(@user_2)
+
+    visit registered_users_followers_path(@user_1.username)
+    click_on "#{@user_2.name}"
+
+    expect(current_path).to eql(registered_user_path(@user_2.username))
   end
 
   context "can UNfollow users they are currently following" do
