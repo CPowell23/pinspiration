@@ -1,0 +1,13 @@
+<h1> <%= @user.name %> </h1>
+
+<p>
+  X <%= link_to "Followers", "#" %>
+</p>
+
+<p>
+  X <%= link_to "Following", "#" %>
+</p>
+
+<%= link_to "Boards", registered_users_boards_path(@user.username) %>
+<%= link_to "Pins", registered_users_pins_path(@user.username) %>
+<%= link_to "Likes", "#" %>

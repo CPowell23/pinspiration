@@ -37,7 +37,7 @@ Rails.application.routes.draw do
 #    post '/:name/like', to: 'like#create'
   end
 
-  get '/:username', to: 'registered_users#show'
+  get '/:username', to: 'registered_users#show', as: "registered_user"
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
- 
+
 end
