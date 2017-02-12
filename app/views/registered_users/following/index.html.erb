@@ -1,7 +1,7 @@
 <%= render partial: 'shared/user' %>
 
 <% @following.each do |f| %>
-  <%= link_to registered_user_path(@user.username) do %>
+  <%= link_to registered_user_path(f.username) do %>
     <section class="follower">
       <%= f.name %>
       <% if current_user == @user %>

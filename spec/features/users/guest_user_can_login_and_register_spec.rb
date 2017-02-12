@@ -20,7 +20,7 @@ describe "Guest login workflow" do
       fill_in "Password", with: 'password01'
       fill_in "Phone number", with: "123-456-7789"
       click_button("Continue")
-      
+
       expect(current_path).to eq(root_path)
     end
 
@@ -64,6 +64,5 @@ describe "Guest login workflow" do
           }
         )
     end
-
   end
 end
