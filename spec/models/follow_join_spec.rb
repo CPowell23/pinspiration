@@ -1,6 +1,6 @@
 require "rails_helper"
 
-describe Follower do
+describe FollowJoin do
   context "validations" do
     it { is_expected.to validate_presence_of(:registered_user_id) }
     it { is_expected.to validate_presence_of(:follower_id) }
