@@ -7,9 +7,9 @@
     <% if current_user %>
       <i class='fa fa-user' aria-hidden='true'><%= link_to "Log out", logout_path, method: :delete %></i>
     <% end %>
-    <form class="search">
+    <section class="search">
       <input type="text" placeholder="Search..." required>
-    </form>
+    </section>
     <ul>
       <li><i class="fa fa-bandcamp" aria-hidden="true"></i></li>
       <li><i class="fa fa-shopping-bag" aria-hidden="true"></i></li>

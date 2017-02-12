@@ -1,7 +1,7 @@
 <section class="login">
     <%= form_for(PinspirationCredential.new, :url => {:controller => 'sessions', :action => 'create'}) do |f| %>
       <i class="fa fa-pinterest" aria-hidden="true"></i>
-      <h1>Welcome to Pinspirations, the world's catalog of ideas</h1>
+      <p>Welcome to Pinspirations, the world's catalog of ideas</p>
 
       <%= f.text_field :name, placeholder: "Name" %>
 
