@@ -1,6 +1,4 @@
 <section class="login">
-<h1><%= link_to "Log in", login_path %><h1>
-<h1>Welcome to Pinspirations, the world's catalog of ideas</h1>
     <%= form_for(PinspirationCredential.new, :url => {:controller => 'sessions', :action => 'create'}) do |f| %>
       <i class="fa fa-pinterest" aria-hidden="true"></i>
       <h1>Welcome to Pinspirations, the world's catalog of ideas</h1>
