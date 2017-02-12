@@ -8,7 +8,7 @@ describe "Registed user who is not yet logged in" do
       visit login_path
       click_link("Forgot your password?")
 
-      expect(current_path).to eq(password_reset_path)
+      expect(current_path).to eq(new_password_reset_path)
 
       expect(page).to have_content("Let’s find your Pinterest account")
       fill_in :search, with: "janedoe97"

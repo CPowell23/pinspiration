@@ -1,0 +1,9 @@
+<h1>Is this you?</h1>
+<h3>We’ll send you the info you need.</h3>
+<hr>
+
+<p><%= @user.name %></p>
+<p><%= @user.username %></p>
+<p><%= @user.phone_number %></p>
+
+<h3><%= link_to 'Send password reset info via SMS', password_reset_path %></h3>

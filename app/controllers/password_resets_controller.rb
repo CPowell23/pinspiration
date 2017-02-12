@@ -3,14 +3,21 @@ class PasswordResetsController < ApplicationController
   end
 
   def show
-    @user = find_by_username(params[:search])
+  end
+
+  def new
   end
 
   def create
-    # @user = User.find_by(email: params[:password_reset][:email].downcase)
-    @user.send_password_reset_sms
+    user = find_by_username(params[:password_reset][:username])
+    phone_number = user.pinspiration_credentials.first.phone_number
+
+    RegisteredUser.send_password_reset_sms(phone_number)
     flash[:info] = "SMS sent with password reset instructions"
     redirect_to root_url
+  end
+
+  def update
   end
 
   private
