@@ -28,6 +28,10 @@ Rails.application.routes.draw do
  end
 
   namespace :registered_users, path: ":username" do
+    get "/following", to: "following#index"
+    post "/following/:username_of_user_being_followed", to: "following#create", as: "following_create"
+    delete "/following/:username_of_user_being_followed", to: "following#destroy", as: "following_destroy"
+    get "/followers", to: "followers#index"
     resources :boards, only: [:index]
     resources :pins, only: [:index]
     get "/:name", to: "boards#show", as: "board"
@@ -35,10 +39,10 @@ Rails.application.routes.draw do
 #    get '/:name/edit', to: 'boards#edit'
 #    patch '/:name', to: 'boards#update'
 #    delete '/:name', to: 'boards#destroy'
-#    post '/:name/like', to: 'like#create'
+    post '/:name/like', to: 'like#create', as: "board_like"
+    delete '/:name/like/:id', to: 'like#destroy', as: 'board_unlike'
   end
 
-  get '/:username', to: 'registered_users#show'
+  get '/:username', to: 'registered_users#show', as: "registered_user"
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
- 
 end
