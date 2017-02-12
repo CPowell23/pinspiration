@@ -12,7 +12,7 @@ class Board < ApplicationRecord
   has_many :likes, as: :target
 
   def privacy
-    return 'public' if private == false
-    return 'private' if private == true
+    return 'public' if self[:private] == false
+    return 'private' if self[:private] == true
   end
 end

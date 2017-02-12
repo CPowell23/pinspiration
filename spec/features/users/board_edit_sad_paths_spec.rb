@@ -29,7 +29,7 @@ describe "Board Edit Errors" do
 
   it "is unable to save board without name" do
     visit registered_users_edit_board_path(@username, @board.name)
-
+    # byebug
     within "form" do
       fill_in "board[name]", with: nil
       fill_in "board[description]", with: "100% authentic"
@@ -42,7 +42,7 @@ describe "Board Edit Errors" do
     expect(page).to have_content("Name can't be blank")
   end
 
-  xit "is unable to save board without description" do
+  it "is unable to save board without description" do
     visit registered_users_edit_board_path(@username, @board.name)
 
     within "form" do

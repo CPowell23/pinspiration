@@ -4,10 +4,11 @@ describe "Board Create Errors" do
   before do
     @user = create(:registered_user)
     stub_log_in_user(@user)
+    category = create(:category)
   end
 
-  xit "cannot create a board without a name" do
-    visit registered_users_new_board_path(@username)
+  it "cannot create a board without a name" do
+    visit new_registered_users_board_path(@user.username)
 
     within "form" do
       fill_in "board[name]", with: nil
@@ -21,8 +22,8 @@ describe "Board Create Errors" do
     expect(page).to have_content("Name can't be blank")
   end
 
-  xit "cannot create a board without a description" do
-    visit registered_users_new_board_path(@username)
+  it "cannot create a board without a description" do
+    visit new_registered_users_board_path(@user.username)
 
     within "form" do
       fill_in "board[name]", with: "100% Authentic"
@@ -36,8 +37,8 @@ describe "Board Create Errors" do
     expect(page).to have_content("Description can't be blank")
   end
 
-  xit "cannot create a board without a category" do
-    visit registered_users_new_board_path(@username)
+  it "cannot create a board without a category" do
+    visit new_registered_users_board_path(@user.username)
 
     within "form" do
       fill_in "board[name]", with: "Bespoke"

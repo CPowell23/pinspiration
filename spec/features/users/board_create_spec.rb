@@ -27,13 +27,14 @@ describe "Board Create" do
     expect(page).to have_content("private")
   end
 
-  xit "a new board is public by default" do
+  it "a new board is public by default" do
     visit new_registered_users_board_path(@username)
 
     within "form" do
       fill_in "board[name]", with: "Bespoke"
       fill_in "board[description]", with: "100% authentic"
       find("option[value='1']").select_option
+      find("option[value='public']").select_option
       click_on "Submit"
     end
 

@@ -14,12 +14,19 @@ class RegisteredUsers::BoardsController < ApplicationController
     @user = find_by_username(params[:username])
     @board = @user.boards.new()
     @categories = Category.all
-    # byebug
-    # problem here is that @user is not getting sent to the view
   end
 
   def create
-    board = Board.new(board_params)
+    board = current_user.boards.new(board_params)
+    if params[:board][:category] != ''
+      board.category = Category.find(params[:board][:category].to_i)
+    end
+    if board_params[:private] == nil
+      board[:private] = false
+    end
+    if board_params[:private] == 'public'
+      board[:private] = false
+    end
     if board.save
       redirect_to registered_users_board_path(params[:username], board.name)
     else
@@ -31,7 +38,6 @@ class RegisteredUsers::BoardsController < ApplicationController
 
   def edit
     @user = find_by_username(params[:username])
-    # current_user is not the same as @user WHY????
     if current_user == @user
       @board = @user.boards.find_by(name: params[:name])
       @categories = Category.all
@@ -44,7 +50,10 @@ class RegisteredUsers::BoardsController < ApplicationController
     user = find_by_username(params[:username])
     @board = user.boards.find_by(name: params[:name])
     @categories = Category.all
-    if @board.update_attributes(board_params)
+    if board_params[:private] == nil
+      @board[:private] = false
+    end
+    if @board && @board.update_attributes(board_params)
       @board.save
       flash_message_successful_board_edit
       redirect_to registered_users_board_path(params[:username], @board.name)
