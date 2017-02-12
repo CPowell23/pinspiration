@@ -41,7 +41,8 @@ Rails.application.routes.draw do
 #    get '/:name/edit', to: 'boards#edit'
 #    patch '/:name', to: 'boards#update'
 #    delete '/:name', to: 'boards#destroy'
-#    post '/:name/like', to: 'like#create'
+    post '/:name/like', to: 'like#create', as: "board_like"
+    delete '/:name/like/:id', to: 'like#destroy', as: 'board_unlike'
   end
 
   get '/:username', to: 'registered_users#show', as: "registered_user"
