@@ -12,6 +12,12 @@ Rails.application.routes.draw do
 #    resources :registered_users, only: [:update]
   end
 
+  resources :pins, except: [:index] do
+    resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
+    #  post '/comments/like', to: 'like#create'
+    #  post '/like', to: 'like#create'
+  end
+
   namespace :registered_users, path: ":username" do
     resources :boards, only: [:index, :new, :create]
     resources :pins, only: [:index]
@@ -20,12 +26,6 @@ Rails.application.routes.draw do
     patch '/:name', to: 'boards#update'
 #    delete '/:name', to: 'boards#destroy'
 #    post '/:name/like', to: 'like#create'
-  end
-
-  resources :pins, except: [:index] do
-    resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
-  #  post '/comments/like', to: 'like#create'
-  #  post '/like', to: 'like#create'
   end
 
   post '/login', to: 'sessions#create'
