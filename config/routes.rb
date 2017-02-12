@@ -23,10 +23,17 @@ Rails.application.routes.draw do
     resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
   #  post '/comments', to: 'comments#create'
   #  post '/comments/like', to: 'like#create'
-  #  post '/like', to: 'like#create'
-  end
+    post '/comments/:comment_id/like', to: 'pins/comments_like#create', as: 'comment_like'
+    delete '/comments/:comment_id/like/:id', to: 'pins/comments_like#destroy', as: 'comment_unlike'
+    post '/like', to: 'like#create', as: 'like'
+    delete '/like/:id', to: 'like#destroy', as: 'unlike'
+ end
 
   namespace :registered_users, path: ":username" do
+    get "/following", to: "following#index"
+    post "/following/:username_of_user_being_followed", to: "following#create", as: "following_create"
+    delete "/following/:username_of_user_being_followed", to: "following#destroy", as: "following_destroy"
+    get "/followers", to: "followers#index"
     resources :boards, only: [:index]
     resources :pins, only: [:index]
     get "/:name", to: "boards#show", as: "board"
@@ -37,7 +44,7 @@ Rails.application.routes.draw do
 #    post '/:name/like', to: 'like#create'
   end
 
-  get '/:username', to: 'registered_users#show'
+  get '/:username', to: 'registered_users#show', as: "registered_user"
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
- 
+
 end
