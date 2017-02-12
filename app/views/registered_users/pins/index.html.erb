@@ -1,0 +1,9 @@
+<% @pins.each do |pin| %>
+  <section class="pin">
+    <% if current_admin %>
+      <%= link_to "Delete", admin_pin_path(pin), method: :delete %>
+    <% end %>
+    <%= image_tag(pin.image_url) %>
+    <h4> <%= pin.description %> </h4>
+  </section>
+<% end %>

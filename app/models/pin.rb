@@ -5,6 +5,7 @@ class Pin < ApplicationRecord
   validates :board, presence: true
 
   belongs_to :board
+  has_one :registered_user, through: :board
   has_many :likes, as: :target
-  has_many :comments
+  has_many :comments, dependent: :destroy
 end

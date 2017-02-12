@@ -6,7 +6,10 @@ describe RegisteredUser do
   end
 
   context "associations" do
-    it { is_expected.to have_one(:pinspiration_credential) }
-    it { is_expected.to have_one(:google_credential) }
+    it { is_expected.to have_many(:pinspiration_credentials) }
+    it { is_expected.to have_many(:google_credentials) }
+    it { is_expected.to have_many(:boards) }
+    it { is_expected.to have_many(:pins) }
+    it { is_expected.to have_many(:comments) }
   end
 end
