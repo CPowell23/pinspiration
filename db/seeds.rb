@@ -63,7 +63,8 @@ class Seed
       username: Faker::Internet.unique.user_name,
       email: Faker::Internet.unique.email,
       password: Faker::Internet.password,
-      phone_number: Faker::PhoneNumber.phone_number
+      phone_number: Faker::PhoneNumber.phone_number,
+      image_url: Faker::Placeholdit.image
       )
     puts "Pinspiration Credentials: #{pinspiration_credential.name} created!"
   end
@@ -74,6 +75,7 @@ class Seed
       name: Faker::Name.name,
       username: Faker::Internet.unique.user_name,
       phone_number: Faker::PhoneNumber.phone_number,
+      image_url: Faker::Placeholdit.image
       )
     puts "Google Credentials: #{google_credential.name} created!"
   end
