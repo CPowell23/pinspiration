@@ -20,13 +20,12 @@ gem 'rspec-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem "omniauth-google-oauth2"
 gem 'figaro'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'faker'
   gem 'database_cleaner'
   gem 'pry'
-  gem 'launchy'
 end
 
 group :development do

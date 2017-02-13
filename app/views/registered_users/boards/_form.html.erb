@@ -1,0 +1,8 @@
+
+<%= form_for [current_user, @board], url: registered_users_board_path(current_user.username, @board.name) do |f| %>
+  <%= f.text_field :name, placeholder: "name" %>
+  <%= f.text_field :description, placeholder: "description" %>
+  <%= f.collection_select :category, @categories, :id, :name, :prompt => 'Select Category' %>
+  <%= f.select :public, ['public', 'private'], selected: 'public' %>
+  <%= submit_tag "Submit" %>
+<% end %>
