@@ -21,6 +21,7 @@ gem 'bcrypt', '~> 3.1.7'
 gem "omniauth-google-oauth2"
 gem 'figaro'
 gem 'twilio-ruby', '~> 4.11.1'
+gem 'active_model_otp'
 
 group :development, :test do
   gem 'byebug', platform: :mri
