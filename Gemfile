@@ -9,6 +9,7 @@ gem 'rails', '~> 5.0.1'
 gem 'pg', '~> 0.18'
 gem 'puma', '~> 3.0'
 gem 'sass-rails', '~> 5.0'
+gem 'masonry-rails'
 gem 'uglifier', '>= 1.3.0'
 gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
@@ -20,10 +21,10 @@ gem 'rspec-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem "omniauth-google-oauth2"
 gem 'figaro'
+gem 'faker'
 
 group :development, :test do
   gem 'byebug', platform: :mri
-  gem 'faker'
   gem 'database_cleaner'
   gem 'pry'
 end

@@ -1,9 +1,97 @@
 body
   padding: 0
 
+.user
+  border-top: 1px solid $light-gray
+  width: 800px
+  height: 156px
+  padding-top: 11px
+  margin-top: 60px
+  margin-left: auto
+  margin-right: auto
+  h1
+    font-size: 36px
+    font-weight: bold
+    color: $med-dark-gray
+  ul.user-info
+    li
+      display: inline-block
+      vertical-align: top
+    li.left
+      width: 50%
+    li.right
+      width: 15%
+      vertical-align: center
+    li.user-image
+      width: 30%
+      display: inline-block
+      text-align: right
+      
+.main
+  margin-top: 50px
+  display: block
+  clear: both
+  
+.home
+  padding-top: 100px
 
+.user-large
+  background-color: $light-gray
+  border-radius: 77px
+  font-size: 120px
+  padding-top: 20px
+  padding-right: 10px
+  width: 144px
+  height: 134px
+  color: $med-light-gray
+  text-align: center
 
+.right
+  padding-top: 35px
 
+.followings, .followers
+  li
+    font-weight: 600
+    color: #555
+    font-size: 14px
+    display: block
+  li.follow
+    color: #b5b5b5
 
+.board
+  background-color: white
+  border-radius: 5px
+  padding: 2px 0 20px 0
+  ul
+    li
+      margin: 10px
+    li.board-name
+      font-size: 18px
+      color: $med-dark-gray
+      font-weight: bold
+    li.board-pin-count
+      font-size: 11px
+      color: $med-light-gray
+      font-weight: bold
+    li.image
+      border-radius: 4px
+      background-color: $light-gray
+      height: 150px
 
+.board:hover
+  background-color: rgba(250,250,250,1)
 
+div.follower:hover
+  background-color: rgba(250,250,250,1)
+
+div.follower
+  .user-follow
+    background-color: $light-gray
+    border-radius: 118px
+    font-size: 140px
+    padding-top: 20px
+    padding-right: 10px
+    width: 226px
+    height: 216px
+    color: $med-light-gray
+    text-align: center

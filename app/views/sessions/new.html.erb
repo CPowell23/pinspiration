@@ -1,22 +1,21 @@
 <section class="login">
+  <section class="login-form">
     <%= form_for(PinspirationCredential.new, :url => {:controller => 'sessions', :action => 'create'}) do |f| %>
       <i class="fa fa-pinterest" aria-hidden="true"></i>
-      <h1>Welcome to Pinspirations, the world's catalog of ideas</h1>
+      <h2>Welcome to Pinspirations, the world's catalog of ideas</h2>
 
-      <%= f.text_field :name, placeholder: "Name" %>
+      <section class="register">
+        <%= f.text_field :name, placeholder: "Name" %>
+        <%= f.text_field :username, placeholder: "Username" %>
+        <%= f.text_field :email, placeholder: "Email" %>
+        <%= f.password_field :password, placeholder: "Password" %>
+        <%= f.text_field :phone_number, placeholder: "Phone number" %>
+        <%= f.text_field :image_url, placeholder: "Image url" %>
 
-      <%= f.text_field :username, placeholder: "Username" %>
-
-      <%= f.text_field :email, placeholder: "Email" %>
-
-      <%= f.password_field :password, placeholder: "Password" %>
-
-      <%= f.text_field :phone_number, placeholder: "Phone number" %>
-
-      <%= f.submit "Continue", {class: "btn-continue"} %>
-      
-      <%= link_to 'Google SignIn', google_login_path, {class: "btn-continue"} %>
-      <%= link_to "Log in", login_path, {class: "btn-continue"} %>
+      </section><!-- end register -->
+    <%= f.submit "Continue", {class: "btn-continue"} %>
     <% end %>
-</section>
-
+    <h4>OR<h4>
+    <%= button_to 'Google Sign In', google_login_path, {class: "btn-google"} %>
+  </section><!-- end login-form -->
+</section><!-- end login -->
