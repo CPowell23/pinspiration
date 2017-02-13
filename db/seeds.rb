@@ -35,21 +35,21 @@ class Seed
 
   def generate_sample_pinspiration_user
     @sample_pinspiration_user = RegisteredUser.create!(status: "online")
-    @sample_pinspiration_user.pinspiration_credentials.create!(name: Faker::Name.name,
-                                                              username: Faker::Internet.user_name,
-                                                              email: Faker::Internet.email,
+    @sample_pinspiration_user.pinspiration_credentials.create!(name: "Martha Stewart",
+                                                              username: "marthastewart",
+                                                              email: "martha@marthastewart.com",
                                                               password: "password",
                                                               phone_number: Faker::PhoneNumber.phone_number,)
   end
 
   def generate_registered_users
-    80.times do |i|
+    20.times do |i|
       user = RegisteredUser.create!(status: ["offline", "online"].sample)
       generate_pinspiration_credentials(user)
       generate_boards(user)
       puts "User #{i}: #{user.status} status created!"
     end
-    80.times do |i|
+    20.times do |i|
       user = RegisteredUser.create!(status: ["offline", "online"].sample)
       generate_google_credentials(user)
       generate_boards(user)
@@ -91,7 +91,7 @@ class Seed
     5.times do |i|
       board = user.boards.create!(
         private: [true, false].sample,
-        name: Faker::Hipster.words([*1...5].sample),
+        name: Faker::Hipster.unique.words.join(" "),
         description: Faker::Hipster.sentence,
         category: Category.all.sample
       )
@@ -124,7 +124,7 @@ class Seed
 
   def generate_likes
     @users = RegisteredUser.all.map { |user| user }
-    50.times do |i|
+    5.times do |i|
       board_like = Like.create!(
         registered_user: @users.pop,
         target_type: "Board",
