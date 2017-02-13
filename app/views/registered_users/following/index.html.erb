@@ -1,8 +1,6 @@
 <%= render partial: 'shared/user' %>
 
 <% @following.each do |f| %>
-  <%= link_to registered_user_path(@user.username) do %>
-    <section class="follower">
   <%= link_to registered_user_path(f.username) do %>
     <section class="follower">
       <% if f.image_url.present? %>
