@@ -27,7 +27,7 @@ class RegisteredUser < ApplicationRecord
 
   def name
     return pinspiration_credentials.first.name if pinspiration_credentials.count > 0
-    google_credentials.first.name
+    google_credentials.name
   end
 
   def email
