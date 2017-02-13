@@ -8,8 +8,6 @@ describe "Logged in user workflow" do
       visit root_path
 
       expect(current_path).to eq('/')
-      expect(page).to have_content("Welcome to Pinspirations")
-      expect(page).to have_content("Account Profile")
       expect(page).to have_content(@user.name)
 
       click_on("Log out")
@@ -21,10 +19,6 @@ describe "Logged in user workflow" do
       visit root_path
       stub_omniauth
       click_on("Google Sign In")
-
-      expect(page).to have_content("Welcome to Pinspirations")
-      expect(page).to have_content("Account Profile")
-      expect(page).to have_content("Severus Snape")
 
       click_on("Log out")
 

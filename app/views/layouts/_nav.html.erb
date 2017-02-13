@@ -21,8 +21,15 @@
           <li><i class="fa fa-shopping-bag" aria-hidden="true"></i></li>
           <li><i class="fa fa-plus-circle" aria-hidden="true"></i></li>
           <li><i class="fa fa-commenting" aria-hidden="true"></i></li>
-          <li><i class="fa fa-user" aria-hidden="true"></i></li>
+          <li>
+            <% if current_user %>
+              <a id="account" href=<%= registered_user_path(current_user.username) %> >Account
+                <i class="fa fa-user" aria-hidden="true" id="account"></i>
+              </a>
+            <% end %>
+          </li>
         </ul>
       </li>
+    </ul>
   </section>
 </nav>
