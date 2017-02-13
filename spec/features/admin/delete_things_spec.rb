@@ -14,15 +14,13 @@ require "rails_helper"
       it "from the board index page" do
         visit registered_users_boards_path(@username)
 
-        within ".board:nth-of-type(1)" do
-          expect(page).to have_selector(:link_or_button, "Delete")
-        end
-        within ".board:nth-of-type(2)" do
-          expect(page).to have_selector(:link_or_button, "Delete")
-        end
+        boards = page.all(".board")
 
-        within ".board:nth-of-type(1)" do
-          click_on "Delete"
+        expect(boards[0]).to have_content('Delete')
+        expect(boards[1]).to have_content('Delete')
+
+        within(boards[0]) do
+          click_on('Delete')
         end
 
         expect(Board.count).to eql(1)
