@@ -47,4 +47,9 @@ Rails.application.routes.draw do
   get '/:username', to: 'registered_users#show', as: "registered_user"
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
 
+  namespace :api do
+    namespace :v1 do 
+      get '/comments', to: "comments#index"
+    end
+  end
 end
