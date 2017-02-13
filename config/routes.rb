@@ -28,6 +28,8 @@ Rails.application.routes.draw do
   get '/login', to: "sessions#new"
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/:username/edit', to: 'registered_users#edit', as: 'edit_registered_user'
+  patch '/:username/deactiveate', to: 'registered_users#deactivate', as: 'deactivate_registered_user'
 
   resources :pinspiration_credentials, only: [:new, :create]
 
@@ -48,5 +50,5 @@ Rails.application.routes.draw do
 
   get '/:username', to: 'registered_users#show', as: "registered_user"
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
-
+  delete '/:username', to: 'registered_users#destroy'
 end
