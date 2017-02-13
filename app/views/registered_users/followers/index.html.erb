@@ -1,14 +1,15 @@
 <%= render partial: 'shared/user' %>
-
-<% @followers.each do |f| %>
-  <%= link_to registered_user_path(f.username) do %>
-    <section class="follower">
-      <% if f.image_url.present? %>
-        <%= image_tag(f.image_url) %>
-      <% else %>
-        <i class="fa fa-user" aria-hidden="true"></i>
+<div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
+  <% @followers.each do |f| %>
+    <div class="box col4 follower">
+      <%= link_to registered_user_path(f.username) do %>
+        <% if f.image_url.present? && "up" == "down" %>
+          <%= image_tag(f.image_url) %>
+        <% else %>
+          <i class="fa fa-user user-follow" aria-hidden="true"></i>
+        <% end %>
+        <%= f.name %>
       <% end %>
-      <%= f.name %>
-    </section>
+    </div><!-- end col4 -->
   <% end %>
-<% end %>
+</div><!-- end masonry -->
