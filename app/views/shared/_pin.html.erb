@@ -2,12 +2,10 @@
   <%= image_tag(pin.image_url) %>
   <p><%= pin.description %></p>
   <footer>
-    <% if pin.registered_user.image_url %>
-      <%= image_tag(pin.registered_user.image_url) %>
-    <% end %>
+    <%= image_tag(pin.registered_user.image_url) %>
     <aside>
       <p><strong><%= pin.registered_user.name %></strong></p>
-      <p><%= pin.board.name %></p>
+      <p><%= pin.board.name  %></p>
     </aside>
   </footer>
 </section>
