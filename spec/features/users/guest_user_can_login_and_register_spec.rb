@@ -8,7 +8,7 @@ describe "Guest login workflow" do
       expect(current_path).to eq('/login')
       expect(page).to have_content("Welcome to Pinspirations")
       expect(page).to have_button("Continue")
-      expect(page).to have_link("Google SignIn")
+      expect(page).to have_button("Google Sign In")
     end
 
    scenario "can create a new registration for the app using pinspiration credentials" do
@@ -27,7 +27,7 @@ describe "Guest login workflow" do
     scenario "can create a new registration for the app using google credentials" do
       visit login_path
       stub_omniauth
-      click_on("Google SignIn")
+      click_on("Google Sign In")
 
       expect(page.status_code).to eq(200)
       expect(page).to have_content("Thank you for registering through google. Enjoy Pinspiration!")
@@ -49,16 +49,16 @@ describe "Guest login workflow" do
     def stub_omniauth
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:google_oauth2] = OmniAuth::AuthHash.new(
-          {           
+          {
             provider: "google_oauth2",
             uid: "107777756181491428139",
             info: {
               google_uid: "17635244972",
-              name: "Severus Snape", 
+              name: "Severus Snape",
               email: "profsnape@hogwarts.edu",
-              locale: "wizard world", 
-              gender: "male", 
-              given_name: "Severus", 
+              locale: "wizard world",
+              gender: "male",
+              given_name: "Severus",
               token: "ya29.GlvtA-mnI6g3bwmjaGpZaYyKo5GhMkm8yNaGjL1NmjO5LgPv1dprnLdxMIFnBZTFqyMivfbLoyz3ipcdShXK5n68GqIIL5feWayPJFs11zcQrWCgaJDgVMqfPdu-"
             }
           }
