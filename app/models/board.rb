@@ -1,7 +1,7 @@
 class Board < ApplicationRecord
   validates :private, inclusion: { in: [ true, false ] }
   validates :name, presence: true
-  validates :name, uniqueness: true
+  validates_uniqueness_of :name, {scope: :registered_user_id}
   validates :description, presence: true
   validates :registered_user, presence: true
   validates :category, presence: true

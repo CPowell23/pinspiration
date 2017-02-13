@@ -13,19 +13,22 @@ describe "Guest login workflow" do
 
    scenario "can create a new registration for the app using pinspiration credentials" do
       visit login_path
+      click_on "Register"
 
-      fill_in "Name", with: "Jane Doe"
-      fill_in "Username", with: "janey37"
-      fill_in "Email", with: "jane@janemail.com"
-      fill_in "Password", with: 'password01'
-      fill_in "Phone number", with: "123-456-7789"
+      fill_in "pinspiration_credential[name]", with: "Jane Doe"
+      fill_in "pinspiration_credential[username]", with: "janey37"
+      fill_in "pinspiration_credential[email]", with: "jane@janemail.com"
+      fill_in "pinspiration_credential[password]", with: 'password01'
+      fill_in "pinspiration_credential[password_confirmation]", with: 'password01'
+      fill_in "pinspiration_credential[phone_number]", with: "123-456-7789"
+      fill_in "pinspiration_credential[image_url]", with: "http://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals/cute-baby-animals-13.jpg"
       click_button("Continue")
 
       expect(current_path).to eq(root_path)
     end
 
     scenario "can create a new registration for the app using google credentials" do
-      visit login_path
+       visit login_path
       stub_omniauth
       click_on("Google Sign In")
 
@@ -34,16 +37,57 @@ describe "Guest login workflow" do
       expect(current_path).to eq(root_path)
     end
 
-    scenario "cannot create a new registration for the app with invalid pinspiration credentials" do
+    scenario "cannot create a new registration for the app with blank credentials" do
       visit login_path
-
-      fill_in "Username", with: "janey37"
-      fill_in "Email", with: "jane@janemail.com"
-      fill_in "Phone number", with: "123-456-7789"
+      click_on "Register"
       click_button("Continue")
 
-      expect(current_path).to eq(login_path)
-      expect(page).to have_content("User not saved. Please input information into each field and try again.")
+      expect(page).to have_content("Name can't be blank")
+      expect(page).to have_content("Username can't be blank")
+      expect(page).to have_content("Email can't be blank")
+      expect(page).to have_content("Password can't be blank")
+      expect(page).to have_content("Phone number can't be blank")
+    end
+
+    scenario "cannot create a new registration if the password and password confirmation do not match" do
+      visit login_path
+      click_on "Register"
+      fill_in "pinspiration_credential[name]", with: "Jane Doe"
+      fill_in "pinspiration_credential[username]", with: "janey37"
+      fill_in "pinspiration_credential[email]", with: "jane@janemail.com"
+      fill_in "pinspiration_credential[password]", with: 'password01'
+      fill_in "pinspiration_credential[password_confirmation]", with: 'password02'
+      fill_in "pinspiration_credential[phone_number]", with: "123-456-7789"
+      click_button("Continue")
+
+      expect(page).to have_content("Password confirmation doesn't match Password")
+    end
+
+    scenario "can log in" do
+      user = create(:registered_user)
+      email = user.pinspiration_credentials.first.email
+
+      visit login_path
+      fill_in "email", with: "#{email}"
+      fill_in "password", with: "password"
+      click_on "Continue"
+
+      expect(current_path).to eql(root_path)
+      expect(page).to have_content("Successfully logged in")
+    end
+
+    scenario "cannot log in if they enter invalid credentials" do
+      user = create(:registered_user)
+      email = user.pinspiration_credentials.first.email
+      password = "wrong"
+
+      visit login_path
+      fill_in "Email", with: email
+      fill_in "Password", with: password
+      click_on "Continue"
+
+      expect(current_path).to eql(login_path)
+      expect(page).to have_content("Email and password combination does not exist")
     end
 
     def stub_omniauth
