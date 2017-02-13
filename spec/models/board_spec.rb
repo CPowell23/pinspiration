@@ -10,7 +10,7 @@ describe Board do
     it { is_expected.to validate_presence_of(:description) }
     it { is_expected.to validate_presence_of(:registered_user) }
     it { is_expected.to validate_presence_of(:category) }
-    it { is_expected.to validate_uniqueness_of(:name) }
+    it { is_expected.to validate_uniqueness_of(:name).scoped_to(:registered_user_id) }
   end
 
   context "associations" do

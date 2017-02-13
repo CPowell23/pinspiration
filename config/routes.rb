@@ -29,6 +29,8 @@ Rails.application.routes.draw do
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
 
+  resources :pinspiration_credentials, only: [:new, :create]
+
   namespace :registered_users, path: ":username" do
     get "/following", to: "following#index"
     post "/following/:username_of_user_being_followed", to: "following#create", as: "following_create"

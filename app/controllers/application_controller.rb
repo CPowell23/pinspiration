@@ -11,7 +11,7 @@ class ApplicationController < ActionController::Base
     @current_admin ||= Admin.find(session[:admin_id]) if session[:admin_id]
   end
 
-  def find_user_by_username_in_url(username)
+  def find_user_by_username(username)
     pinspiration_credential = PinspirationCredential.find_by(username: username)
     if pinspiration_credential.present?
       pinspiration_credential.registered_user
@@ -20,4 +20,5 @@ class ApplicationController < ActionController::Base
       google_credential.registered_user
     end
   end
+
 end

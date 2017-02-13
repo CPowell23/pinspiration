@@ -2,13 +2,13 @@ class RegisteredUsers::FollowingController < ApplicationController
   include MessageHelper
 
   def index
-    @user = find_user_by_username_in_url(params[:username])
+    @user = find_user_by_username(params[:username])
     @following = @user.followings
   end
 
   def create
-    user_doing_the_following = find_user_by_username_in_url(params[:username])
-    user_being_followed = find_user_by_username_in_url(params[:username_of_user_being_followed])
+    user_doing_the_following = find_user_by_username(params[:username])
+    user_being_followed = find_user_by_username(params[:username_of_user_being_followed])
     @following_join = FollowJoin.new(registered_user_id: user_being_followed.id,
                                       follower_id: user_doing_the_following.id)
     if @following_join.save
@@ -21,8 +21,8 @@ class RegisteredUsers::FollowingController < ApplicationController
   end
 
   def destroy
-    user_doing_the_following = find_user_by_username_in_url(params[:username])
-    user_being_followed = find_user_by_username_in_url(params[:username_of_user_being_followed])
+    user_doing_the_following = find_user_by_username(params[:username])
+    user_being_followed = find_user_by_username(params[:username_of_user_being_followed])
     @following_join = user_doing_the_following.following_joins.find_by(registered_user_id: user_being_followed.id)
     @following_join.destroy
 

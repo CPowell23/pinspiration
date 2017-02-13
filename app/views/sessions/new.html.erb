@@ -1,21 +1,24 @@
-<section class="login">
-  <section class="login-form">
-    <%= form_for(PinspirationCredential.new, :url => {:controller => 'sessions', :action => 'create'}) do |f| %>
-      <i class="fa fa-pinterest" aria-hidden="true"></i>
-      <h2>Welcome to Pinspirations, the world's catalog of ideas</h2>
+<section class="jumbotron">
+  <section class="login">
+    <section class="login-form">
+      <%= form_tag( url: login_path ) do %>
+        <i class="fa fa-pinterest" aria-hidden="true"></i>
+        <h2>Welcome to Pinspirations, the world's catalog of ideas</h2>
 
-      <section class="register">
-        <%= f.text_field :name, placeholder: "Name" %>
-        <%= f.text_field :username, placeholder: "Username" %>
-        <%= f.text_field :email, placeholder: "Email" %>
-        <%= f.password_field :password, placeholder: "Password" %>
-        <%= f.text_field :phone_number, placeholder: "Phone number" %>
-        <%= f.text_field :image_url, placeholder: "Image url" %>
+        <section class="login-credentials">
+          <%= label_tag :email %>
+          <%= text_field_tag :email %>
 
-      </section><!-- end register -->
-    <%= f.submit "Continue", {class: "btn-continue"} %>
-    <% end %>
-    <h4>OR<h4>
-    <%= button_to 'Google Sign In', google_login_path, {class: "btn-google"} %>
-  </section><!-- end login-form -->
-</section><!-- end login -->
+          <%= label_tag :password %>
+          <%= password_field_tag :password %>
+          <p>
+            Don't have an account? <%= link_to "Register", new_pinspiration_credential_path %>
+          </p>
+        </section><!-- end login-credentials -->
+      <%= submit_tag "Continue", {class: "btn-continue"} %>
+      <% end %>
+      <h4>OR<h4>
+      <%= button_to 'Google Sign In', google_login_path, {class: "btn-google"} %>
+    </section><!-- end login-form -->
+  </section><!-- end login -->
+</section><!-- end jumbotron -->
