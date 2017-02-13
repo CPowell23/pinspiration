@@ -1,0 +1,14 @@
+<%= render partial: 'shared/user' %>
+
+<% @followers.each do |f| %>
+  <%= link_to registered_user_path(f.username) do %>
+    <section class="follower">
+      <% if f.image_url.present? %>
+        <%= image_tag(f.image_url) %>
+      <% else %>
+        <i class="fa fa-user" aria-hidden="true"></i>
+      <% end %>
+      <%= f.name %>
+    </section>
+  <% end %>
+<% end %>

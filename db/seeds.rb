@@ -12,6 +12,7 @@ class Seed
     seed.generate_registered_users
     seed.generate_sample_pinspiration_user
     seed.generate_likes
+    seed.generate_follow_joins
     seed.print_example_users
   end
 
@@ -62,7 +63,8 @@ class Seed
       username: Faker::Internet.unique.user_name,
       email: Faker::Internet.unique.email,
       password: Faker::Internet.password,
-      phone_number: Faker::PhoneNumber.phone_number
+      phone_number: Faker::PhoneNumber.phone_number,
+      image_url: Faker::Placeholdit.image
       )
     puts "Pinspiration Credentials: #{pinspiration_credential.name} created!"
   end
@@ -73,6 +75,7 @@ class Seed
       name: Faker::Name.name,
       username: Faker::Internet.unique.user_name,
       phone_number: Faker::PhoneNumber.phone_number,
+      image_url: Faker::Placeholdit.image
       )
     puts "Google Credentials: #{google_credential.name} created!"
   end
@@ -137,6 +140,17 @@ class Seed
         target_type: "Comment",
         target_id: Comment.all.sample.id
       )
+    end
+  end
+
+  def generate_follow_joins
+    @users = RegisteredUser.all
+    x = @users.count - 2
+    x.times do |i|
+      FollowJoin.create!(registered_user_id: @users[i].id,
+                          follower_id: @users[i+1].id)
+      FollowJoin.create!(registered_user_id: @users[i].id,
+                          follower_id: @users[i+2].id)
     end
   end
 

@@ -13,10 +13,12 @@
 
       <%= f.text_field :phone_number, placeholder: "Phone number" %>
 
+      <%= f.label :image_url %>
+      <%= f.text_field :image_url %>
+
       <%= f.submit "Continue", {class: "btn-continue"} %>
-      
+
       <%= link_to 'Google SignIn', google_login_path, {class: "btn-continue"} %>
       <%= link_to "Log in", login_path, {class: "btn-continue"} %>
     <% end %>
 </section>
-

@@ -1,0 +1,27 @@
+<% if current_user.present? && @user != current_user %>
+  <%= link_to "Follow", registered_users_following_create_path(current_user.username, @user.username), method: :post %>
+<% end %>
+
+<% if current_user && current_user.followings.include?(@user) %>
+  <%= link_to "Unfollow", registered_users_following_destroy_path(current_user.username, @user.username, :option => 'from_user_show_page'), method: :delete %>
+<% end %>
+
+<h1> <%= @user.name %> </h1>
+
+<% if @user.image_url.present? %>
+  <%= image_tag(@user.image_url) %>
+<% else %>
+  <i class="fa fa-user" aria-hidden="true"></i>
+<% end %>
+
+<p>
+  X <%= link_to "Followers", registered_users_followers_path(@user.username) %>
+</p>
+
+<p>
+  X <%= link_to "Following", registered_users_following_path(@user.username) %>
+</p>
+
+<%= link_to "Boards", registered_users_boards_path(@user.username) %>
+<%= link_to "Pins", registered_users_pins_path(@user.username) %>
+<%= link_to "Likes", "#" %>
