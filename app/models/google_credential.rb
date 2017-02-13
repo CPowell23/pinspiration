@@ -18,7 +18,7 @@ class GoogleCredential < ApplicationRecord
                                                   email: auth_info.info.email,
                                                   name: auth_info.info.name, 
                                                   username: auth_info.info.name.parameterize,
-                                                  image_url: auth_info.info.picture)
+                                                  image_url: auth_info.info.image)
         new_credential.save
         new_credential
       end
