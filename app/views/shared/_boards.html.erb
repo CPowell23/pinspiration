@@ -1,17 +1,27 @@
 <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
   <% if current_user == @user %>
-    <%= link_to 'New Board', new_registered_users_board_path(@user.username) %>
+    <div class="box col3">
+      <%= link_to 'New Board', new_registered_users_board_path(@user.username), class: "new-board" %>
+    </div>
   <% end %>
     <% @boards.each do |board| %>
     <div class="box col3">
       <section class="board">
-        <% if current_admin %>
-          <%= link_to "Delete", admin_board_path(board), method: :delete %>
-        <% end %>
-        <% if current_user == @user %>
-          <%= link_to "Edit", registered_users_edit_board_path(@user.username, board.name) %>
-        <% end %>
-        <%= board.name %>
+        <ul>
+          <li class="image"></li>
+          <li class="board-name"><%= board.name %></li>
+          <li class="board-pin-count"><%= board.pins.count %> pins</li>
+          <li>
+            <% if current_admin %>
+              <%= link_to "Delete", admin_board_path(board), method: :delete, class: "btn-delete" %>
+            <% end %>
+          </li>
+          <li>
+            <% if current_user == @user %>
+              <%= link_to "Edit", registered_users_edit_board_path(@user.username, board.name), class: "btn-edit" %>
+            <% end %>
+          </li>
+        </ul>
       </section>
     </div>
     <% end %>
