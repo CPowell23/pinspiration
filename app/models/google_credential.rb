@@ -13,7 +13,7 @@ class GoogleCredential < ApplicationRecord
       if credential
         credential
       else
-        @registered_user = RegisteredUser.create(status: 1)
+        @registered_user = RegisteredUser.new(status: 1)
         new_credential = @registered_user.google_credentials.new(google_uid: auth_info.uid, 
                                                   email: auth_info.info.email,
                                                   name: auth_info.info.name, 
