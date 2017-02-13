@@ -17,7 +17,8 @@ class GoogleCredential < ApplicationRecord
         new_credential = @registered_user.google_credentials.new(google_uid: auth_info.uid, 
                                                   email: auth_info.info.email,
                                                   name: auth_info.info.name, 
-                                                  username: auth_info.info.name.parameterize)
+                                                  username: auth_info.info.name.parameterize
+                                                  )
         new_credential.save
         new_credential
       end

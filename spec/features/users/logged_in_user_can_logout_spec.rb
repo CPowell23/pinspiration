@@ -24,7 +24,6 @@ describe "Logged in user workflow" do
 
       expect(page).to have_content("Welcome to Pinspirations")
       expect(page).to have_content("Account Profile")
-      expect(page).to have_content("Severus Snape")
 
       click_on("Log out")
 
