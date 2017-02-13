@@ -1,10 +1,10 @@
 <section class="board">
   <% if current_user == @board_presenter.user %>
-  <%= button_to 'Edit', registered_users_edit_board_path(@board_presenter.user.username, @board_presenter.board.name)%>
-  <%= button_to 'Delete', registered_users_board_path(@board_presenter.user.username, @board_presenter.board.name), method: :delete %>
+    <%= link_to 'Edit', registered_users_edit_board_path(@board_presenter.user.username, @board_presenter.board.name)%>
+    <%= link_to 'Delete', registered_users_board_path(@board_presenter.user.username, @board_presenter.board.name), method: :delete %>
   <% end %>
   <% if current_admin %>
-  <%= button_to "Delete", admin_board_path(@board_presenter.board), method: :delete %>
+    <%= button_to "Delete", admin_board_path(@board_presenter.board), method: :delete %>
   <% end %>
   <%= @board_presenter.board.name %>
   <%= @board_presenter.board.description %>

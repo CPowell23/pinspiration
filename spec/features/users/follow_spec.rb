@@ -36,7 +36,7 @@ describe "Logged in User" do
     visit registered_user_path(@user_2.username)
     click_on "Following"
 
-    expect(page).to have_css(".follower", count: 2)
+    expect(page).to have_css(".followers")
     expect(page).to have_content(@user_1.name)
     expect(page).to have_content(user_3.name)
   end
@@ -64,7 +64,7 @@ describe "Logged in User" do
     visit registered_user_path(@user_1.username)
     click_on "Followers"
 
-    expect(page).to have_css(".follower", count: 2)
+    expect(page).to have_css(".followings")
     expect(page).to have_content(@user_1.name)
     expect(page).to have_content(user_3.name)
   end

@@ -4,14 +4,18 @@
       <h1><%= @user.name %></h1>
     </li>
     <li class="right">
-      <ul class="followers">
-        <li class"number"><%= @user.followers.count %></li>
-        <li>Followers</li>
-      </ul>
-      <ul class="followings">
-        <li class"number"><%= @user.followings.count %></li>
-        <li>Following</li>
-      </ul>
+      <a href=<%= registered_users_followers_path(@user.username) %> id="followers" >
+        <ul class="followers">
+          <li class"number"><%= @user.followers.count %></li>
+          <li>Followers</li>
+        </ul>
+      </a>
+      <a href=<%= registered_users_following_path(@user.username) %> id="followings" >
+        <ul class="followings">
+          <li class"number"><%= @user.followings.count %></li>
+          <li>Following</li>
+        </ul>
+      </a>
     </li>
     <li class="user-image">
       <% if @user.image_url.present? && "up" == "down" %>

@@ -8,7 +8,6 @@ describe "Logged in user workflow" do
       visit root_path
 
       expect(current_path).to eq('/')
-      expect(page).to have_content(@user.name)
 
       click_on("Log out")
 
