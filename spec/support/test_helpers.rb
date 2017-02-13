@@ -6,4 +6,8 @@ module TestHelpers
   def stub_log_in_user(user)
     page.set_rack_session(registered_user_id: user.id)
   end
+
+  def stub_logout_user(user)
+    page.set_rack_session(registered_user_id: nil)
+  end
 end

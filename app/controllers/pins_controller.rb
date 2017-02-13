@@ -4,6 +4,8 @@ class PinsController < ApplicationController
 
   def show
     @pin = Pin.find(params[:id])
+    @comments = @pin.comments
+    @comment = Comment.new
   end
 
   def new
