@@ -71,8 +71,8 @@ ActiveRecord::Schema.define(version: 20170212222251) do
     t.integer  "registered_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "image_url"
     t.string   "email"
+    t.text     "image_url"
     t.index ["google_uid"], name: "index_google_credentials_on_google_uid", unique: true, using: :btree
     t.index ["registered_user_id"], name: "index_google_credentials_on_registered_user_id", using: :btree
   end
