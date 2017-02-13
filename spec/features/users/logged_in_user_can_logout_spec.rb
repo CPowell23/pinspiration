@@ -19,8 +19,8 @@ describe "Logged in user workflow" do
       stub_omniauth
       click_on("Google Sign In")
 
-      expect(page).to have_content("Welcome to Pinspirations")
-      expect(page).to have_content("Account Profile")
+
+      expect(current_path).to eq('/')
 
       click_on("Log out")
 

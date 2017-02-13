@@ -1,5 +1,3 @@
-<% @followings.each do |followee| %>
-  <% followee.pins.each do |pin| %>
-    <%= render partial: "shared/pin", locals: { pin: pin } %>
-  <% end %>
+<% @activity.each do |pin| %>
+  <%= render partial: "shared/pin", locals: { pin: pin } %>
 <% end %>

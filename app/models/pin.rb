@@ -8,4 +8,7 @@ class Pin < ApplicationRecord
   has_one :registered_user, through: :board
   has_many :likes, as: :target
   has_many :comments, dependent: :destroy
+  
+  scope :sort_by_most_recent, -> { order(created_at: :desc) }
+
 end
