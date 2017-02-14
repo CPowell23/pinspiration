@@ -63,4 +63,8 @@ module MessageHelper
   def flash_message_successful_following_delete
     flash[:success] = "You are no longer following this user"
   end
+
+  def flash_message_account_deactivated
+    flash[:success] = "Account successfully deactivated"
+  end
 end
