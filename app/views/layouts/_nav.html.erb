@@ -1,8 +1,64 @@
 <nav>
-  <% if current_admin %>
-    <%= link_to "Log out", admin_logout_path, method: :delete %>
-  <% end %>
-  <% if current_user %>
-    <i class='fa fa-user' aria-hidden='true'><%= link_to "Log out", logout_path, method: :delete %></i>
-  <% end %>
+  <section class="navbar">
+    <ul>
+      <li>
+        <%= link_to root_path do %>
+          <i class="fa fa-pinterest" aria-hidden="true"></i>
+        <% end %>
+      </li>
+
+      <li class="log-out">
+        <% if current_admin %>
+          <%= link_to "Log out", admin_logout_path, method: :delete %>
+        <% end %>
+      </li>
+
+      <li>
+        <% if current_user %>
+          <%= link_to "Log out", logout_path, method: :delete %></i>
+        <% end %>
+      </li>
+
+      <li class="search">
+          <input type="text" placeholder="Search..." required>
+      </li>
+
+      <li>
+        <ul>
+          <li>
+            <%= link_to "#" do %>
+              <i class="fa fa-bandcamp" aria-hidden="true"></i>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to "#" do %>
+              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to "#" do %>
+              <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to "#" do %>
+              <i class="fa fa-commenting" aria-hidden="true"></i>
+            <% end %>
+          </li>
+
+          <li>
+            <% if current_user %>
+              <%= link_to registered_user_path(current_user.username) do %>
+                <i class="fa fa-user" aria-hidden="true" id="account"></i>
+              <% end %>
+            <% end %>
+          </li>
+
+        </ul>
+      </li>
+    </ul>
+  </section>
 </nav>

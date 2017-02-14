@@ -1,5 +1,5 @@
 <% flash.each do |name, message| %>
   <section class="messages">
-    <%= content_tag :div, sanitize(message) %>
+    <%= content_tag :div, sanitize(message), class: "#{name}" %>
   </section>
 <% end %>

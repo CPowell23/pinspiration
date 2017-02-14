@@ -55,6 +55,14 @@ ActiveRecord::Schema.define(version: 20170213050533) do
     t.index ["registered_user_id"], name: "index_comments_on_registered_user_id", using: :btree
   end
 
+  create_table "follow_joins", force: :cascade do |t|
+    t.integer  "registered_user_id"
+    t.integer  "follower_id"
+    t.datetime "created_at",         null: false
+    t.datetime "updated_at",         null: false
+    t.index ["registered_user_id"], name: "index_follow_joins_on_registered_user_id", using: :btree
+  end
+
   create_table "google_credentials", force: :cascade do |t|
     t.string   "google_uid"
     t.string   "name"
@@ -63,6 +71,8 @@ ActiveRecord::Schema.define(version: 20170213050533) do
     t.integer  "registered_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "email"
+    t.text     "image_url"
     t.index ["google_uid"], name: "index_google_credentials_on_google_uid", unique: true, using: :btree
     t.index ["registered_user_id"], name: "index_google_credentials_on_registered_user_id", using: :btree
   end
@@ -97,6 +107,8 @@ ActiveRecord::Schema.define(version: 20170213050533) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "otp_secret_key"
+    t.text     "image_url"
+
     t.index ["email"], name: "index_pinspiration_credentials_on_email", unique: true, using: :btree
     t.index ["registered_user_id"], name: "index_pinspiration_credentials_on_registered_user_id", using: :btree
     t.index ["username"], name: "index_pinspiration_credentials_on_username", unique: true, using: :btree

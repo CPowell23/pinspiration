@@ -1,0 +1,11 @@
+<div class='box col4 pin'>
+  <%= image_tag(pin.image_url) %>
+  <p><%= pin.description %></p>
+  <footer>
+    <%= image_tag(pin.registered_user.image_url) %>
+    <aside>
+      <p><strong><%= pin.registered_user.name %></strong></p>
+      <p><%= pin.board.name  %></p>
+    </aside>
+  </footer>
+</div>

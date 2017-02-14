@@ -1,23 +1,26 @@
-<h1><%= link_to "Log in", login_path %><h1>
-<h1>Welcome to Pinspirations, the world's catalog of ideas</h1>
-    <%= form_for(PinspirationCredential.new, :url => {:controller => 'sessions', :action => 'create'}) do |f| %>
-      <%= f.label :name %>
-      <%= f.text_field :name %>
+<div class="jumbotron">
+  <div class="layer">
+  </div>
+</div>
+<section class="login">
+  <section class="login-form">
+    <%= form_tag( url: login_path ) do %>
+      <i class="fa fa-pinterest" aria-hidden="true"></i>
+      <h2>Welcome to Pinspirations, the world's catalog of ideas</h2>
 
-      <%= f.label :username %>
-      <%= f.text_field :username %>
-
-      <%= f.label :email %>
-      <%= f.text_field :email %>
-
-      <%= f.label :password %>
-      <%= f.password_field :password %>
-
-      <%= f.label :phone_number %>
-      <%= f.text_field :phone_number %>
-
-      <%= f.submit "Continue" %>
+      <section class="login-credentials">
+        <%= text_field_tag :email, nil, placeholder: "email@example.com" %>
+        <%= password_field_tag :password, nil, placeholder: "Password" %>
+        <p class="no-account">
+          Don't have an account? <%= link_to "Register", new_pinspiration_credential_path %>
+        </p>
+      </section><!-- end login-credentials -->
+    <%= submit_tag "Continue", {class: "btn-continue"} %>
     <% end %>
     <br>
-<%= link_to 'Google SignIn', google_login_path %></br>
-<%= link_to 'Forgot your password?', password_reset_path %>
+    <h4>OR<h4>
+    <%= button_to 'Google Sign In', google_login_path, {class: "btn-google"} %>
+     <%= link_to 'Forgot your password?', password_reset_path %>
+  </section><!-- end login-form -->
+</section><!-- end login -->
+

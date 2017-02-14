@@ -1,7 +1,8 @@
 <section class="login">
   <i class="fa fa-pinterest" aria-hidden="true"></i>
-  <h1>Admin Log in</h1>
   <%= form_tag( url: admin_login_path ) do %>
+    <i class="fa fa-pinterest" aria-hidden="true"></i>
+    <h2>Admin Log in</h2>
     <%= text_field_tag :email, placeholder = "Email" %>
     <%= password_field_tag :password, placeholder = "Password" %>
     <%= submit_tag "Log in", {class: "btn-continue"} %>

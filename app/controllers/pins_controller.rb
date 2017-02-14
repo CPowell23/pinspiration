@@ -1,9 +1,10 @@
 class PinsController < ApplicationController
   include MessageHelper
 
-
   def show
     @pin = Pin.find(params[:id])
+    @comments = @pin.comments
+    @comment = Comment.new
   end
 
   def new
