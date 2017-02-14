@@ -24,6 +24,9 @@ class PinspirationCredentialsController < ApplicationController
     # end
   end
 
+  def update
+  end
+
   private
     def credential_params
       params.require(:pinspiration_credential).permit(:name, :username, :email, :password, :password_confirmation, :phone_number, :image_url)

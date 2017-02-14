@@ -1,0 +1,5 @@
+<%= render 'form' %>
+
+<%= "Account #{@credentials.registered_user.status}" %>
+
+<%= link_to "Deactivate Account", deactivate_registered_user_path(@credentials.username), method: :patch%>
