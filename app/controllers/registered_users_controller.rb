@@ -11,7 +11,7 @@ class RegisteredUsersController < ApplicationController
     if user.pinspiration_credentials && user == current_user || current_admin
       @credentials = user.pinspiration_credentials.first
     else 
-      redirect_to root_path
+      render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
   end
   
@@ -26,8 +26,6 @@ class RegisteredUsersController < ApplicationController
       session[:registered_user_id] = nil
       flash_message_account_deactivated
       redirect_to login_path
-    else
-      redirect_to registered_user_path(user.username)
     end
   end
 
