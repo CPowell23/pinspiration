@@ -7,9 +7,9 @@ class RegisteredUsersController < ApplicationController
   end
 
   def edit
-    user = find_user_by_username(params[:username])
-    if user.pinspiration_credentials && user == current_user || current_admin
-      @credentials = user.pinspiration_credentials.first
+    @user = find_user_by_username(params[:username])
+    if @user.pinspiration_credentials && @user == current_user || current_admin
+      @credentials = @user.pinspiration_credentials.first
     else 
       render :file => "#{Rails.root}/public/404.html",  :status => 404
     end
@@ -18,6 +18,7 @@ class RegisteredUsersController < ApplicationController
   def destroy
     user = find_user_by_username(params[:username])
     if current_user == user
+      user.destroy_credentials
       user.destroy
       session[:registered_user_id] = nil
       flash_message_account_deleted
@@ -38,6 +39,5 @@ class RegisteredUsersController < ApplicationController
       redirect_to login_path
     end
   end
-
 
 end

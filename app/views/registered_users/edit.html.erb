@@ -1,9 +1,15 @@
-<%= render 'form' %>
+<section class='edit'>
+  <% if @credentials %>
+    <%= render 'form' %>
 
-<%= "Account #{@credentials.registered_user.status}" %>
+    <%= "Account #{@user.status}" %>
+  <% end %>
 
-<%= link_to "Deactivate Account", deactivate_registered_user_path(@credentials.username), method: :patch, :data => {:confirm => "Are you sure you want to deactivate your account?"} %>
+  <h2>Account Basics</h2>
 
-<% if current_user && current_user.username == @credentials.username %>
-  <%= link_to "Delete Account Permanently", registered_user_path(@credentials.username), method: :delete, :data => {:confirm => "Are you sure you want to delete your account?"} %>
-<% end %>
+  <%= link_to "Deactivate Account", deactivate_registered_user_path(@user.username), method: :patch, :class => "btn-deactivate", :data => {:confirm => "Are you sure you want to deactivate your account?"} %>
+
+  <% if current_user && current_user.username == @user.username %>
+    <%= link_to "Delete Account Permanently", registered_user_path(@user.username), method: :delete, :class => "btn-delete", :data => {:confirm => "Are you sure you want to delete your account?"} %>
+  <% end %>
+</section>
