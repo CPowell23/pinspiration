@@ -1,6 +1,14 @@
 Rails.application.routes.draw do
   root 'home#index'
 
+  namespace :api do
+    namespace :v1 do
+      namespace :comments do
+        get '/:id', to: 'comments#index'
+      end
+    end
+  end
+
   namespace :admin do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
