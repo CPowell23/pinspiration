@@ -15,6 +15,16 @@ class RegisteredUsersController < ApplicationController
     end
   end
   
+  def destroy
+    user = find_user_by_username(params[:username])
+    if current_user == user
+      user.destroy
+      session[:registered_user_id] = nil
+      flash_message_account_deleted
+      redirect_to login_path
+    end
+  end
+
   def deactivate
     user = find_user_by_username(params[:username]) 
     if current_admin

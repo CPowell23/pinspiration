@@ -3,3 +3,7 @@
 <%= "Account #{@credentials.registered_user.status}" %>
 
 <%= link_to "Deactivate Account", deactivate_registered_user_path(@credentials.username), method: :patch%>
+
+<% if current_user && current_user.username == @credentials.username %>
+  <%= link_to "Delete Account Permanently", registered_user_path(@credentials.username), method: :delete %>
+<% end %>
