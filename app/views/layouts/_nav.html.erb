@@ -1,33 +1,62 @@
 <nav>
   <section class="navbar">
     <ul>
-      <li><i class="fa fa-pinterest" aria-hidden="true"></i></li>
+      <li>
+        <%= link_to root_path do %>
+          <i class="fa fa-pinterest" aria-hidden="true"></i>
+        <% end %>
+      </li>
+
       <li class="log-out">
         <% if current_admin %>
           <%= link_to "Log out", admin_logout_path, method: :delete %>
         <% end %>
       </li>
+
       <li>
         <% if current_user %>
           <%= link_to "Log out", logout_path, method: :delete %></i>
         <% end %>
       </li>
+
       <li class="search">
           <input type="text" placeholder="Search..." required>
       </li>
+
       <li>
         <ul>
-          <li><i class="fa fa-bandcamp" aria-hidden="true"></i></li>
-          <li><i class="fa fa-shopping-bag" aria-hidden="true"></i></li>
-          <li><i class="fa fa-plus-circle" aria-hidden="true"></i></li>
-          <li><i class="fa fa-commenting" aria-hidden="true"></i></li>
           <li>
-            <% if current_user %>
-              <a id="account" href=<%= registered_user_path(current_user.username) %> >Account
-                <i class="fa fa-user" aria-hidden="true" id="account"></i>
-              </a>
+            <%= link_to "#" do %>
+              <i class="fa fa-bandcamp" aria-hidden="true"></i>
             <% end %>
           </li>
+
+          <li>
+            <%= link_to "#" do %>
+              <i class="fa fa-shopping-bag" aria-hidden="true"></i>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to "#" do %>
+              <i class="fa fa-plus-circle" aria-hidden="true"></i>
+            <% end %>
+          </li>
+
+          <li>
+            <%= link_to "#" do %>
+              <i class="fa fa-commenting" aria-hidden="true"></i>
+            <% end %>
+          </li>
+
+          <li>
+            <% if current_user %>
+              <%= link_to registered_user_path(current_user.username) do %>
+                <i class="fa fa-user" aria-hidden="true" id="account"></i>
+              <% end %>
+            <% end %>
+          </li>
+
         </ul>
       </li>
     </ul>

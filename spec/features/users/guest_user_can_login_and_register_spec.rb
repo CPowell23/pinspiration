@@ -79,11 +79,10 @@ describe "Guest login workflow" do
     scenario "cannot log in if they enter invalid credentials" do
       user = create(:registered_user)
       email = user.pinspiration_credentials.first.email
-      password = "wrong"
 
       visit login_path
-      fill_in "Email", with: email
-      fill_in "Password", with: password
+      fill_in "email", with: "#{email}"
+      fill_in "password", with: "wrong"
       click_on "Continue"
 
       expect(current_path).to eql(login_path)

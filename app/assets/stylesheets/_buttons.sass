@@ -3,6 +3,7 @@
   font-size: 15px
   border: none
   box-shadow: none
+  cursor: pointer
 
 .btn-continue
   @extend .btn
@@ -53,6 +54,23 @@
 .btn-delete:hover
   background-color: $med-light-gray
   color: $med-dark-gray
+
+.btn-login
+  @extend .btn
+  display: inline-block
+  color: $dark-gray
+  background-color: $light-gray
+  border-radius: 4px
+  text-decoration: none
+  height: 15px
+  padding: 10px 43px
+  font-weight: bold
+  position: absolute
+  margin-top: 10px
+  text-align: center
+  right: 25px
+  top: 15px
+  z-index: 2
 
 ul.board-pin-like
   display: block
