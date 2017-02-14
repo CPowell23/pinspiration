@@ -4,7 +4,7 @@
   <footer>
     <%= image_tag(pin.registered_user.image_url) %>
     <aside>
-      <p><strong><%= link_to pin.registered_user.name, registered_user_path(registered_user.username) %></strong></p>
+      <p><strong><%= link_to pin.registered_user.name, registered_user_path(pin.registered_user.username) %></strong></p>
       <p><%= pin.board.name  %></p>
     </aside>
   </footer>
