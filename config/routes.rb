@@ -12,12 +12,10 @@ Rails.application.routes.draw do
     # resources :registered_users, only: [:update]
   end
 
-  resources :password_resets, only: [:new, :create, :edit, :update]
-  get '/password-confirmation', to: 'password_confirmation#show', as: 'password-confirmation'
+  get '/password_reset', to: 'passwords#new'
+  post '/password_reset', to: 'passwords#verify'
+  put '/password_reset', to: 'passwords#verify_confirm', as: "update_password"
 
-  # get '/password-resets', to: 'password_resets#index', as: 'password-resets'
-  # post '/password-resets', to: 'password_resets#index', as: 'password-resets'
-  # get '/password-reset', to: 'password_reset#show', as: 'password-reset'
   get '/auth/google_oauth2', as: :google_login
   get '/o/oauth2/auth', as: :google_login_test
   get '/auth/google_oauth2/callback', to: 'google_sessions#create'

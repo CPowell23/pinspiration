@@ -1,0 +1,11 @@
+<h1>Enter the confirmation pin that was sent to you via SMS</h1>
+
+  <%= form_tag({controller: "passwords", action: "verify_confirm"}, :method => :put) do %> </br>
+
+    <%= label_tag :pin %>
+    <%= text_field_tag :pin %>
+
+    <%= hidden_field_tag :email, params[:email] %>
+
+    <%= submit_tag :submit, :email => nil %>
+  <% end %>

@@ -33,8 +33,4 @@ class RegisteredUser < ApplicationRecord
     google_credentials.first.phone_number
   end
 
-  def self.send_password_reset_sms(phone_number,reset_pin)
-    TwilioService.new(phone_number,reset_pin).send_sms
-  end
-
 end
