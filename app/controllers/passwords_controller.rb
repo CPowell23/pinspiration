@@ -19,7 +19,8 @@ class PasswordsController < ApplicationController
   def verify_confirm
     @credential = PinspirationCredential.find_by(email: params[:email])
     if @credential.authenticate_otp(params[:pin])
-      redirect_to root_path, :notice => "Pin verified! You may now reset your password."
+      @credential.update(password: params[:password])
+      redirect_to root_path, :notice => "Pin verified! Your password has been reset."
     else
       flash.now[:danger] = "Incorrect Pin."
       render 'verify'
@@ -31,6 +32,5 @@ class PasswordsController < ApplicationController
   def send_password_reset_sms(phone_number,reset_pin)
     TwilioService.new(phone_number,reset_pin).send_sms
   end
-
 
 end
