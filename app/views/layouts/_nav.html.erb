@@ -2,7 +2,7 @@
   <section class="navbar">
     <ul>
       <li>
-        <%= link_to "#" do %>
+        <%= link_to root_path do %>
           <i class="fa fa-pinterest" aria-hidden="true"></i>
         <% end %>
       </li>
@@ -50,11 +50,9 @@
           </li>
 
           <li>
-            <%= link_to "#" do %>
-              <% if current_user %>
-                <a id="account" href=<%= registered_user_path(current_user.username) %> >Account
-                  <i class="fa fa-user" aria-hidden="true" id="account"></i>
-                </a>
+            <% if current_user %>
+              <%= link_to registered_user_path(current_user.username) do %>
+                <i class="fa fa-user" aria-hidden="true" id="account"></i>
               <% end %>
             <% end %>
           </li>
