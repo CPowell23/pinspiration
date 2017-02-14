@@ -84,12 +84,10 @@ describe "API for comments" do
 
     pin = Pin.second
     comment = create(:comment)
-    url = "/api/v1/pins/#{pin.id}/comments"
-    body = JSON.generate(content: "some content", pin_id: "#{pin.id}")
+    url = "api/v1/pins/#{pin.id}"
+    body = content: "some content", pin_id: "#{pin.id}"
     conn = Faraday.new(url)
-    conn.post do |req|
-      req.body = body
-    end
+    conn.post body: body
 
     get "/api/v1/pins/#{pin.id}/comments"
 
