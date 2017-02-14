@@ -31,7 +31,7 @@ Rails.application.routes.draw do
   get '/:username/edit', to: 'registered_users#edit', as: 'edit_registered_user'
   patch '/:username/deactiveate', to: 'registered_users#deactivate', as: 'deactivate_registered_user'
 
-  resources :pinspiration_credentials, only: [:new, :create]
+  resources :pinspiration_credentials, only: [:new, :create, :update]
 
   namespace :registered_users, path: ":username" do
     get "/following", to: "following#index"
