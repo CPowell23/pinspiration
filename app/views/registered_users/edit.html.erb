@@ -2,8 +2,8 @@
 
 <%= "Account #{@credentials.registered_user.status}" %>
 
-<%= link_to "Deactivate Account", deactivate_registered_user_path(@credentials.username), method: :patch%>
+<%= link_to "Deactivate Account", deactivate_registered_user_path(@credentials.username), method: :patch, :data => {:confirm => "Are you sure you want to deactivate your account?"} %>
 
 <% if current_user && current_user.username == @credentials.username %>
-  <%= link_to "Delete Account Permanently", registered_user_path(@credentials.username), method: :delete %>
+  <%= link_to "Delete Account Permanently", registered_user_path(@credentials.username), method: :delete, :data => {:confirm => "Are you sure you want to delete your account?"} %>
 <% end %>
