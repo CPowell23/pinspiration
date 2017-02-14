@@ -1,14 +1,6 @@
 Rails.application.routes.draw do
   root 'home#index'
 
-  namespace :api do
-    namespace :v1 do
-      namespace :comments do
-        get '/:id', to: 'comments#index'
-      end
-    end
-  end
-
   namespace :admin do
     get "/login", to: "sessions#new"
     post "/login", to: "sessions#create"
@@ -58,8 +50,14 @@ Rails.application.routes.draw do
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
 
   namespace :api do
-    namespace :v1 do 
-      get '/comments', to: "comments#index"
+    namespace :v1 do
+      namespace :pins do
+        get '/:id/comments', to: 'comments#index'
+        get '/:id/comments/:comment_id', to: 'comments#show'
+        # post '/:id/comments', to: 'comments#create'
+        put '/:id/comments/:comment_id', to: 'comments#update'
+        delete '/:id/comments/:comment_id', to: 'comments#destroy'
+      end
     end
   end
 end
