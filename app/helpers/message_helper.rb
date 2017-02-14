@@ -5,11 +5,11 @@ module MessageHelper
   end
 
   def flash_message_successful_logout
-    flash[:success] = "Successfully logged out"
+    flash[:dark_background] = "Successfully logged out"
   end
 
   def flash_message_failed_login
-    flash[:danger] = "Email and password combination does not exist"
+    flash.now[:dark_background] = "Email and password combination does not exist"
   end
 
   def flash_message_successful_account_creation
@@ -58,9 +58,18 @@ module MessageHelper
 
   def flash_message_successful_following_creation
     flash[:success] = "You are now following this user"
-  end  
+  end
 
   def flash_message_successful_following_delete
     flash[:success] = "You are no longer following this user"
   end
+
+  def flash_message_account_deleted
+    flash[:success] = "Account successfully deleted"
+  end
+
+  def flash_message_account_deactivated
+    flash[:success] = "Account successfully deactivated"
+  end
+
 end

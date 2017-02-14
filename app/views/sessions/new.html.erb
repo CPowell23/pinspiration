@@ -1,24 +1,23 @@
-<section class="jumbotron">
-  <section class="login">
-    <section class="login-form">
-      <%= form_tag( url: login_path ) do %>
-        <i class="fa fa-pinterest" aria-hidden="true"></i>
-        <h2>Welcome to Pinspirations, the world's catalog of ideas</h2>
+<div class="jumbotron">
+  <div class="layer">
+  </div>
+</div>
+<section class="login">
+  <section class="login-form">
+    <%= form_tag( url: login_path ) do %>
+      <i class="fa fa-pinterest" aria-hidden="true"></i>
+      <h2>Welcome to Pinspirations, the world's catalog of ideas</h2>
 
-        <section class="login-credentials">
-          <%= label_tag :email %>
-          <%= text_field_tag :email %>
-
-          <%= label_tag :password %>
-          <%= password_field_tag :password %>
-          <p>
-            Don't have an account? <%= link_to "Register", new_pinspiration_credential_path %>
-          </p>
-        </section><!-- end login-credentials -->
-      <%= submit_tag "Continue", {class: "btn-continue"} %>
-      <% end %>
-      <h4>OR<h4>
-      <%= button_to 'Google Sign In', google_login_path, {class: "btn-google"} %>
-    </section><!-- end login-form -->
-  </section><!-- end login -->
-</section><!-- end jumbotron -->
+      <section class="login-credentials">
+        <%= text_field_tag :email, nil, placeholder: "email@example.com" %>
+        <%= password_field_tag :password, nil, placeholder: "Password" %>
+        <p class="no-account">
+          Don't have an account? <%= link_to "Register", new_pinspiration_credential_path %>
+        </p>
+      </section><!-- end login-credentials -->
+    <%= submit_tag "Continue", {class: "btn-continue"} %>
+    <% end %>
+    <h4>OR<h4>
+    <%= button_to 'Google Sign In', google_login_path, {class: "btn-google"} %>
+  </section><!-- end login-form -->
+</section><!-- end login -->

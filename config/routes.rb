@@ -28,8 +28,10 @@ Rails.application.routes.draw do
   get '/login', to: "sessions#new"
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/:username/edit', to: 'registered_users#edit', as: 'edit_registered_user'
+  patch '/:username/deactiveate', to: 'registered_users#deactivate', as: 'deactivate_registered_user'
 
-  resources :pinspiration_credentials, only: [:new, :create]
+  resources :pinspiration_credentials, only: [:new, :create, :update]
 
   namespace :registered_users, path: ":username" do
     get "/following", to: "following#index"
@@ -48,6 +50,7 @@ Rails.application.routes.draw do
 
   get '/:username', to: 'registered_users#show', as: "registered_user"
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
+  delete '/:username', to: 'registered_users#destroy'
 
   namespace :api do
     namespace :v1 do
@@ -60,4 +63,5 @@ Rails.application.routes.draw do
       end
     end
   end
+    
 end

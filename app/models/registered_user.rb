@@ -54,4 +54,12 @@ class RegisteredUser < ApplicationRecord
     end
     liked.include?(true)
   end
+    
+  def destroy_credentials
+    if pinspiration_credentials
+      pinspiration_credentials.destroy_all
+    else
+      google_credentials.destroy_all
+    end
+  end
 end
