@@ -79,14 +79,17 @@ describe "API for comments" do
     expect(comment).to have_key("registered_user_id")
   end
 
-  xit "provides create access for pin comments" do
+  it "provides create access for pin comments" do
     # stub_logged_in_api_user
 
     pin = Pin.second
     comment = create(:comment)
-
-    ##### need to pass some content here ####
-    post "/api/v1/pins/#{pin.id}/comments"
+    url = "/api/v1/pins/#{pin.id}/comments"
+    body = JSON.generate(content: "some content", pin_id: "#{pin.id}")
+    conn = Faraday.new(url)
+    conn.post do |req|
+      req.body = body
+    end
 
     get "/api/v1/pins/#{pin.id}/comments"
 
@@ -99,7 +102,7 @@ describe "API for comments" do
     end
   end
 
-  it "provides edit access for pin comments" do
+  xit "provides edit access for pin comments" do
     # stub_logged_in_api_user
 
     pin = Pin.third
