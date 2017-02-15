@@ -2,10 +2,11 @@
   <% if @credentials %>
     <%= render 'form' %>
 
-    <%= "Account #{@user.status}" %>
   <% end %>
 
   <h2>Account Basics</h2>
+  
+  <%= "Account #{@user.status}" %>
 
   <%= link_to "Deactivate Account", deactivate_registered_user_path(@user.username), method: :patch, :class => "btn-deactivate", :data => {:confirm => "Are you sure you want to deactivate your account?"} %>
 

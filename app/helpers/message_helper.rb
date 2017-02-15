@@ -71,5 +71,12 @@ module MessageHelper
   def flash_message_account_deactivated
     flash[:success] = "Account successfully deactivated"
   end
+  
+  def flash_message_successful_account_update
+    flash[:success] = "Account successfully updated"
+  end
 
+  def flash_message_failed_account_update
+    flash[:danger] ="Account update failed. Please check you filled in all required fields"
+  end
 end
