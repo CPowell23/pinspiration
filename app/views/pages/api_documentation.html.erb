@@ -1,0 +1,28 @@
+<section class="docs-container">
+<h1>Developer API Documentation</h1>
+
+<h2>Creating your API key</h2>
+<p><a href='#'>Register</a> for an API key. After you have registered, use the key provided to access the endpoints supported through this API.</p>
+<% if current_user && current_user.developer_credentials %>
+  <h3>Your API key:</h3>
+  <div class="api-key">
+    <%= current_user.developer_credentials.first.api_key %>
+  </div><!-- end api-key -->
+<% end %>
+
+<h2>Accessing the API</h2>
+  <p>To access this API, use your key to hit the various endpoints listed below. Currently, only comments are supported through this API.</p>
+
+<h2>Available Endpoints</h2>
+<ul>
+  <li class="code"><strong>GET  </strong>'/api/v1/pins/:id/comments?api_key=YOUR_API_KEY'</li>
+  <li class="code"><strong>GET  </strong>'/api/v1/pins/:id/:comment_id?api_key=YOUR_API_KEY'</li>
+  <li class="code"><strong>POST  </strong>'/api/v1/pins/:id/comments?api_key=YOUR_API_KEY'</li>
+  <li class="code"><strong>PUT  </strong>'/api/v1/pins/:id/:comment_id'?api_key=YOUR_API_KEY</li>
+  <li class="code"><strong>DELETE  </strong>'/api/v1/pins/:id/:comment_id?api_key=YOUR_API_KEY'</li>
+</ul>
+
+<h2>FAQ</h2>
+  <h4>Do keys ever expire?</h4>
+  <p>No.</p>
+</section><!-- end section -->

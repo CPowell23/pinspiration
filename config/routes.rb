@@ -12,6 +12,7 @@ Rails.application.routes.draw do
     # resources :registered_users, only: [:update]
   end
 
+  get '/api_documentation', to: 'pages#api_documentation'
   get '/password_reset', to: 'passwords#new'
   post '/password_reset', to: 'passwords#verify'
   put '/password_reset', to: 'passwords#verify_confirm', as: "update_password"
