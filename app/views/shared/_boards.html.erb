@@ -1,7 +1,16 @@
 <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
   <% if current_user == @user %>
     <div class="box col3">
-      <%= link_to 'New Board', new_registered_users_board_path(@user.username), class: "new-board" %>
+      <section class="board">
+        <ul>
+          <li class="image">
+            <%= link_to new_registered_users_board_path(@user.username) do %>
+              <i class="fa fa-plus-circle fa-3" aria-hidden="true"></i>
+            <% end %>
+          </li>
+          <li class="board-name">Create Board</li>
+        </ul>
+      </section>
     </div>
   <% end %>
     <% @boards.each do |board| %>

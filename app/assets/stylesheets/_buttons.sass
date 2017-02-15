@@ -26,7 +26,7 @@
 .btn-deactivate
   background-color: $med-red
   text-decoration: none
-  color: white 
+  color: white
   border-radius: 4px
   font-size: 14px
   font-weight: bold
@@ -41,7 +41,7 @@
 
 .btn-delete
   background-color: $light-gray
-  color: $med-gray 
+  color: $med-gray
   border-radius: 4px
   font-size: 14px
   font-weight: bold
@@ -71,6 +71,15 @@
   right: 25px
   top: 15px
   z-index: 2
+
+.btn-edit
+  @extend .btn
+  background-color: $med-light-gray
+  color: $med-dark-gray
+  text-decoration: none
+  height: 30px
+  padding: 10px
+
 
 ul.board-pin-like
   display: block
@@ -106,4 +115,3 @@ ul.board-pin-like
   .btn-delete:hover
     background-color: $med-light-gray
     color: $med-dark-gray
-
