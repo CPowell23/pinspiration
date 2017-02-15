@@ -1,8 +1,10 @@
 class GoogleSessionsController < ApplicationController
+  include MessageHelper
+  
   def create
     @credential = GoogleCredential.from_omniauth(request.env["omniauth.auth"])
     session[:registered_user_id] = @credential.registered_user_id
-    flash[:success] = "Thank you for registering through google. Enjoy Pinspiration!"
+    flash_message_successful_login
     redirect_to root_path
   end
 

@@ -67,4 +67,5 @@ module MessageHelper
   def flash_message_account_deactivated
     flash[:success] = "Account successfully deactivated"
   end
+
 end
