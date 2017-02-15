@@ -3,11 +3,11 @@
     <div class="box col3">
       <section class="board">
         <ul>
-          <li class="image">
-            <%= link_to new_registered_users_board_path(@user.username) do %>
+          <%= link_to new_registered_users_board_path(@user.username) do %>
+            <li class="image">
               <i class="fa fa-plus-circle fa-3" aria-hidden="true"></i>
-            <% end %>
-          </li>
+            </li>
+          <% end %>
           <li class="board-name">Create Board</li>
         </ul>
       </section>
@@ -17,7 +17,9 @@
     <div class="box col3">
       <section class="board">
         <ul>
-          <li class="image"></li>
+          <%= link_to registered_users_board_path(@user.username, board.name) do %>
+            <li class="image"></li>
+          <% end %>
           <li class="board-name"><%= board.name %></li>
           <li class="board-pin-count"><%= board.pins.count %> pins</li>
           <li>
