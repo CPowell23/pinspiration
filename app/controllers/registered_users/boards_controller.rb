@@ -3,9 +3,9 @@ class RegisteredUsers::BoardsController < ApplicationController
 
   before_action :get_categories, only: [:new, :edit, :update]
   before_action :get_user, only: [:index, :new, :edit, :update]
+  before_action :get_private_content, only: [:index]
 
   def index
-    @boards = @user.boards
   end
 
   def show
@@ -69,6 +69,14 @@ class RegisteredUsers::BoardsController < ApplicationController
       @user = find_by_username(params[:username])
     end
 
+    def get_private_content
+      if current_user && current_user.username == params[:username] 
+        @boards = @user.boards.all
+      else
+        @boards = @user.boards.where(private: false)
+      end
+    end
+
     def get_categories
       @categories = Category.all
     end
@@ -82,7 +90,7 @@ class RegisteredUsers::BoardsController < ApplicationController
 
     def find_by_username(username)
       if GoogleCredential.find_by(username: username)
-        credentials = GoogleCredential.find_by(username)
+        credentials = GoogleCredential.find_by(username: username)
       else
         credentials = PinspirationCredential.find_by(username: username)
       end
