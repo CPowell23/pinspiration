@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     # resources :registered_users, only: [:update]
   end
 
+  get '/password_reset', to: 'passwords#new'
+  post '/password_reset', to: 'passwords#verify'
+  put '/password_reset', to: 'passwords#verify_confirm', as: "update_password"
+
   resources :pins, except: [:index] do
     resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
   #  post '/comments', to: 'comments#create'
@@ -28,8 +32,10 @@ Rails.application.routes.draw do
   get '/login', to: "sessions#new"
   post '/login', to: 'sessions#create'
   delete '/logout', to: 'sessions#destroy'
+  get '/:username/edit', to: 'registered_users#edit', as: 'edit_registered_user'
+  patch '/:username/deactiveate', to: 'registered_users#deactivate', as: 'deactivate_registered_user'
 
-  resources :pinspiration_credentials, only: [:new, :create]
+  resources :pinspiration_credentials, only: [:new, :create, :update]
 
   namespace :registered_users, path: ":username" do
     get "/following", to: "following#index"
@@ -48,5 +54,6 @@ Rails.application.routes.draw do
 
   get '/:username', to: 'registered_users#show', as: "registered_user"
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
+  delete '/:username', to: 'registered_users#destroy'
 
 end

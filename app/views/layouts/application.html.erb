@@ -14,7 +14,9 @@
 
   <body>
     <section class="main">
-      <%= render partial: 'layouts/nav' %>
+      <% if page_is_not_login_or_create? %>
+        <%= render partial: 'layouts/nav' %>
+      <% end %>
       <%= render partial: 'shared/errors' %>
       <%= render partial: 'shared/messages' %>
       <%= yield %>

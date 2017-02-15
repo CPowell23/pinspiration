@@ -1,0 +1,11 @@
+<h1>Forgot Password</h1>
+</br>
+<p>Enter your e-mail address below to send an SMS to your account number with directions on how to reset your password.</p>
+
+<%= form_tag password_reset_path, :method => :post do %></br>
+
+  <%= label_tag :email %></br>
+  <%= text_field_tag :email, params[:email] %>
+
+  <%= submit_tag "Send SMS", :email => nil %>
+<% end %>

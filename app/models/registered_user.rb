@@ -27,7 +27,7 @@ class RegisteredUser < ApplicationRecord
 
   def name
     return pinspiration_credentials.first.name if pinspiration_credentials.count > 0
-    google_credentials.first.name
+    google_credentials.name
   end
 
   def email
@@ -37,7 +37,7 @@ class RegisteredUser < ApplicationRecord
 
   def phone_number
     return pinspiration_credentials.first.phone_number if pinspiration_credentials.count > 0
-    google_credentials.first.phone_numer
+    google_credentials.first.phone_number
   end
 
   def image_url
@@ -53,4 +53,13 @@ class RegisteredUser < ApplicationRecord
     end
     liked.include?(true)
   end
+    
+  def destroy_credentials
+    if pinspiration_credentials
+      pinspiration_credentials.destroy_all
+    else
+      google_credentials.destroy_all
+    end
+  end
+
 end
