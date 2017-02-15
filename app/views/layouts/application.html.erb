@@ -22,6 +22,8 @@
       <%= render partial: 'shared/messages' %>
       <%= yield %>
     </section>
-    <%= render partial: 'layouts/footer' %>
+    <% if page_is_login_or_create? %>
+      <%= render partial: 'layouts/footer' %>
+    <% end %>
   </body>
 </html>
