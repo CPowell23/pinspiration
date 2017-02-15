@@ -9,7 +9,7 @@ class RegisteredUsers::PinsController < ApplicationController
 
     def find_user_by_username(username)
       if GoogleCredential.find_by(username: username)
-        credentials = GoogleCredential.find_by(username)
+        credentials = GoogleCredential.find_by(username: username)
       else
         credentials = PinspirationCredential.find_by(username: username)
       end
