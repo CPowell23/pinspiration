@@ -1,4 +1,6 @@
-<%= form_for @credentials do |f| %>
+<h2>Profile</h2>
+
+<%= form_for @credentials, :html => { class: 'edit' }  do |f| %>
   <%= f.label :name %>
   <%= f.text_field :name %>
 
@@ -8,5 +10,10 @@
   <%= f.label :email %>
   <%= f.text_field :email %>
 
+  <%= f.label :phone_number %>
+  <%= f.text_field :phone_number %>
+
+  <%= f.submit "Save Settings" %>
 <% end %>
 
+<%= link_to "Cancel", registered_user_path(@credentials.username), class: 'btn-cancel' %>

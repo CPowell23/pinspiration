@@ -25,6 +25,15 @@ class PinspirationCredentialsController < ApplicationController
   end
 
   def update
+    credentials = PinspirationCredential.find(params[:id])
+    if credentials.update(credential_params)
+      flash_message_successful_account_update
+      redirect_to registered_user_path(credentials.username)
+    else
+      @user = credentials.registered_user
+      flash_message_failed_account_update
+      redirect_to edit_registered_user_path(@user.username)
+    end
   end
 
   private
