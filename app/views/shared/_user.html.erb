@@ -46,6 +46,6 @@
   <ul class="board-pin-like">
     <li class="active"><%= link_to "Boards", registered_users_boards_path(@user.username)%></li>
     <li><%= link_to "Pins", registered_users_pins_path(@user.username)%></li>
-    <li><%= link_to "Likes","#"%></li>
+    <li><%= link_to "Likes", registered_users_likes_path(@user.username)%></li>
   </ul>
 </section>
