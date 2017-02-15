@@ -29,13 +29,16 @@ describe "Guest user workflow" do
     end
 
     scenario "cannot see private boards or pins" do 
-      visit registered_users_boards_path(@private_board.registered_user.username)
+      visit registered_users_boards_path(@private_board)
 
-      expect(page.status_code).to eq(200)
+      expect(page.status_code).to eq(404)
+    end
+
+    scenario "cannot see users' private account info" do 
+      visit pinspiration_credentials_path
     end
 
     
-#see other users' private account information
 #follow users
 #log themselves in as an admin
 #set users to online / offline
