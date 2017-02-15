@@ -1,5 +1,6 @@
 class PinspirationCredential < ApplicationRecord
   has_secure_password
+  has_one_time_password length: 6
 
   validates :name, presence: true
   validates :username, presence: true
@@ -13,4 +14,5 @@ class PinspirationCredential < ApplicationRecord
   validates_uniqueness_of :registered_user_id
 
   belongs_to :registered_user
+
 end

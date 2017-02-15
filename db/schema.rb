@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170212222251) do
+ActiveRecord::Schema.define(version: 20170214220848) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -55,6 +55,15 @@ ActiveRecord::Schema.define(version: 20170212222251) do
     t.index ["registered_user_id"], name: "index_comments_on_registered_user_id", using: :btree
   end
 
+  create_table "developer_credentials", force: :cascade do |t|
+    t.integer  "registered_user_id"
+    t.string   "api_key"
+    t.string   "project_name"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.index ["registered_user_id"], name: "index_developer_credentials_on_registered_user_id", using: :btree
+  end
+
   create_table "follow_joins", force: :cascade do |t|
     t.integer  "registered_user_id"
     t.integer  "follower_id"
@@ -71,8 +80,8 @@ ActiveRecord::Schema.define(version: 20170212222251) do
     t.integer  "registered_user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "email"
     t.text     "image_url"
+    t.string   "email"
     t.index ["google_uid"], name: "index_google_credentials_on_google_uid", unique: true, using: :btree
     t.index ["registered_user_id"], name: "index_google_credentials_on_registered_user_id", using: :btree
   end
@@ -107,6 +116,7 @@ ActiveRecord::Schema.define(version: 20170212222251) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "image_url"
+    t.string   "otp_secret_key"
     t.index ["email"], name: "index_pinspiration_credentials_on_email", unique: true, using: :btree
     t.index ["registered_user_id"], name: "index_pinspiration_credentials_on_registered_user_id", using: :btree
     t.index ["username"], name: "index_pinspiration_credentials_on_username", unique: true, using: :btree
@@ -118,4 +128,5 @@ ActiveRecord::Schema.define(version: 20170212222251) do
     t.datetime "updated_at"
   end
 
+  add_foreign_key "developer_credentials", "registered_users"
 end

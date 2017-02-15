@@ -21,7 +21,11 @@ gem 'rspec-rails'
 gem 'bcrypt', '~> 3.1.7'
 gem "omniauth-google-oauth2"
 gem 'figaro'
+gem 'twilio-ruby', '~> 4.11.1'
+gem 'active_model_otp'
 gem 'faker'
+gem 'faraday'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug', platform: :mri
@@ -37,7 +41,6 @@ end
 group :test do
   gem 'simplecov', :require => false
   gem 'capybara'
-  gem "launchy"
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rack_session_access'
   gem 'factory_girl'
