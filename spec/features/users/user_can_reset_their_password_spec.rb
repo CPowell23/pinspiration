@@ -31,26 +31,3 @@ describe "Registed user who is not yet logged in" do
 
   # end
 end
-
-# "stupid change here"
-
-# allow_any_instance_of(Credential).to recieve(:reset_pin).and_retrun("123456")
-# expect(TwilioService).to recieve(:search).with({params})
-
-# class FakeSMS
-#   Message = Struct.new(:from, :to, :body)
-#
-#   cattr_accessor :messages
-#   self.messages = []
-#
-#   def initialize(_account_sid, _auth_token)
-#   end
-#
-#   def messages
-#     self
-#   end
-#
-#   def create(from:, to:, body:)
-#     self.class.messages << Message.new(from: from, to: to, body: body)
-#   end
-# end

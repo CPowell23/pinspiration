@@ -9,7 +9,7 @@ class GoogleCredential < ApplicationRecord
   belongs_to :registered_user
 
   def self.from_omniauth(auth_info)
-    credential = GoogleCredential.find_by(google_uid: auth_info.info.google_uid)
+    credential = GoogleCredential.find_by(google_uid: auth_info.uid)
       if credential
         credential
       else
