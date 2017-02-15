@@ -17,7 +17,10 @@
       </section><!-- end login-credentials -->
     <%= submit_tag "Continue", {class: "btn-continue"} %>
     <% end %>
+    <br>
     <h4>OR<h4>
     <%= button_to 'Google Sign In', google_login_path, {class: "btn-google"} %>
+     <%= link_to 'Forgot your password?', password_reset_path %>
   </section><!-- end login-form -->
 </section><!-- end login -->
+

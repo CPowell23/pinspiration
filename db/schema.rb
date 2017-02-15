@@ -116,6 +116,7 @@ ActiveRecord::Schema.define(version: 20170214220848) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "image_url"
+    t.string   "otp_secret_key"
     t.index ["email"], name: "index_pinspiration_credentials_on_email", unique: true, using: :btree
     t.index ["registered_user_id"], name: "index_pinspiration_credentials_on_registered_user_id", using: :btree
     t.index ["username"], name: "index_pinspiration_credentials_on_username", unique: true, using: :btree
