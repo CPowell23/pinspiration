@@ -1,10 +1,23 @@
 <div class='box col4 pin'>
+
+  <div class='pin-icons'>
+    <% if current_user && current_user.already_liked?(pin) %>
+      <%= link_to pin_unlike_path(pin, Like.this_user(pin, current_user)), method: :delete, class: 'unlike-pin' do %>
+        <i class="fa fa-heart" aria-hidden="true"></i>
+      <% end %>
+    <% else %>
+      <%= link_to pin_like_path(pin), method: :post, class: 'like-pin' do %>
+        <i class="fa fa-heart" aria-hidden="true"></i>
+      <% end %>
+    <% end %>
+    <i class="fa fa-paper-plane" aria-hidden="true"></i>
+  </div>
+
   <%= image_tag(pin.image_url) %>
+
   <p><%= pin.description %></p>
   <div class="pin-foot">
-    <% if pin.registered_user.image_url %>
     <%= image_tag(pin.registered_user.image_url) %>
-    <% end %>
     <aside>
       <p><strong><%= link_to pin.registered_user.name, registered_user_path(pin.registered_user.username) %></strong></p>
       <p><%= pin.board.name  %></p>
