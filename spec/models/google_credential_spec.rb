@@ -13,4 +13,5 @@ describe GoogleCredential do
   context "associations" do
     it { is_expected.to belong_to(:registered_user) }
   end
+
 end
