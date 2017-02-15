@@ -22,7 +22,7 @@ describe "Registed user who is not yet logged in" do
     #
     #   expect(current_path).to eq(password_reset_path)
     #   expect(page).to have_content("SMS sent!")
-    # end
+    end
 
   end
 end
