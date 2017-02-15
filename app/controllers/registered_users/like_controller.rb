@@ -1,5 +1,9 @@
 class RegisteredUsers::LikeController < ApplicationController
 
+  def index
+    @user = find_by_username(params[:username])
+  end
+
   def create
     user = find_by_username(params[:username])
     board = user.boards.find_by(name: params[:name])

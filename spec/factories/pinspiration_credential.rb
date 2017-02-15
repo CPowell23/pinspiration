@@ -11,6 +11,7 @@ FactoryGirl.define do
     end
     password "password"
     phone_number "555-555-5555"
+    image_url "https://i2.wp.com/remoran.com/wp/wp-content/uploads/placeholder.png"
     registered_user
   end
 end
