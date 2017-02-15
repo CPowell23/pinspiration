@@ -5,6 +5,26 @@
   box-shadow: none
   cursor: pointer
 
+.btn-follow, .btn-unfollow
+  @extend .btn
+  position: absolute
+  top: 150px
+  left: 345px
+  text-decoration: none
+  height: 15px
+  width: 150px
+  text-align: center
+  padding: 10px 0px
+  font-weight: bold
+
+.btn-follow
+  background-color: $brand-color
+  color: white
+
+.btn-unfollow
+  background-color: $light-gray
+  color: $med-gray
+
 .btn-continue
   @extend .btn
   background-color: $brand-color
@@ -26,7 +46,7 @@
 .btn-deactivate
   background-color: $med-red
   text-decoration: none
-  color: white 
+  color: white
   border-radius: 4px
   font-size: 14px
   font-weight: bold
@@ -41,7 +61,7 @@
 
 .btn-delete
   background-color: $light-gray
-  color: $med-gray 
+  color: $med-gray
   border-radius: 4px
   font-size: 14px
   font-weight: bold
@@ -106,4 +126,3 @@ ul.board-pin-like
   .btn-delete:hover
     background-color: $med-light-gray
     color: $med-dark-gray
-

@@ -11,16 +11,17 @@
       <section class="login-credentials">
         <%= text_field_tag :email, nil, placeholder: "email@example.com" %>
         <%= password_field_tag :password, nil, placeholder: "Password" %>
-        <p class="no-account">
+        <p class="register-and-forgot-password">
           Don't have an account? <%= link_to "Register", new_pinspiration_credential_path %>
+        </p>
+        <p class="register-and-forgot-password">
+          Forgot your password? <%= link_to "Reset Password", password_reset_path %>
         </p>
       </section><!-- end login-credentials -->
     <%= submit_tag "Continue", {class: "btn-continue"} %>
     <% end %>
     <br>
-    <h4>OR<h4>
+    <h4 class="OR">OR<h4>
     <%= button_to 'Google Sign In', google_login_path, {class: "btn-google"} %>
-     <%= link_to 'Forgot your password?', password_reset_path %>
   </section><!-- end login-form -->
 </section><!-- end login -->
-
