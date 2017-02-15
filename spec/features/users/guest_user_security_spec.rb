@@ -3,14 +3,26 @@ require 'rails_helper'
 describe "Guest user workflow" do
   context "An unregisted guest" do
     before do 
-      @board = create(:board)
       category = create(:category)
       @user = create(:registered_user)
+      @user.boards.create(name: Faker::Hipster.unique.words(2).join(""), 
+                                    description: Faker::Hipster.sentence,
+                                    category: category,
+                                    registered_user: @user,
+                                    private: false)
       @private_board = Board.create(name: Faker::Hipster.unique.words(2).join(""), 
                                     description: Faker::Hipster.sentence,
                                     category: category,
                                     registered_user: @user,
                                     private: true)
+      @pins = Pin.create(description: "best ever pin",
+                        image_url: "https://s-media-cache-ak0.pinimg.com/564x/90/5d/a9/905da92511ef7e18b65e5c62cf1db38c.jpg",
+                        article_url: "http://www.ravelry.com/patterns/library/black-roxy",
+                        board: @private_board),
+              Pin.create(description: "next best ever pin",
+                        image_url: "https://s-media-cache-ak0.pinimg.com/564x/90/5d/a9/905da92511ef7e18b65e5c62cf1db38c.jpg",
+                        article_url: "http://www.ravelry.com/patterns/library/black-roxy",
+                        board: @private_board)
     end
 
    scenario "can visit the app login page" do
@@ -30,20 +42,29 @@ describe "Guest user workflow" do
     end
 
     scenario "cannot see private boards or pins" do 
-      visit registered_users_boards_path(@private_board)
+      visit registered_users_boards_path(@private_board.registered_user.username)
+
+      expect(page).not_to have_content(@private_board.name)
+    end
+
+    scenario "cannot see users' private account info" do 
 
       expect(page.status_code).to eq(404)
     end
 
-    scenario "cannot see users' private account info" do 
-      visit pinspiration_credentials_path
+    scenario "cannot edit boards" do 
+      visit registered_users_boards_path(@user.username)
+
+      expect(page).not_to have_button("Edit")
     end
 
-    scenario "cannot edit boards" do 
-    end
     scenario "cannot create boards" do 
     end
+
     scenario "cannot delete boards or pins" do 
+      visit registered_users_boards_path(@user.username)
+
+      expect(page).not_to have_content("Delete")
     end
 
     scenario "cannot follow users" do 
