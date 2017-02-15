@@ -2,20 +2,22 @@
   <section class="navbar">
     <ul>
       <li>
-        <%= link_to root_path do %>
-          <i class="fa fa-pinterest" aria-hidden="true"></i>
-        <% end %>
-      </li>
-
-      <li class="log-out">
         <% if current_admin %>
-          <%= link_to "Log out", admin_logout_path, method: :delete %>
+          <%= link_to admin_dashboard_path do %>
+            <i class="fa fa-pinterest" aria-hidden="true"></i>
+          <% end %>
+        <% else %>
+          <%= link_to root_path do %>
+            <i class="fa fa-pinterest" aria-hidden="true"></i>
+          <% end %>
         <% end %>
       </li>
 
       <li>
-        <% if current_user %>
-          <%= link_to "Log out", logout_path, method: :delete %></i>
+        <% if current_admin %>
+          <%= link_to "Log out", admin_logout_path, method: :delete, class: "log-out" %>
+        <% elsif current_user %>
+          <%= link_to "Log out", logout_path, method: :delete, class: "log-out" %>
         <% end %>
       </li>
 

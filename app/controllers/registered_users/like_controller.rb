@@ -1,5 +1,9 @@
 class RegisteredUsers::LikeController < ApplicationController
 
+  def index
+    @user = find_by_username(params[:username])
+  end
+
   def create
     user = find_by_username(params[:username])
     board = user.boards.find_by(name: params[:name])
@@ -18,7 +22,7 @@ class RegisteredUsers::LikeController < ApplicationController
   private
     def find_by_username(username)
       if GoogleCredential.find_by(username: username)
-        credentials = GoogleCredential.find_by(username)
+        credentials = GoogleCredential.find_by(username: username)
       else
         credentials = PinspirationCredential.find_by(username: username)
       end

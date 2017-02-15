@@ -1,9 +1,5 @@
 <%= link_to "Log in", login_path, class: "btn-login" %>
 
-<div class="jumbotron">
-  <div class="layer">
-  </div>
-</div>
 <section class="login">
   <section class="login-form">
     <%= form_for(PinspirationCredential.new, :url => {:controller => 'pinspiration_credentials', :action => 'create'}) do |f| %>

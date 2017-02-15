@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
   end
 
   def require_login
-    unless current_user
+    unless current_user || current_admin
       redirect_to login_path
     end
   end

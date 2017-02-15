@@ -1,0 +1,19 @@
+<section class='likes'>
+  <h2>Pins</h2>
+  <% @user.likes.where(target_type: 'Pin').each do |like| %>
+    <%= render partial: 'shared/pin', locals: { pin: like.target } %>
+  <% end %>
+
+  <h2>Boards</h2>
+  <% @user.likes.where(target_type: 'Board').each do |like| %>
+    <div class="box col3">
+    <section class="board">
+        <ul>
+          <li class="image"></li>
+          <li class="board-name"><%= like.target.name %></li>
+          <li class="board-pin-count"><%= like.target.pins.count %> pins</li>
+        </ul>
+      </section>
+    </div>
+  <% end %>
+</section>

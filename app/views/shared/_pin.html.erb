@@ -1,11 +1,16 @@
 <div class='box col4 pin'>
   <%= image_tag(pin.image_url) %>
   <p><%= pin.description %></p>
-  <footer>
+  <div class="pin-foot">
+    <% if pin.registered_user.image_url %>
     <%= image_tag(pin.registered_user.image_url) %>
+    <% end %>
     <aside>
       <p><strong><%= link_to pin.registered_user.name, registered_user_path(pin.registered_user.username) %></strong></p>
       <p><%= pin.board.name  %></p>
     </aside>
-  </footer>
+  </div>
+  <% if current_admin %>
+  <%= link_to "Delete", admin_pin_path(pin), method: :delete, class: 'btn-delete' %>
+  <% end %>
 </div>

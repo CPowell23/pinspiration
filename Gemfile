@@ -44,6 +44,7 @@ group :test do
   gem 'shoulda-matchers', '~> 3.1'
   gem 'rack_session_access'
   gem 'factory_girl'
+  gem 'launchy'
 end
 
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
