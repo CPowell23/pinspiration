@@ -47,11 +47,6 @@ describe "Guest user workflow" do
       expect(page).not_to have_content(@private_board.name)
     end
 
-    scenario "cannot see users' private account info" do 
-
-      expect(page.status_code).to eq(404)
-    end
-
     scenario "cannot edit boards" do 
       visit registered_users_boards_path(@user.username)
 
@@ -59,6 +54,9 @@ describe "Guest user workflow" do
     end
 
     scenario "cannot create boards" do 
+      visit new_registered_users_board_path(@user.username)
+
+      expect(page.status_code).to eq(404)
     end
 
     scenario "cannot delete boards or pins" do 
