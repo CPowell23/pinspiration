@@ -1,17 +1,18 @@
 <%= render partial: 'shared/user' %>
-
-<% @following.each do |f| %>
-  <%= link_to registered_user_path(f.username) do %>
-    <section class="follower">
-      <% if f.image_url.present? %>
-        <%= image_tag(f.image_url) %>
-      <% else %>
-        <i class="fa fa-user" aria-hidden="true"></i>
-      <% end %>
-      <%= f.name %>
-      <% if current_user == @user %>
-        <%= link_to "Unfollow", registered_users_following_destroy_path(current_user.username, f.username, :option => 'from_following_index_page'), method: :delete %>
-      <% end %>
-    </section>
+<section class="content">
+  <% @following.each do |f| %>
+    <%= link_to registered_user_path(f.username) do %>
+      <section class="follower">
+        <% if f.image_url.present? %>
+          <%= image_tag(f.image_url) %>
+        <% else %>
+          <i class="fa fa-user" aria-hidden="true"></i>
+        <% end %>
+        <%= f.name %>
+        <% if current_user == @user %>
+          <%= link_to "Unfollow", registered_users_following_destroy_path(current_user.username, f.username, :option => 'from_following_index_page'), method: :delete %>
+        <% end %>
+      </section>
+    <% end %>
   <% end %>
-<% end %>
+</section>

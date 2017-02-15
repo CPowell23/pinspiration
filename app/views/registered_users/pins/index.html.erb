@@ -1,7 +1,8 @@
 <%= render partial: 'shared/user' %>
-
-<div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
-  <% @pins.each do |pin| %>
-    <%= render partial: "shared/pin", locals: { pin: pin} %>
-  <% end %>
-</div>
+<section class="content">
+  <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
+    <% @pins.each do |pin| %>
+      <%= render partial: "shared/pin", locals: { pin: pin} %>
+    <% end %>
+  </div>
+</section>
