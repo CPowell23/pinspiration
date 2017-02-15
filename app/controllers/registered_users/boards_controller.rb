@@ -15,6 +15,8 @@ class RegisteredUsers::BoardsController < ApplicationController
   def new
     if current_user
       @board = @user.boards.new()
+    elsif current_admin
+      redirect_to :status => 404
     else 
       redirect_to :status => 404
     end
