@@ -1,10 +1,14 @@
-<h1>Add a New Board</h1>
+<section class="docs-container">
+  <h1>Add a New Board</h1>
 
-<%= link_to 'Cancel', registered_users_boards_path(current_user.username) %>
-<%= form_for :board, url: "/#{current_user.username}/boards" do |f| %>
-  <%= f.text_field :name, placeholder: "name" %>
-  <%= f.text_field :description, placeholder: "description" %>
-  <%= f.collection_select :category, Category.all, :id, :name, :prompt => 'Select Category' %>
-  <%= f.select :private, ['public', 'private'], selected: 'public' %>
-  <%= submit_tag "Submit" %>
-<% end %>
+  <form class="new-board">
+  <%= form_for :board, url: "/#{current_user.username}/boards" do |f| %>
+    <%= f.text_field :name, placeholder: "Board Name" %>
+    <%= f.text_field :description, placeholder: "Description, i.e. 'Recipies to Try'" %>
+    <%= f.collection_select :category, Category.all, :id, :name, :prompt => 'Select Category' %>
+    <%= f.select :private, ['public', 'private'], selected: 'public' %>
+  </form>
+    <%= submit_tag "Create", {class: "btn-continue"} %>
+    <%= link_to 'Cancel', registered_users_boards_path(current_user.username), class: "btn-deactivate" %>
+  <% end %>
+</section>
