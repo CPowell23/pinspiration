@@ -20,6 +20,7 @@ describe "Guest user workflow" do
       expect(page).to have_content("Welcome to Pinspirations")
       expect(page).to have_button("Continue")
       expect(page).to have_button("Google Sign In")
+      expect(page).not_to have_selector(:link_or_button, "Log out")
     end
 
     scenario "can see public pins on public boards via url" do 
@@ -38,10 +39,32 @@ describe "Guest user workflow" do
       visit pinspiration_credentials_path
     end
 
-    
-#follow users
-#log themselves in as an admin
-#set users to online / offline
-#create, edit, or delete pins / boards / comments made by other users
+    scenario "cannot edit boards" do 
+    end
+    scenario "cannot create boards" do 
+    end
+    scenario "cannot delete boards or pins" do 
+    end
+
+    scenario "cannot follow users" do 
+      visit registered_users_boards_path(@user.username)
+
+      expect(page).not_to have_button("Follow")
+    end
+
+    scenario "cannot see admin content" do 
+      visit admin_login_path
+
+      expect(page.status_code).to eq(200)
+      expect(page).not_to have_selector(:link_or_button, "Log out")
+
+      fill_in "password", with: "hackingstuff"
+      click_on "Log in"
+
+      expect(page).to have_content("Email and password combination does not exist")
+
+      expect(current_path).to eq(admin_login_path)
+    end
+
   end
 end
