@@ -1,14 +1,15 @@
-<h1>Enter the confirmation pin that was sent to you via SMS and a new password</h1>
+  <section class='edit'>
+    <section class="password-reset">
+      <h2>Enter the 6-digit confirmation pin that was sent to you via SMS and a new password.</h2>
 
-  <%= form_tag({controller: "passwords", action: "verify_confirm"}, :method => :put) do %> </br>
+      <%= form_tag({controller: "passwords", action: "verify_confirm"}, :method => :put) do %>
+        <section class="login-credentials">
+          <%= text_field_tag :pin, nil, placeholder: "******" %>
+          <%= password_field_tag :password, nil, placeholder: "new password" %>
+          <%= hidden_field_tag :email, params[:email] %>
+        </section>
+        <%= submit_tag "Update Password", {class: "btn-continue"} %>
+      <% end %>
 
-    <%= label_tag :pin %>
-    <%= text_field_tag :pin %>
-
-    <%= label_tag :password %>
-    <%= password_field_tag :password %>
-
-    <%= hidden_field_tag :email, params[:email] %>
-
-    <%= submit_tag :submit %>
-  <% end %>
+    </section>
+  </section>
