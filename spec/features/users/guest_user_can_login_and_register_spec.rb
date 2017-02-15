@@ -33,7 +33,7 @@ describe "Guest login workflow" do
       click_on("Google Sign In")
 
       expect(page.status_code).to eq(200)
-      expect(page).to have_content("Thank you for registering through google. Enjoy Pinspiration!")
+      expect(page).to have_content("Successfully logged in")
       expect(current_path).to eq(root_path)
     end
 
