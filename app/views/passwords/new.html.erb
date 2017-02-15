@@ -3,7 +3,7 @@
     <h2>Let's find your Pinspirations account</h2>
     <p>Enter your e-mail address below to send an SMS to your account number with directions on how to reset your password.</p>
 
-    <%= form_tag password_reset_path, :method => :post do %></br>
+    <%= form_tag password_reset_path, :method => :post do %>
     <section class="search">
       <%= text_field_tag :email, params[:email], placeholder: "email@example.com" %>
       <%= submit_tag "Send SMS", {class: "btn-continue"} %>
