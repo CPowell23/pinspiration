@@ -29,7 +29,6 @@ describe "Board Edit Errors" do
 
   it "is unable to save board without name" do
     visit registered_users_edit_board_path(@username, @board.name)
-    # byebug
     within "form" do
       fill_in "board[name]", with: nil
       fill_in "board[description]", with: "100% authentic"
