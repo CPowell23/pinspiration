@@ -7,7 +7,7 @@ class RegisteredUser < ApplicationRecord
   has_many :pins, through: :boards
   has_many :comments
   has_many :likes
-  has_many :developer_credentials
+  has_many :developer_credentials, dependent: :destroy
 
   has_many :follower_joins, class_name: "FollowJoin", foreign_key: :registered_user_id
   has_many :followers, class_name: "RegisteredUser", through: :follower_joins
@@ -54,7 +54,7 @@ class RegisteredUser < ApplicationRecord
     end
     liked.include?(true)
   end
-    
+
   def destroy_credentials
     if pinspiration_credentials
       pinspiration_credentials.destroy_all
