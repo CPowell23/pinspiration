@@ -2,6 +2,38 @@ class Seed
 
   def initialize
     @categories = (%w(DIY Food Home Style Beauty Humor Travel Shopping Animals Architecture Art Cars Celebs Design Education Entertainment Gardens Geek Health History Holiday Illustrations Kids Outdoors Photography Quotes Science Sports Tattoos Tech Weddings))
+    @pin_images = ["http://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals-2/cute-baby-animals-2-2.jpg",
+                    "http://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals/cute-baby-animals-13.jpg",
+                    "https://i.ytimg.com/vi/1LqyOX12_nQ/maxresdefault.jpg",
+                    "http://imgs.abduzeedo.com/files/articles/baby-animals/Baby-Animals-011.jpg",
+                    "https://pbs.twimg.com/profile_images/618186189917413376/WMkxLMMG.jpg",
+                    "http://www.godvine.com/pics/Baby-Animals/Baby%20Seal.jpg",
+                    "http://static.boredpanda.com/blog/wp-content/uuuploads/cute-baby-animals/cute-baby-animals-2.jpg",
+                    "http://www.funcage.com/blog/wp-content/uploads/2011/01/FunCage-cute-baby-animal-1-480x320.jpg",
+                    "http://www.funcage.com/blog/wp-content/uploads/2011/01/FunCage-cute-baby-animal-7.jpg",
+                    "https://i.ytimg.com/vi/QpnmL96l0mA/maxresdefault.jpg",
+                    "http://dailynewsdig.com/wp-content/uploads/2013/05/Cutest-Baby-Animals-top-10-5.jpg",
+                    "http://static.boredpanda.com/blog/wp-content/uploads/2014/12/cutest-baby-animals-24__605.jpg",
+                    "https://img.buzzfeed.com/buzzfeed-static/static/2015-12/21/10/campaign_images/webdr14/a-definitive-ranking-of-the-cutest-baby-animals-2-27983-1450711830-8_dblbig.jpg",
+                    "http://a57.foxnews.com/images.foxnews.com/content/fox-news/science/slideshow/2014/04/10/cuddly-critters-cutest-baby-animals/_jcr_content/slideshow-par/slide_image0/image.img.jpg/0/549/1422687145031.jpg?ve=1&tl=1?ve=1",
+                    "https://img.buzzfeed.com/buzzfeed-static/static/2014-01/enhanced/webdr06/8/22/enhanced-buzz-30136-1389237295-0.jpg",
+                    "http://www.window-blinds-project.com/image-files/patio-ideas-5.jpg",
+                    "http://www.eclipseawning.com/wp-content/uploads/natural-patio-design.jpg",
+                    "http://patiodesignpictures.com/image/20/Backyard-Patios-Pictures-1.jpg",
+                    "http://hgtvhome.sndimg.com/content/dam/images/hgtv/fullset/2011/4/26/0/RMS-Trudie_deck-umbrella-upholstery-garden-outdoor_s4x3.jpg.rend.hgtvcom.966.725.jpeg",
+                    "http://hgtvhome.sndimg.com/content/dam/images/hgrm/fullset/2011/6/29/6/DesignLens_seaside-patio_s4x3.jpg.rend.hgtvcom.616.462.jpeg",
+                    "http://charlotte.archadeck.com/images/gallery/23/library/125.jpg",
+                    "http://ab.pbimgs.com/pbimgs/ab/images/dp/wcm/201640/0015/holman-shelves-o.jpg",
+                    "http://rk.pbimgs.com/pbimgs/rk/images/dp/wcm/201640/0009/savannah-ikat-print-pillow-cover-c.jpg",
+                    "https://s-media-cache-ak0.pinimg.com/736x/78/82/b4/7882b4e8ec5d4a23ce0bf78848e4bd39.jpg",
+                    "http://blog.potterybarn.com/wp-content/uploads/2013/06/fall-preview-image.jpg",
+                    "https://s-media-cache-ak0.pinimg.com/736x/96/bf/0d/96bf0dcea0f4e6236bb0058dc7cd6d62.jpg",
+                    "https://s-media-cache-ak0.pinimg.com/originals/9e/3e/ad/9e3ead7f38beaa126dfc400d8b877ffe.jpg"]
+    @user_images = ["https://avatars1.githubusercontent.com/u/16562801?v=3&s=400",
+                    "https://avatars1.githubusercontent.com/u/18703294?v=3&s=400",
+                    "https://avatars1.githubusercontent.com/u/8581642?v=3&s=400",
+                    "https://media.licdn.com/mpr/mpr/shrinknp_400_400/p/1/005/072/08c/00a7572.jpg",
+                    "https://avatars1.githubusercontent.com/u/15188446?v=3&s=460"]
   end
 
   def self.start
@@ -39,6 +71,7 @@ class Seed
                                                               username: "marthastewart",
                                                               email: "martha@marthastewart.com",
                                                               password: "password",
+                                                              image_url: "https://assets.entrepreneur.com/content/16x9/822/4-secrets-lifelong-success-martha-stewart.jpg",
                                                               phone_number: Faker::PhoneNumber.phone_number,)
   end
 
@@ -64,7 +97,7 @@ class Seed
       email: Faker::Internet.unique.email,
       password: Faker::Internet.password,
       phone_number: Faker::PhoneNumber.phone_number,
-      image_url: Faker::Placeholdit.image
+      image_url: @user_images.sample
       )
     puts "Pinspiration Credentials: #{pinspiration_credential.name} created!"
   end
@@ -75,7 +108,7 @@ class Seed
       name: Faker::Name.name,
       username: Faker::Internet.unique.user_name,
       phone_number: Faker::PhoneNumber.phone_number,
-      image_url: Faker::Placeholdit.image
+      image_url: @user_images.sample
       )
     puts "Google Credentials: #{google_credential.name} created!"
   end
@@ -104,7 +137,7 @@ class Seed
     5.times do |i|
       pin = board.pins.create!(
         description: Faker::Hipster.sentence,
-        image_url: Faker::Placeholdit.image,
+        image_url: @pin_images.sample,
         article_url: Faker::Internet.url
       )
       generate_comments(pin)

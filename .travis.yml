@@ -1,14 +1,17 @@
 language: ruby
 rvm:
-  - 2.3.0
+- 2.3.0
 services:
-  - postgresql
+- postgresql
 env:
+  matrix:
   - TEST_DIRECTORY=spec/models
   - TEST_DIRECTORY=spec/features
+  - secure: l5sfrj5t6nfWuybimtjCze6c/3yAZYv95TlmylwkJPse3EZsY/kNuwtCXHdYUghJ08q8gVbpRpdycGJFerJ8TfYnK769R0kuqW2GjnhmAKTBNbsyarIv3byByAWt2qOQuXmQyXNGSG3b3Za9g9cXAoqXGARfH6wVyCGG+XItwQ/jvg6NIFdpkWU/mJOJaQb3jl52/1btc6l5AX3dvE/RJnKhwRKm+V18v96cjMKoo38dGkvQ5yKRjLxODr7j9E0+ApFKLDNz2oV+eDp/s3eoJwdPENxzdst8G4CU0OFmJ75xvZXN+j1Tz4HR8mGpT4ZVimR961Goh4cy0Tm6VI52ueEx39TYZXtzu5YC0+jVn+r6mKOT9VAauhPUKZUKov+xyPqZk898pC198W2ObgRoS3x83fN9CX5zkH+w69KfuG6ggt5qcPDpA9r3t/5G787kT+JKh62c1nSvXNsj4L8nEhzYO1/SZIP5He2MFbOD52wNOjCAcQVVkQc4Tk2Ej7WKdCzpbRQvCEq9YTVN4wKcelJFu0q7xoqOkNJwv4nOV4v9VM1HyYfqemwOKUzoQUKUZNU4wrkFsqv3dLnr5FtMxLTw+yDGpX88qCxQPhFOzmkikh9LD3YKy+bmWBvuTyCF9iKgwOrKUUatv89ua5JaD/pKXvX7mrJ0Vv9mrextzqM=
+  - secure: YckIQo5NcDtI4nAf/suo6v3oEkon/VATQi75y7l4yiNC6L3Gba6XlwdxgYjeO9OvcRwynnh4r/oYM7d+yX6fICYtoFX2BQRx3uMrI1YK99dy/TEPiJPNnj+Nh1YwRn1ydIckoV3G/8TfYVzLZ3Z3rLpZh2lKEsnpJeBVGRIqDlLeWlI9RzOjjJIs8IE6Ww+CGtYNqMAHLnwXAUND/ZBphXfDc8L+9m2wXRwaRt8QWh1xhKUPnpjThSOQzBa3kG+17uLfaBje+CUU7Ao384WdZ7FXrF7jYzDkP8o0VuQhFvWrUQ7SKYUqW8kfhKUGpct/OGKIlS85zrXpcr2PDrKlvU8jGLIxe6deP/t4jzTB+JzUEybI9GMsS5HeBIpf1xq1xO+X/c7Ve0f67ymG1vjfXHLv73TEphSReHAr0bWtuA+ej4CRaSr6VuAEn3TmVA260QS/6yXF+9yAzg1Dpdx2+fvG8O079Vj/jyHV6zH1HzHOT4n3Hq1Ki7BfEu3gU3BMOaZSAByUyoOXmijgxkBI7IL/9woGeQOwxckzdb8yI8vLVRje1o1jH9uc5yhpMOST0eDIxYEFxYg/XafpBKXvH4YKZnUc147lgPSVyu66l1oueYsvb+hqCwi8UrYQG1wgZPM07Zkb6w5jX/4vYYhKlZ1wIXZ2fYhFJpTS9U1iGis=
 before_script:
-  - psql -c 'create database travis_ci_test;' -U postgres
+- psql -c 'create database travis_ci_test;' -U postgres
 script:
-  - xvfb-run bundle exec rspec $TEST_DIRECTORY
+- xvfb-run bundle exec rspec $TEST_DIRECTORY
 cache: bundler
 sudo: false
