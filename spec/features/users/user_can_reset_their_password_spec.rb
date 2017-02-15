@@ -32,6 +32,8 @@ describe "Registed user who is not yet logged in" do
   end
 end
 
+# "stupid change here"
+
 # allow_any_instance_of(Credential).to recieve(:reset_pin).and_retrun("123456")
 # expect(TwilioService).to recieve(:search).with({params})
 
