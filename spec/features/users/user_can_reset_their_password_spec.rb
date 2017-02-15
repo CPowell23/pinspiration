@@ -8,7 +8,7 @@ describe "Registed user who is not yet logged in" do
                                                         username: "jane97",
                                                         email: "jane97@gmail.com",
                                                         password: "1234",
-                                                        phone_number: "303-883-4351",
+                                                        phone_number: "1-500-555-0006",
                                                         registered_user_id: @registered_user.id)
 
       visit login_path
