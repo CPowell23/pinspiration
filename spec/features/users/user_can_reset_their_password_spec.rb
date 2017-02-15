@@ -1,13 +1,8 @@
 require 'rails_helper'
 
 describe "Registed user who is not yet logged in" do
-  # before(:each) do
-  #   stub_const("Twilio::REST::Client", FakeSMS)
-  # end
-
   context "a registered user" do
     scenario "I can send a sms to reset my password" do
-      # @credential = create(:pinspiration_credential)
       @registered_user = RegisteredUser.create!(status: 1)
       @credential      = PinspirationCredential.create!(name: "Jane",
                                                         username: "jane97",
@@ -17,7 +12,7 @@ describe "Registed user who is not yet logged in" do
                                                         registered_user_id: @registered_user.id)
 
       visit login_path
-      click_link("Forgot your password?")
+      click_link("Reset Password")
 
       expect(current_path).to eq(password_reset_path)
 
@@ -31,26 +26,3 @@ describe "Registed user who is not yet logged in" do
 
   end
 end
-
-# "stupid change here"
-
-# allow_any_instance_of(Credential).to recieve(:reset_pin).and_retrun("123456")
-# expect(TwilioService).to recieve(:search).with({params})
-
-# class FakeSMS
-#   Message = Struct.new(:from, :to, :body)
-#
-#   cattr_accessor :messages
-#   self.messages = []
-#
-#   def initialize(_account_sid, _auth_token)
-#   end
-#
-#   def messages
-#     self
-#   end
-#
-#   def create(from:, to:, body:)
-#     self.class.messages << Message.new(from: from, to: to, body: body)
-#   end
-# end
