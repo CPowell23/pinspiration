@@ -8,5 +8,7 @@
   <%= f.label :email %>
   <%= f.text_field :email %>
 
+  <%= f.submit "Save Settings" %>
 <% end %>
 
+<%= link_to "Cancel", registered_user_path(@credentials.username) %>
