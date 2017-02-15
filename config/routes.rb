@@ -12,6 +12,10 @@ Rails.application.routes.draw do
     # resources :registered_users, only: [:update]
   end
 
+  get '/password_reset', to: 'passwords#new'
+  post '/password_reset', to: 'passwords#verify'
+  put '/password_reset', to: 'passwords#verify_confirm', as: "update_password"
+
   resources :pins, except: [:index] do
     resources :comments, only: [:new, :create, :destroy], :controller => "pins/comments"
   #  post '/comments', to: 'comments#create'
@@ -51,4 +55,5 @@ Rails.application.routes.draw do
   get '/:username', to: 'registered_users#show', as: "registered_user"
   get '/:username/pins', to: 'pins#index', as: 'pins_index'
   delete '/:username', to: 'registered_users#destroy'
+
 end
