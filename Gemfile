@@ -24,6 +24,8 @@ gem 'figaro'
 gem 'twilio-ruby', '~> 4.11.1'
 gem 'active_model_otp'
 gem 'faker'
+gem 'faraday'
+gem 'httparty'
 
 group :development, :test do
   gem 'byebug', platform: :mri

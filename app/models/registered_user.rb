@@ -7,6 +7,7 @@ class RegisteredUser < ApplicationRecord
   has_many :pins, through: :boards
   has_many :comments
   has_many :likes
+  has_many :developer_credentials
 
   has_many :follower_joins, class_name: "FollowJoin", foreign_key: :registered_user_id
   has_many :followers, class_name: "RegisteredUser", through: :follower_joins
