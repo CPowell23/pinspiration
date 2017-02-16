@@ -10,7 +10,7 @@ class BoardPresenter
   def find_user(username)
     credentials = PinspirationCredential.find_by(username: username)
     if credentials 
-      @user = creditals.registered_user
+      @user = credentials.registered_user
     else
       @user = GoogleCredential.find_by(username: username).registered_user
     end
