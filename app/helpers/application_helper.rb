@@ -1,10 +1,10 @@
 module ApplicationHelper
   def page_is_not_login_or_create?
-    !page_is_login_or_create?
+    !page_is_login_or_create? && !page_is_admin_login?
   end
 
   def page_is_login_or_create?
-    current_uri(request) == "/login" || current_uri(request) == "/pinspiration_credentials/new"
+    current_uri(request) == "/login" || current_uri(request) == "/pinspiration_credentials/new" || current_uri(request) == "/admin/login" 
   end
 
   def current_uri(request)
