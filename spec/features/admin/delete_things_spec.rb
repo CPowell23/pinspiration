@@ -30,7 +30,7 @@ require "rails_helper"
       it "from the board show page" do
         visit registered_users_board_path(@username, @board_1.name)
 
-        within ".board" do
+        within ".board-show" do
           click_on "Delete"
         end
 
@@ -47,7 +47,7 @@ require "rails_helper"
 
       it "from the pin index page" do
         visit registered_users_pins_path(@username)
-        
+
         within ".pin:nth-of-type(1)" do
           expect(page).to have_selector(:link_or_button, "Delete")
         end
