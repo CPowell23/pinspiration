@@ -73,6 +73,10 @@ class RegisteredUsers::BoardsController < ApplicationController
 
     def get_user
       @user = find_by_username(params[:username])
+      if @user.status == 'offline'
+        flash_message_user_deactivated
+        redirect_to root_path
+      end 
     end
 
     def get_private_content
