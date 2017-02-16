@@ -1,26 +1,63 @@
 <section class="board">
-  <% if current_user == @board_presenter.user %>
-    <%= link_to 'Edit', registered_users_edit_board_path(@board_presenter.user.username, @board_presenter.board.name)%>
-    <%= link_to 'Delete', registered_users_board_path(@board_presenter.user.username, @board_presenter.board.name), method: :delete %>
-  <% end %>
-  <% if current_admin %>
-    <%= button_to "Delete", admin_board_path(@board_presenter.board), method: :delete %>
-  <% end %>
-  <%= @board_presenter.board.name %>
-  <%= @board_presenter.board.description %>
-  <%= @board_presenter.board.privacy %>
-  <%= @board_presenter.user.name %>
+
+  <ul class="board-icons">
+    <li class="left">
+      <i class="fa fa-pencil" aria-hidden="true"></i>
+    </li>
+    <li>
+      <i class="fa fa-arrows" aria-hidden="true"></i>
+    </li>
+    <li>
+      <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
+    </li>
+  </ul>
+
+  <ul class="board-info">
+    <li>
+      <h1><%= @board_presenter.board.name %></h1>
+      <p><strong><%= @board_presenter.pins.count %></strong> Pins</p>
+      <p><strong><%= @board_presenter.user.followers.count %></strong> Followers</p>
+      </br>
+      <p><%= @board_presenter.board.description %></p>
+      <p><%= link_to "Followers", registered_users_followers_path(@board_presenter.user.username) %></p>
+      </br>
+      <% if @board_presenter.board.privacy == "private" %>
+        <i class="fa fa-lock" aria-hidden="true"></i>
+      <% end %>
+    </li>
+
+    <li>
+      <% if current_user == @board_presenter.user %>
+        <%= link_to 'Edit', registered_users_edit_board_path(@board_presenter.user.username, @board_presenter.board.name)%>
+        <%= link_to 'Delete', registered_users_board_path(@board_presenter.user.username, @board_presenter.board.name), method: :delete %>
+      <% end %>
+      <% if current_admin %>
+        <%= button_to "Delete", admin_board_path(@board_presenter.board), method: :delete %>
+      <% end %>
+    </li>
+    <li class="board-user-image">
+      <% if @board_presenter.user.image_url.present? %>
+      <%= image_tag(@board_presenter.user.image_url) %>
+      <% else %>
+      <i class="fa fa-rocket board-user-small" aria-hidden="true"></i>
+      <% end %>
+    </li>
+    <li>
+      <% if current_user && current_user != @board_presenter.user %>
+        <% if current_user.already_liked?(@board_presenter.board) %>
+          <%= link_to "Unlike", registered_users_board_unlike_path(@board_presenter.user.username, @board_presenter.board.name, Like.this_user(@board_presenter.board, current_user)), method: :delete %>
+        <% else %>
+          <%= link_to "Like", registered_users_board_like_path(@board_presenter.user.username, @board_presenter.board.name), method: :post %>
+        <% end %>
+      <% end %>
+    </li>
+  </ul>
 </section>
 
-<% if current_user && current_user != @board_presenter.user %>
-  <% if current_user.already_liked?(@board_presenter.board) %>
-    <%= link_to "Unlike", registered_users_board_unlike_path(@board_presenter.user.username, @board_presenter.board.name, Like.this_user(@board_presenter.board, current_user)), method: :delete %>
-  <% else %>
-    <%= link_to "Like", registered_users_board_like_path(@board_presenter.user.username, @board_presenter.board.name), method: :post %>
-  <% end %>
-<% end %>
-
-<% @board_presenter.pins.each do |pin| %>
-  <%= pin.description %>
-  <%= image_tag("#{pin.image_url}") %>
-<% end %>
+<section class="content">
+  <div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
+    <% @board_presenter.pins.each do |pin| %>
+      <%= render partial: "shared/pin", locals: { pin: pin} %>
+    <% end %>
+  </div>
+</section>
