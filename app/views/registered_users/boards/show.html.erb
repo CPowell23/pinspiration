@@ -1,9 +1,30 @@
 <section class="board-show">
 
   <ul class="board-show-icons">
-    <li class="left">
-      <i class="fa fa-pencil" aria-hidden="true"></i>
-    </li>
+      <% if current_user == @board_presenter.user %>
+        <li class="left">
+          <%= link_to "Edit", registered_users_edit_board_path(@board_presenter.user.username, @board_presenter.board.name) %>
+          <%= link_to registered_users_edit_board_path(@board_presenter.user.username, @board_presenter.board.name) do %>
+          <i class="fa fa-pencil" aria-hidden="true"></i>
+        </li>
+        <% end %>
+      <% end %>
+      <% if current_user == @board_presenter.user %>
+        <li>
+          <%= link_to "Delete", registered_users_board_path(@board_presenter.user.username, @board_presenter.board.name), method: :delete %>
+          <%= link_to registered_users_board_path(@board_presenter.user.username, @board_presenter.board.name), method: :delete do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </li>
+        <% end %>
+      <% end %>
+      <% if current_admin %>
+        <li>
+          <%= link_to "Delete", admin_board_path(@board_presenter.board), method: :delete %>
+          <%= link_to admin_board_path(@board_presenter.board), method: :delete do %>
+          <i class="fa fa-trash" aria-hidden="true"></i>
+        </li>
+        <% end %>
+      <% end %>
     <li>
       <i class="fa fa-arrows" aria-hidden="true"></i>
     </li>
@@ -11,6 +32,7 @@
       <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
     </li>
   </ul>
+
 
   <ul class="board-show-info">
     <li>
@@ -22,16 +44,6 @@
       </br>
       <% if @board_presenter.board.privacy == "private" %>
         <i class="fa fa-lock" aria-hidden="true"></i>
-      <% end %>
-    </li>
-
-    <li>
-      <% if current_user == @board_presenter.user %>
-        <%= link_to 'Edit', registered_users_edit_board_path(@board_presenter.user.username, @board_presenter.board.name)%>
-        <%= link_to 'Delete', registered_users_board_path(@board_presenter.user.username, @board_presenter.board.name), method: :delete %>
-      <% end %>
-      <% if current_admin %>
-        <%= button_to "Delete", admin_board_path(@board_presenter.board), method: :delete %>
       <% end %>
     </li>
 
