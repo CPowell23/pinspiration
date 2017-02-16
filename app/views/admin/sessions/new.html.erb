@@ -3,11 +3,11 @@
     <%= form_tag( url: admin_login_path ) do %>
       <i class="fa fa-pinterest" aria-hidden="true"></i>
       <h2>Admin Log in</h2>
-      
+
       <section class="login-credentials">
         <%= text_field_tag :email, placeholder = "Email" %>
         <%= password_field_tag :password, placeholder = "Password" %>
-        <%= submit_tag "Log in", {class: "btn-continue"} %>
+        <%= button_tag "Log in", {class: "btn-continue"} %>
       </section>
     <% end %>
   </section>

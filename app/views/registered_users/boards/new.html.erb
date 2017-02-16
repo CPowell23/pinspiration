@@ -7,8 +7,8 @@
     <%= f.text_field :description, placeholder: "description" %>
     <%= f.collection_select :category, Category.all, :id, :name, :prompt => 'Select Category' %>
     <%= f.select :private, ['public', 'private'], selected: 'public' %>
-    <%= submit_tag "Create", {class: "btn-continue"} %>
+    <%= button_tag "Create", {class: "btn-continue btn-wide"} %>
   </section>
   <% end %>
-  <%= link_to 'Cancel', registered_users_boards_path(current_user.username), class: "btn-deactivate" %>
+  <%= link_to 'Cancel', registered_users_boards_path(current_user.username), class: "btn-deactivate btn-wide" %>
 </section>

@@ -3,7 +3,7 @@
 
 <h2>Creating your API key</h2>
 <p><a href='#'>Register</a> for an API key. After you have registered, use the key provided to access the endpoints supported through this API.</p>
-<% if current_user && current_user.developer_credentials %>
+<% if current_user && current_user.developer_credentials.first %>
   <h3>Your API key:</h3>
   <div class="api-key">
     <%= current_user.developer_credentials.first.api_key %>
