@@ -1,4 +1,4 @@
-<div id="masonry-container" class="transitions-enabled infinite-scroll centered clearfix">
+<div id="masonry-container" class="masonry">
   <% @activity.each do |pin| %>
     <%= render partial: "shared/pin", locals: { pin: pin } %>
   <% end %>

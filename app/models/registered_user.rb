@@ -63,4 +63,11 @@ class RegisteredUser < ApplicationRecord
     end
   end
 
+  def self.most_followed_user
+    self.find(FollowJoin.group('registered_user_id')
+          .order('count(*) DESC')
+          .count('id')
+          .first[0])
+  end
+
 end
