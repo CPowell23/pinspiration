@@ -35,6 +35,7 @@ Rails.application.routes.draw do
   delete '/logout', to: 'sessions#destroy'
   get '/:username/edit', to: 'registered_users#edit', as: 'edit_registered_user'
   patch '/:username/deactiveate', to: 'registered_users#deactivate', as: 'deactivate_registered_user'
+  patch '/:username/reactivate', to: 'registered_users#reactivate', as: 'reactivate_registered_user'
 
   resources :pinspiration_credentials, only: [:new, :create, :update]
 

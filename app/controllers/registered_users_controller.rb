@@ -40,4 +40,18 @@ class RegisteredUsersController < ApplicationController
     end
   end
 
+  def reactivate
+    user = find_user_by_username(params[:username]) 
+    if current_admin
+      user.update(status: 'online')
+      flash_message_account_reactivated
+      redirect_to edit_registered_user_path(user.username) 
+    elsif current_user == user 
+      user.update(status: 'online')
+      session[:registered_user_id] = user.id
+      flash_message_account_reactivated
+      redirect_to root_path
+    end
+  end
+
 end
