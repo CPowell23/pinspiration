@@ -25,6 +25,25 @@
   background-color: $light-gray
   color: $med-gray
 
+.btn-follow-index, .btn-unfollow-index
+  @extend .btn
+  display: block
+  text-decoration: none
+  height: 15px
+  width: 150px
+  text-align: center
+  padding: 10px 0px
+  font-weight: bold
+  margin: 0 auto
+
+.btn-follow-index, .btn-unfollow-index:hover
+  background-color: $brand-color
+  color: white
+
+.btn-unfollow-index, .btn-follow-index:hover
+  background-color: $med-gray
+  color: $light-gray
+
 .btn-continue
   @extend .btn
   background-color: $brand-color

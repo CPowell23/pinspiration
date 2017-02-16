@@ -11,6 +11,12 @@
           <% end %>
           <span> <%= f.name %> </span>
         <% end %>
+
+        <% if current_user && current_user.followings.include?(f) %>
+          <%= link_to "Unfollow", registered_users_following_destroy_path(current_user.username, f.username, :option => 'from_follower_index_page'), method: :delete, class: "btn-unfollow-index" %>
+        <% elsif current_user %>
+          <%= link_to "Follow", registered_users_following_create_path(current_user.username, f.username), method: :post, class: "btn-follow-index" %>
+        <% end %>
       </div><!-- end col4 -->
     <% end %>
   </div><!-- end masonry -->
