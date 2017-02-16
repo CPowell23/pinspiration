@@ -1,55 +1,65 @@
-<% if current_user && current_user != @pin.registered_user %>
-  <% if current_user.already_liked?(@pin) %>
-    <%= link_to "Unlike", pin_unlike_path(@pin, Like.this_user(@pin, current_user)), method: :delete %>
-  <% else %>
-    <%= link_to "Like", pin_like_path(@pin), method: :post %>
-  <% end %>
-<% end %>
-<%= link_to "Edit", edit_pin_path(@pin) %>
-
-<section class="pin">
-  <% if current_admin %>
-    <%= link_to "Delete", admin_pin_path(@pin), method: :delete %>
-  <% end %>
-  <%= image_tag(@pin.image_url) %>
-  <h4> <%= @pin.description %> </h4>
-</section>
-
-<button class="show">Show Comments
-  <i class="fa fa-caret-down" aria-hidden="true"></i>
-</button>
-
-<button class="hide">Hide Comments
-  <i class="fa fa-caret-up" aria-hidden="true"></i>
-</button>
-
-
-<% @comments.each do |comment| %>
-  <section class="comment">
-    <h4> <%= comment.registered_user.username %> </h4>
-    <p> <%= comment.content %> </p>
-
-    <% if comment.registered_user == current_user %>
-      <%= link_to "Delete", pin_comment_path(@pin, comment), method: :delete %>
-    <% elsif current_admin %>
-      <%= link_to "Delete", admin_comment_path(comment), method: :delete %>
+<section class='pin-show'>
+  <div class='buttons'>
+    <% if current_user && current_user != @pin.registered_user %>
+      <% if current_user.already_liked?(@pin) %>
+        <%= link_to "Unlike", pin_unlike_path(@pin, Like.this_user(@pin, current_user)), method: :delete, class: 'btn-standard' %>
+      <% else %>
+        <%= link_to pin_like_path(@pin), method: :post, class: 'btn-standard' do %>
+          <i class="fa fa-heart" aria-hidden="true"></i> Like
+        <%end%>
+      <% end %>
     <% end %>
-  <% if current_user && current_user != comment.registered_user %>
-    <% if current_user.already_liked?(comment) %>
-      <%= link_to "Unlike", pin_comment_unlike_path(@pin, comment, Like.this_user(comment, current_user)), method: :delete %>
-    <% else %>
-      <%= link_to "Like", pin_comment_like_path(@pin, comment), method: :post %>
+    <%= link_to "Edit", edit_pin_path(@pin), class: 'btn-standard' %>
+  </div>
+
+  <section class="pin">
+    <% if current_admin %>
+      <%= link_to "Delete", admin_pin_path(@pin), method: :delete %>
     <% end %>
-  <% end %>
+    <%= image_tag(@pin.image_url) %>
+    <h4> <%= @pin.description %> </h4>
   </section>
-<% end %>
 
-<% if current_user %>
-  <%= form_for [@pin, @comment] do |f| %>
+  <button class="show">Comments
+    <i class="fa fa-caret-down" aria-hidden="true"></i>
+  </button>
 
-    <h4> <%= current_user.username %> </h4>
-    <%= f.text_field :content, placeholder: "Add a comment..." %>
+  <section class="comments">
+    <% @comments.each do |comment| %>
+      <section class="comment">
+        <%= image_tag(comment.registered_user.image_url) %>
+        <div class='user-info'>
+          <h4> <%= comment.registered_user.username %> </h4>
+          <p> <%= comment.content %> </p>
+        </div>
 
-    <%= f.submit "Comment" %>
-  <% end %>
-<% end %>
+        <% if comment.registered_user == current_user %>
+          <%= link_to "Delete", pin_comment_path(@pin, comment), method: :delete, class: 'btn-standard' %>
+        <% elsif current_admin %>
+          <%= link_to "Delete", admin_comment_path(comment), method: :delete, class: 'btn-standard'  %>
+        <% end %>
+      <% if current_user && current_user != comment.registered_user %>
+        <% if current_user.already_liked?(comment) %>
+          <%= link_to "Unlike", pin_comment_unlike_path(@pin, comment, Like.this_user(comment, current_user)), method: :delete, class: 'btn-standard' %>
+        <% else %>
+          <%= link_to "Like", pin_comment_like_path(@pin, comment), method: :post, class: 'btn-standard' %>
+        <% end %>
+      <% end %>
+      </section>
+    <% end %>
+    
+    <div class='user-info'>
+      <%= image_tag(current_user.image_url) %>
+      <h4> <%= current_user.username %> </h4>
+    </div>
+
+    <% if current_user %>
+      <%= form_for [@pin, @comment] do |f| %> 
+        
+        <%= f.text_area :content, placeholder: "Add a comment..." %>
+
+        <%= f.submit "Comment" %>
+      <% end %>
+    <% end %>
+  </section>
+</section>
