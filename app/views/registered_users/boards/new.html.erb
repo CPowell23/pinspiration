@@ -10,5 +10,5 @@
     <%= button_tag "Create", {class: "btn-continue btn-wide"} %>
   </section>
   <% end %>
-  <%= button_to 'Cancel', registered_users_boards_path(current_user.username), class: "btn-deactivate btn-wide" %>
+  <%= link_to 'Cancel', registered_users_boards_path(current_user.username), class: "btn-deactivate btn-wide" %>
 </section>
