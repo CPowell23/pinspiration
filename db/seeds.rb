@@ -73,6 +73,19 @@ class Seed
                                                               password: "password",
                                                               image_url: "https://assets.entrepreneur.com/content/16x9/822/4-secrets-lifelong-success-martha-stewart.jpg",
                                                               phone_number: Faker::PhoneNumber.phone_number,)
+    5.times do 
+      board = @sample_pinspiration_user.boards.create!(
+                      private: [true, false].sample,
+                      name: Faker::Hipster.unique.words.join(" "),
+                      description: Faker::Hipster.sentence,
+                      category: Category.all.sample)
+      3.times do
+        board.pins.create!(
+          description: Faker::Hipster.sentence,
+          image_url: @pin_images.sample,
+          article_url: Faker::Internet.url)
+      end
+    end
   end
 
   def generate_registered_users
@@ -157,19 +170,20 @@ class Seed
 
   def generate_likes
     @users = RegisteredUser.all.map { |user| user }
-    5.times do |i|
+    until @users.count == 0 do
+      user = @users.pop
       board_like = Like.create!(
-        registered_user: @users.pop,
+        registered_user: user,
         target_type: "Board",
         target_id: Board.all.sample.id
       )
       pin_like = Like.create!(
-        registered_user: @users.pop,
+        registered_user: user,
         target_type: "Pin",
         target_id: Pin.all.sample.id
       )
       comment_like = Like.create!(
-        registered_user: @users.pop,
+        registered_user: user,
         target_type: "Comment",
         target_id: Comment.all.sample.id
       )
