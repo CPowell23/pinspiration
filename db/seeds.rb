@@ -12,7 +12,7 @@ class Seed
                     "http://www.funcage.com/blog/wp-content/uploads/2011/01/FunCage-cute-baby-animal-1-480x320.jpg",
                     "http://www.funcage.com/blog/wp-content/uploads/2011/01/FunCage-cute-baby-animal-7.jpg",
                     "https://i.ytimg.com/vi/QpnmL96l0mA/maxresdefault.jpg",
-                    "http://dailynewsdig.com/wp-content/uploads/2013/05/Cutest-Baby-Animals-top-10-5.jpg",
+                    "https://s-media-cache-ak0.pinimg.com/originals/ec/1c/7e/ec1c7ef02303d298882238d2944851f4.jpg",
                     "http://static.boredpanda.com/blog/wp-content/uploads/2014/12/cutest-baby-animals-24__605.jpg",
                     "https://img.buzzfeed.com/buzzfeed-static/static/2015-12/21/10/campaign_images/webdr14/a-definitive-ranking-of-the-cutest-baby-animals-2-27983-1450711830-8_dblbig.jpg",
                     "http://a57.foxnews.com/images.foxnews.com/content/fox-news/science/slideshow/2014/04/10/cuddly-critters-cutest-baby-animals/_jcr_content/slideshow-par/slide_image0/image.img.jpg/0/549/1422687145031.jpg?ve=1&tl=1?ve=1",
@@ -71,8 +71,21 @@ class Seed
                                                               username: "marthastewart",
                                                               email: "martha@marthastewart.com",
                                                               password: "password",
-                                                              image_url: "https://assets.entrepreneur.com/content/16x9/822/4-secrets-lifelong-success-martha-stewart.jpg",
+                                                              image_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/1/000/0fc/095/1521284.jpg",
                                                               phone_number: Faker::PhoneNumber.phone_number,)
+    5.times do
+      board = @sample_pinspiration_user.boards.create!(
+                      private: [true, false].sample,
+                      name: Faker::Hipster.unique.words.join(" "),
+                      description: Faker::Hipster.sentence,
+                      category: Category.all.sample)
+      3.times do
+        board.pins.create!(
+          description: Faker::Hipster.sentence,
+          image_url: @pin_images.sample,
+          article_url: Faker::Internet.url)
+      end
+    end
   end
 
   def generate_registered_users
@@ -157,19 +170,20 @@ class Seed
 
   def generate_likes
     @users = RegisteredUser.all.map { |user| user }
-    5.times do |i|
+    until @users.count == 0 do
+      user = @users.pop
       board_like = Like.create!(
-        registered_user: @users.pop,
+        registered_user: user,
         target_type: "Board",
         target_id: Board.all.sample.id
       )
       pin_like = Like.create!(
-        registered_user: @users.pop,
+        registered_user: user,
         target_type: "Pin",
         target_id: Pin.all.sample.id
       )
       comment_like = Like.create!(
-        registered_user: @users.pop,
+        registered_user: user,
         target_type: "Comment",
         target_id: Comment.all.sample.id
       )

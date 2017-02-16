@@ -25,9 +25,7 @@ describe "Logged in Admin" do
     end
 
     it "no longer sees a link to Log out in the nav" do
-      within "nav" do
-        expect(page).not_to have_selector(:link_or_button, "Log out")
-      end
+      expect(page).not_to have_selector(:link_or_button, "Log out")
     end
   end
 

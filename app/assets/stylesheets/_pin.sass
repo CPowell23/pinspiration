@@ -1,10 +1,35 @@
 .pin
   padding: 10px
   color: $dark-gray
+  transition-duration: .2s 
+  transition-timing-function: cubic-bezier(.31,1,.78,1) 
+
+  .pin-icons
+    position: absolute
+    display: inline-block
+    visibility: hidden
+    transition: .2s ease-i
+    i
+      font-size: 15px
+      color: $med-gray
+      padding: 10px
+      background-color: $light-gray
+      border-radius: 5px
+      margin: 5px
+
+    a.unlike-pin
+      color: $med-gray
+      font-size: 15px
+      float: right
+
+    a.like-pin 
+      i
+        color: $med-red 
+      font-size: 15px
+      float: right
 
   img
     border-radius: 7px
-
   p
     margin-top: 6px
     margin-bottom: 6px
@@ -38,3 +63,10 @@
 
     strong
       font-weight: bold
+
+.pin:hover
+  background-color: $light-gray
+  border-radius: 5px 
+
+  .pin-icons
+    visibility: visible

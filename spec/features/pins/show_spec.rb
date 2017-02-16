@@ -17,5 +17,5 @@ describe "Pin Show" do
 
     # expect(page).to have_selector(:link_or_button, @board.name)
     # expect(page).to have_content(:css, "a[href='#{@pin.article_url}']")
-end
+  end
 end

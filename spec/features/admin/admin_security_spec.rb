@@ -12,7 +12,8 @@ describe "Logged in Admin" do
     visit edit_registered_user_path(@user.username)
 
     expect(page).to have_content("Deactivate Account")
-    expect(page).not_to have_content("Edit")
+    expect(page).not_to have_selector(:link_or_button, "Save Settings")
+    expect(page).not_to have_selector(:link_or_button, "Cancel")
   end
 
   scenario "admin cannot edit boards" do 

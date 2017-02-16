@@ -18,7 +18,7 @@ describe "Comment Create" do
       end
 
       expect(Comment.count).to eql(1)
-      expect(current_path).to eql(new_pin_comment_path(@pin))
+      expect(current_path).to eql(pin_path(@pin))
       expect(page).to have_content("This is the content of the comment.")
       expect(page).to have_content("Thank you for your comment!")
     end

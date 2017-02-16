@@ -1,10 +1,8 @@
 <section class='likes'>
-  <h2>Pins</h2>
   <% @user.likes.where(target_type: 'Pin').each do |like| %>
     <%= render partial: 'shared/pin', locals: { pin: like.target } %>
   <% end %>
 
-  <h2>Boards</h2>
   <% @user.likes.where(target_type: 'Board').each do |like| %>
     <div class="box col3">
     <section class="board">

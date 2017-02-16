@@ -8,7 +8,7 @@
     <li>
       <i class="fa fa-paper-plane" aria-hidden="true"></i>
     </li>
-    <li> 
+    <li>
       <i class="fa fa-ellipsis-h" aria-hidden="true"></i>
     </li>
   </ul>
@@ -37,15 +37,15 @@
     </li>
     <li class="user-image">
       <% if @user.image_url.present? %>
-      <%= image_tag(@user.image_url) %>
+        <div class="cropper"> <%= image_tag(@user.image_url) %> </div>
       <% else %>
-      <i class="fa fa-rocket user-large" aria-hidden="true"></i>
+        <i class="fa fa-rocket user-large" aria-hidden="true"></i>
       <% end %>
     </li>
   </ul>
   <ul class="board-pin-like">
-    <li class="active"><%= link_to "Boards", registered_users_boards_path(@user.username)%></li>
-    <li><%= link_to "Pins", registered_users_pins_path(@user.username)%></li>
-    <li><%= link_to "Likes", registered_users_likes_path(@user.username)%></li>
+    <li class="<%= board_class %>"> <%= link_to "Boards", registered_users_boards_path(@user.username)%></li>
+    <li class="<%= pin_class %>"> <%= link_to "Pins", registered_users_pins_path(@user.username)%></li>
+    <li class="<%= like_class %>"> <%= link_to "Likes", registered_users_likes_path(@user.username)%></li>
   </ul>
 </section>
