@@ -20,7 +20,7 @@
     <h4> <%= @pin.description %> </h4>
   </section>
 
-  <button class="show">Comments
+  <button class="show">Show Comments
     <i class="fa fa-caret-down" aria-hidden="true"></i>
   </button>
 
@@ -48,12 +48,12 @@
       </section>
     <% end %>
     
-    <div class='user-info'>
-      <%= image_tag(current_user.image_url) %>
-      <h4> <%= current_user.username %> </h4>
-    </div>
-
     <% if current_user %>
+      <div class='user-info'>
+        <%= image_tag(current_user.image_url) %>
+        <h4> <%= current_user.username %> </h4>
+      </div>
+
       <%= form_for [@pin, @comment] do |f| %> 
         
         <%= f.text_area :content, placeholder: "Add a comment..." %>
