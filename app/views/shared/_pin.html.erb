@@ -13,7 +13,9 @@
     <i class="fa fa-paper-plane" aria-hidden="true"></i>
   </div>
 
-  <%= image_tag(pin.image_url) %>
+  <%= link_to pin_path(pin) do %>
+    <%= image_tag(pin.image_url) %>
+  <% end %>
 
   <p><%= pin.description %></p>
   <div class="pin-foot">
