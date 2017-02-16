@@ -46,11 +46,10 @@
   display: inline-block
 
 .btn-deactivate
+  @extend .btn
   background-color: $med-red
   text-decoration: none
   color: white
-  border-radius: 4px
-  font-size: 14px
   padding: 10px 14px
   display: block
   width: 140px
@@ -59,6 +58,7 @@
 
 .btn-deactivate:hover
   color: $med-gray
+  background-color: $light-gray
 
 .btn-delete
   background-color: $light-gray
@@ -120,6 +120,10 @@
   padding: 10px
   float: right
   clear: right
+
+.btn-wide
+  display: block
+  width: 100%
 
 ul.board-pin-like
   display: block
