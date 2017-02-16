@@ -1,6 +1,6 @@
 module ApplicationHelper
   def page_is_not_login_or_create?
-    !page_is_login_or_create? && !page_is_admin_login?
+    !page_is_login_or_create? 
   end
 
   def page_is_login_or_create?
