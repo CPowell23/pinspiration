@@ -1,5 +1,5 @@
 <section class='edit'>
-  <% if @credentials || current_admin == false %>
+  <% if @credentials && !current_admin %>
     <%= render 'form' %>
   <% end %>
 
