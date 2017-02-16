@@ -71,9 +71,9 @@ class Seed
                                                               username: "marthastewart",
                                                               email: "martha@marthastewart.com",
                                                               password: "password",
-                                                              image_url: "https://assets.entrepreneur.com/content/16x9/822/4-secrets-lifelong-success-martha-stewart.jpg",
+                                                              image_url: "https://media.licdn.com/mpr/mpr/shrinknp_200_200/p/1/000/0fc/095/1521284.jpg",
                                                               phone_number: Faker::PhoneNumber.phone_number,)
-    5.times do 
+    5.times do
       board = @sample_pinspiration_user.boards.create!(
                       private: [true, false].sample,
                       name: Faker::Hipster.unique.words.join(" "),
