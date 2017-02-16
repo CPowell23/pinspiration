@@ -15,7 +15,7 @@ describe "Board Create Errors" do
       fill_in "board[description]", with: "100% authentic"
       find("option[value='private']").select_option
       find("option[value='1']").select_option
-      click_on "Submit"
+      click_on "Create"
     end
 
     expect(page).to have_content('Add a New Board')
@@ -30,7 +30,7 @@ describe "Board Create Errors" do
       fill_in "board[description]", with: nil
       find("option[value='private']").select_option
       find("option[value='1']").select_option
-      click_on "Submit"
+      click_on "Create"
     end
 
     expect(page).to have_content('Add a New Board')
@@ -44,7 +44,7 @@ describe "Board Create Errors" do
       fill_in "board[name]", with: "Bespoke"
       fill_in "board[description]", with: "100% authentic"
       find("option[value='private']").select_option
-      click_on "Submit"
+      click_on "Create"
     end
 
     expect(page).to have_content('Add a New Board')
