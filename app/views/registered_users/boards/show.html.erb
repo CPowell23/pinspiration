@@ -16,10 +16,9 @@
     <li>
       <h1><%= @board_presenter.board.name %></h1>
       <p><strong><%= @board_presenter.pins.count %></strong> Pins</p>
-      <p><strong><%= @board_presenter.user.followers.count %></strong> Followers</p>
+      <p><strong><%= link_to @board_presenter.user.followers.count, registered_users_followers_path(@board_presenter.user.username) %> Followers</strong></p>
       </br>
       <p><%= @board_presenter.board.description %></p>
-      <p><%= link_to "Followers", registered_users_followers_path(@board_presenter.user.username) %></p>
       </br>
       <% if @board_presenter.board.privacy == "private" %>
         <i class="fa fa-lock" aria-hidden="true"></i>
@@ -37,9 +36,9 @@
     </li>
     <li class="board-user-image">
       <% if @board_presenter.user.image_url.present? %>
-      <%= image_tag(@board_presenter.user.image_url) %>
+        <%= image_tag(@board_presenter.user.image_url) %>
       <% else %>
-      <i class="fa fa-rocket board-user-small" aria-hidden="true"></i>
+        <i class="fa fa-rocket board-user-small" aria-hidden="true"></i>
       <% end %>
     </li>
     <li>
