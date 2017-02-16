@@ -4,12 +4,18 @@
     <% @followers.each do |f| %>
       <div class="box col4 follower">
         <%= link_to registered_user_path(f.username) do %>
-          <% if f.image_url.present? && "up" == "down" %>
-            <%= image_tag(f.image_url) %>
+          <% if f.image_url.present? %>
+            <%= image_tag(f.image_url, class: "user-follow") %>
           <% else %>
             <i class="fa fa-user user-follow" aria-hidden="true"></i>
           <% end %>
-          <%= f.name %>
+          <span> <%= f.name %> </span>
+        <% end %>
+
+        <% if current_user && current_user.followings.include?(f) %>
+          <%= link_to "Unfollow", registered_users_following_destroy_path(current_user.username, f.username, :option => 'from_follower_index_page'), method: :delete, class: "btn-unfollow-index" %>
+        <% elsif current_user %>
+          <%= link_to "Follow", registered_users_following_create_path(current_user.username, f.username), method: :post, class: "btn-follow-index" %>
         <% end %>
       </div><!-- end col4 -->
     <% end %>

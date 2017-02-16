@@ -29,8 +29,10 @@ class RegisteredUsers::FollowingController < ApplicationController
     flash_message_successful_following_delete
     if params[:option] == "from_user_show_page"
       redirect_to registered_user_path(user_being_followed.username)
-    else
+    elsif params[:option] == "from_following_index_page"
       redirect_to registered_users_following_path(params[:username])
+    elsif params[:option] == "from_follower_index_page"
+      redirect_to registered_users_followers_path(params[:username])
     end
   end
 end
