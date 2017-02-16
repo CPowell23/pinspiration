@@ -10,4 +10,19 @@ module ApplicationHelper
   def current_uri(request)
     request.env['PATH_INFO']
   end
+
+  def board_class
+    return "active" if current_uri(request) == "/#{params["username"]}" || current_uri(request) == "/#{params["username"]}/boards"
+    "inactive"
+  end
+
+  def pin_class
+    return "active" if current_uri(request) == "/#{params["username"]}/pins"
+    "inactive"
+  end
+
+  def like_class
+    return "active" if current_uri(request) == "/#{params["username"]}/likes"
+    "inactive"
+  end
 end
