@@ -1,4 +1,4 @@
-module ApplicationHelper
+module ApplicationHelper 
   def page_is_not_login_or_create?
     !page_is_login_or_create? 
   end
