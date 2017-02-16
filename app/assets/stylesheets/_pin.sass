@@ -1,6 +1,8 @@
 .pin
   padding: 10px
   color: $dark-gray
+  transition-duration: .2s 
+  transition-timing-function: cubic-bezier(.31,1,.78,1) 
 
   .pin-icons
     position: absolute
@@ -63,5 +65,8 @@
       font-weight: bold
 
 .pin:hover
+  background-color: $light-gray
+  border-radius: 5px 
+
   .pin-icons
     visibility: visible
