@@ -4,12 +4,12 @@
     <% @followers.each do |f| %>
       <div class="box col4 follower">
         <%= link_to registered_user_path(f.username) do %>
-          <% if f.image_url.present? && "up" == "down" %>
-            <%= image_tag(f.image_url) %>
+          <% if f.image_url.present? %>
+            <%= image_tag(f.image_url, class: "user-follow") %>
           <% else %>
             <i class="fa fa-user user-follow" aria-hidden="true"></i>
           <% end %>
-          <%= f.name %>
+          <span> <%= f.name %> </span>
         <% end %>
       </div><!-- end col4 -->
     <% end %>
