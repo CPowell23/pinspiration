@@ -39,6 +39,5 @@ describe "Board Edit" do
     expect(current_path).to eq(registered_users_board_path(@username, "Bespoke"))
     expect(page).to have_content("Bespoke")
     expect(page).to have_content("100% authentic")
-    expect(page).to have_content("private")
   end
 end

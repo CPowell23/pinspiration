@@ -1,6 +1,6 @@
-<section class="board">
+<section class="board-show">
 
-  <ul class="board-icons">
+  <ul class="board-show-icons">
     <li class="left">
       <i class="fa fa-pencil" aria-hidden="true"></i>
     </li>
@@ -12,7 +12,7 @@
     </li>
   </ul>
 
-  <ul class="board-info">
+  <ul class="board-show-info">
     <li>
       <h1><%= @board_presenter.board.name %></h1>
       <p><strong><%= @board_presenter.pins.count %></strong> Pins</p>
@@ -34,11 +34,12 @@
         <%= button_to "Delete", admin_board_path(@board_presenter.board), method: :delete %>
       <% end %>
     </li>
-    <li class="board-user-image">
+
+    <li class="board-show-user-image">
       <% if @board_presenter.user.image_url.present? %>
         <%= image_tag(@board_presenter.user.image_url) %>
       <% else %>
-        <i class="fa fa-rocket board-user-small" aria-hidden="true"></i>
+        <i class="fa fa-rocket board-show-user-small" aria-hidden="true"></i>
       <% end %>
     </li>
     <li>
@@ -46,7 +47,7 @@
         <% if current_user.already_liked?(@board_presenter.board) %>
           <%= link_to "Unlike", registered_users_board_unlike_path(@board_presenter.user.username, @board_presenter.board.name, Like.this_user(@board_presenter.board, current_user)), method: :delete %>
         <% else %>
-          <%= link_to "Like", registered_users_board_like_path(@board_presenter.user.username, @board_presenter.board.name), method: :post %>
+          <%= link_to "Like", registered_users_board_like_path(@board_presenter.user.username, @board_presenter.board.name), method: :post, class: "btn-follow" %>
         <% end %>
       <% end %>
     </li>
