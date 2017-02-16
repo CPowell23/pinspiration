@@ -28,7 +28,7 @@ describe "Comment Delete" do
 
       expect(Comment.count).to eql(1)
       expect(@user_1.comments.count).to eql(0)
-      expect(current_path).to eql(new_pin_comment_path(@pin))
+      expect(current_path).to eql(pin_path(@pin))
       expect(page).to have_content("User 3's comment.")
       expect(page).not_to have_content("User 1's comment.")
       expect(page).to have_content("Your comment was deleted")

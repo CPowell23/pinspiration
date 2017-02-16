@@ -11,7 +11,7 @@ class Pins::CommentsController < ApplicationController
     @comment = Comment.new(comment_params)
     if @comment.save
       flash_message_successful_comment_creation
-      redirect_to new_pin_comment_path(@comment.pin)
+      redirect_to pin_path(@comment.pin)
     else
       @errors = @comment.errors
       render :new
@@ -19,11 +19,12 @@ class Pins::CommentsController < ApplicationController
   end
 
   def destroy
+    pin = Pin.find(params[:pin_id])
     @comment = Comment.find(params[:id])
     @comment.destroy
 
     flash_message_successful_comment_delete
-    redirect_to new_pin_comment_path(@comment.pin)
+    redirect_to pin_path(pin)
   end
 
   private

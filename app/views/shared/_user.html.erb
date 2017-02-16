@@ -37,9 +37,9 @@
     </li>
     <li class="user-image">
       <% if @user.image_url.present? %>
-      <%= image_tag(@user.image_url) %>
+        <div class="cropper"> <%= image_tag(@user.image_url) %> </div>
       <% else %>
-      <i class="fa fa-rocket user-large" aria-hidden="true"></i>
+        <i class="fa fa-rocket user-large" aria-hidden="true"></i>
       <% end %>
     </li>
   </ul>
