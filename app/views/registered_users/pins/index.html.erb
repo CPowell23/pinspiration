@@ -1,6 +1,7 @@
 <%= render partial: 'shared/user' %>
 <section class="content">
-  <div id="masonry-container" class=" masonry">
+  <div class='grid-sizer'></div>
+  <div class='grid'>
     <% @pins.each do |pin| %>
       <%= render partial: "shared/pin", locals: { pin: pin} %>
     <% end %>
