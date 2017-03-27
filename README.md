@@ -14,7 +14,20 @@ A Pinterest clone in two weeks!
 ## <a name="preview"></a> Website Preview
 The following screen shots provide a brief visual of the appearance and functionality of the application. The full website is deployed on Heroku and accessible via this link: [https://pinspirations.herokuapp.com/](https://pinspirations.herokuapp.com/)
 
-Insert screenshots of the app...
+### Home Page
+![alt text][home]
+
+[home]: https://github.com/CPowell23/pinspiration/blob/master/home.png "Home Page"
+
+### Dashboard Page
+![alt text][dashboard]
+
+[dashboard]: https://github.com/CPowell23/pinspiration/blob/master/dashboard.png "Dashboard Page"
+
+### User Page
+![alt text][user]
+
+[user]: https://github.com/CPowell23/pinspiration/blob/master/user.png "User Page"
 
 ### Database Diagram
 ![alt text][database]
