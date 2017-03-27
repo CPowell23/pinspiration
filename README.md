@@ -19,12 +19,12 @@ Insert screenshots of the app...
 ### Database Diagram
 ![alt text][database]
 
-[database]: https://github.com/CPowell23/pinspiration/blob/master/database_graphic_v1.png "Pinspirations Database Diagram"
+[database]: https://github.com/CPowell23/pinspiration/blob/master/database_diagram.png "Pinspirations Database Diagram"
 
 ### User Authorizations Summary
 ![alt text][authorizations]
 
-[authorizations]: https://github.com/CPowell23/pinspiration/blob/master/authorizations_graphic.png "Pinspirations Authorizations Summary"
+[authorizations]: https://github.com/CPowell23/pinspiration/blob/master/authorizations_summary.png "Pinspirations Authorizations Summary"
 
 **Authorization Notes:**
  - Admin authorizations apply to all users’ content, including boards tagged as private.
